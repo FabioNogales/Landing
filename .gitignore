@@ -1,0 +1,19 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Node (por si se agrega tooling más adelante)
+node_modules/
+npm-debug.log*
+
+# Entornos / secretos
+.env
+.env.local
+
+# Assets de trabajo pesados (no versionar video crudo)
+assets/video/raw/
