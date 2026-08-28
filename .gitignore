@@ -17,3 +17,8 @@ npm-debug.log*
 
 # Assets de trabajo pesados (no versionar video crudo)
 assets/video/raw/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log

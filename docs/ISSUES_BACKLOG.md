@@ -86,9 +86,9 @@ Redactar rangos de inversión, política de revisiones, modelo white label, qué
 ## Infraestructura (fuera de `index.html`)
 
 ### 14. Comprar y conectar dominio
-Aún no comprado. Cuando esté listo: actualizar issue #1, el `mailto:` del issue #4, y configurar DNS/CNAME según el hosting elegido.
+Aún no comprado. Cuando esté listo: actualizar issue #1, el `mailto:` del issue #4, y conectarlo en Firebase Hosting → Add custom domain.
 `Labels: infra, P1`
 
-### 15. Elegir hosting y desplegar
-GitHub Pages, Vercel o Netlify. Sitio 100% estático, sin build step — cualquiera sirve.
+### 15. Deploy inicial a Firebase Hosting
+Decidido: **Firebase Hosting**, proyecto "FabioAI Landing". `firebase.json` ya está en el repo. Falta hacer `firebase login` + `firebase use --add` + primer `firebase deploy --only hosting` (pasos en `docs/DEPLOY_FIREBASE.md`) y actualizar la URL en `README.md`.
 `Labels: infra, P1`
