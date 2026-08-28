@@ -89,6 +89,6 @@ Redactar rangos de inversión, política de revisiones, modelo white label, qué
 Aún no comprado. Cuando esté listo: actualizar issue #1, el `mailto:` del issue #4, y conectarlo en Firebase Hosting → Add custom domain.
 `Labels: infra, P1`
 
-### 15. Deploy inicial a Firebase Hosting
-Decidido: **Firebase Hosting**, proyecto "FabioAI Landing". `firebase.json` ya está en el repo. Falta hacer `firebase login` + `firebase use --add` + primer `firebase deploy --only hosting` (pasos en `docs/DEPLOY_FIREBASE.md`) y actualizar la URL en `README.md`.
+### 15. ~~Deploy inicial a Firebase Hosting~~ — hecho
+Sitio en vivo en https://fabioai-landing.web.app. Pendiente real: conectar el dominio propio cuando esté comprado (ver issue #14 y `docs/DEPLOY_FIREBASE.md`).
 `Labels: infra, P1`

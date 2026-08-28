@@ -2,7 +2,7 @@
 
 Landing page one-page de respuesta directa para portafolio de creador digital / producción audiovisual. Sitio estático, sin build step.
 
-**Sitio en vivo:** [PENDIENTE] agregar URL cuando esté desplegado y el dominio esté comprado.
+**Sitio en vivo:** https://fabioai-landing.web.app (dominio propio: [PENDIENTE], ver `docs/DEPLOY_FIREBASE.md`)
 
 ## Estructura del proyecto
 
