@@ -153,10 +153,11 @@
     });
   });
 
-  /* ── Formulario ────────────────────────────────────── */
+  /* ── Formulario (Formspree, envío por AJAX) ────────── */
 
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
+  var submitBtn = form.querySelector('.form__submit');
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -167,7 +168,30 @@
       return;
     }
 
-    // [PENDIENTE] Conecta aquí tu endpoint (Formspree, Resend, API propia…).
-    status.textContent = '[PENDIENTE] Formulario sin endpoint conectado. Los datos no se envían todavía.';
+    submitBtn.disabled = true;
+    status.textContent = 'Enviando…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          status.textContent = '¡Gracias! Te respondo en menos de 24 horas.';
+          form.reset();
+          return;
+        }
+        return response.json().then(function (data) {
+          var msg = (data && data.errors && data.errors.map(function (err) { return err.message; }).join(', ')) || '';
+          status.textContent = msg || 'Hubo un problema al enviar. Intenta de nuevo o escríbeme directo por email.';
+        });
+      })
+      .catch(function () {
+        status.textContent = 'Hubo un problema de conexión. Intenta de nuevo o escríbeme directo por email.';
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+      });
   });
 })();

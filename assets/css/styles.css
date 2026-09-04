@@ -301,6 +301,28 @@ img { max-width: 100%; display: block; }
   animation: glowPulse 9s ease-in-out infinite;
   pointer-events: none;
 }
+.hero__portrait {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: min(38vw, 460px);
+  height: 88%;
+  max-height: 740px;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 52% 58% at 70% 42%, #000 28%, transparent 74%);
+  mask-image: radial-gradient(ellipse 52% 58% at 70% 42%, #000 28%, transparent 74%);
+}
+.hero__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(.12) contrast(1.05) brightness(.92);
+}
+@media (max-width: 900px) {
+  .hero__portrait { display: none; }
+}
 .hero__scrim {
   position: absolute;
   inset: 0;
@@ -391,17 +413,14 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 200px;
-  padding: 0 12px;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  font-size: 26px;
-  letter-spacing: .02em;
-  color: var(--text-muted);
-  opacity: .6;
-  transition: opacity var(--duration-standard) ease, color var(--duration-standard) ease;
+  min-width: 180px;
+  height: 44px;
+  padding: 0 20px;
+  opacity: .85;
+  transition: opacity var(--duration-standard) ease, transform var(--duration-standard) ease;
 }
-.logo:hover { opacity: 1; color: var(--accent); }
+.logo img { max-width: 140px; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.logo:hover { opacity: 1; transform: translateY(-2px); }
 
 /* ═══════════════════════════════════════════════════════
    TENSIÓN + COMPARATIVA
@@ -571,6 +590,22 @@ img { max-width: 100%; display: block; }
 .process__detail { font-size: 14px; line-height: 1.55; color: var(--text-muted); margin: 0 0 20px; }
 .process__time { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin: 0; }
 
+.process-alt {
+  margin-top: 32px;
+  padding: 22px 26px;
+  border-left: 2px solid var(--accent);
+  background: var(--charcoal);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+.process-alt__label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.process-alt__text { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-secondary); }
+
 /* ═══════════════════════════════════════════════════════
    BANDAS CTA
    ═══════════════════════════════════════════════════════ */
@@ -673,6 +708,7 @@ img { max-width: 100%; display: block; }
   gap: 16px;
 }
 .work__card {
+  display: block;
   position: relative;
   aspect-ratio: 16 / 10;
   border-radius: 14px;
@@ -701,6 +737,20 @@ img { max-width: 100%; display: block; }
   letter-spacing: .14em;
   color: var(--gray-dark);
 }
+.work__cta {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: .1em;
+  color: var(--accent);
+  transition: color var(--duration-standard) ease;
+}
+.work__card:hover .work__cta { color: var(--orange-hover); }
 .work__meta {
   position: absolute;
   left: 0; right: 0; bottom: 0;
@@ -856,15 +906,9 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius-xl);
   border: 1px solid rgba(249, 249, 249, .1);
   background: linear-gradient(135deg, var(--charcoal), var(--near-black));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-size: 14px;
-  color: var(--gray-dark);
+  overflow: hidden;
 }
+.about__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .about__title { font-size: clamp(34px, 5vw, 64px); margin-bottom: 28px; }
 .about p { font-size: 17px; line-height: 1.65; color: var(--text-secondary); margin: 0 0 18px; text-wrap: pretty; }
 .about__pull {
@@ -1066,6 +1110,7 @@ img { max-width: 100%; display: block; }
 .calendar-embed__fallback:hover { color: var(--white); }
 
 .form { display: flex; flex-direction: column; gap: 16px; }
+.field--honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .field {
   display: flex;
   flex-direction: column;
