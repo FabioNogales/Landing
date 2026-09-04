@@ -52,5 +52,9 @@ Todo el contenido que falta por definir está marcado `[PENDIENTE]` directamente
 ## Pendientes generales (no ligados a una sección)
 
 - [ ] Comprar y conectar el dominio (ver comentario `[PENDIENTE]` en `<head>` de `index.html`)
-- [ ] Deploy inicial a Firebase Hosting (ver `docs/DEPLOY_FIREBASE.md`)
-- [ ] Reemplazar cada `[PENDIENTE]` de contenido (ver `docs/ISSUES_BACKLOG.md`)
+- [x] Deploy inicial a Firebase Hosting
+- [ ] Foto de perfil y logos de marcas (archivos, ver `docs/ISSUES_BACKLOG.md` #2 y #9)
+- [ ] Conectar endpoint del formulario de contacto (Formspree u otro)
+- [ ] Definir plataforma de video para el portafolio y subir las 6 piezas
+- [ ] Terminar de completar la FAQ (5 de 6 preguntas restantes)
+- [ ] Reemplazar cada `[PENDIENTE]` restante (ver `docs/ISSUES_BACKLOG.md`)
