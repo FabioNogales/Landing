@@ -10,7 +10,9 @@
       ".claude/**",
       "docs/**",
       "estructura-landing.md",
-      "README.md"
+      "README.md",
+      "assets/img/logos/**",
+      "assets/img/LOGO-ITACAMBA-8cm.png"
     ],
     "cleanUrls": true,
     "trailingSlash": false

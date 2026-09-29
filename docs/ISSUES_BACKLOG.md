@@ -2,41 +2,49 @@
 
 Copia cada bloque como un issue en GitHub (plantilla en `.github/ISSUE_TEMPLATE/pendiente.md`) o dime y los creo con `gh` cuando lo tengas instalado.
 
-## Antes de dar a conocer el dominio
+## Para dejar el dominio funcionando
 
-### 1. Conectar `fabionogales.com`
-Pasos en `docs/DEPLOY_FIREBASE.md` (Firebase Console + registros DNS en Cloudflare). `Labels: infra, P1`
+### 1. Crear 3 registros DNS en Cloudflare
+`A @ → 199.36.158.100`, `TXT @ → hosting-site=fabioai-landing`, `CNAME www → fabioai-landing.web.app`, todos en **DNS only** (nube gris). Detalle en `docs/DEPLOY_FIREBASE.md`. Los dominios ya están creados en Firebase. `Labels: infra, P1`
 
-### 2. Probar el formulario con un envío real
-Formspree ya está conectado (`data-endpoint` en `index.html`). Falta enviar una consulta de prueba desde el sitio publicado y comprobar que llega al correo y al panel de Formspree. `Labels: feature, P1`
+### 2. Comprobar el destino del formulario
+El formulario usa Formspree (`mqpklabq`). Confirmar en formspree.io que las notificaciones llegan a `fabioaioficial@gmail.com` y enviar una consulta de prueba desde el sitio publicado. `Labels: feature, P1`
 
-### 3. Confirmar textos que redacté yo
-- Frase destacada de "Sobre mí": *"No elijo entre dirección de cámara y velocidad de IA — hago las dos cosas bien."* (`ab.pull`)
-- Bio en inglés (`ab.body`, en `index.html`): pasé tu texto original a primera persona para que suene igual que el español.
-- Respuesta del FAQ sobre tiempos y sobre trabajo remoto/presencial: escritas a partir de lo que me contaste. `Labels: contenido, P1`
+## Contenido de plantilla (visible mientras no se rellene)
 
-## Mejoran conversión
+### 3. Piezas de portafolio
+Solo la 1ª tarjeta es real (reel de Instagram). Quedan 5 tarjetas `[Client 02…06]`. Recomendado subir cada pieza a Vimeo o YouTube (no listado) y enlazarla. `Labels: contenido, media, P1`
 
-### 4. Tres respuestas de FAQ (ocultas hasta tenerlas)
-White label con agencias · Rondas de revisión incluidas · Qué necesito del cliente para arrancar. Están comentadas al final de `#faq`. `Labels: contenido, P2`
+### 4. Caso de estudio
+La sección sigue como en el diseño, pero **sus cifras (5 días / 18 piezas / −40 %) son de ejemplo**: no publicarlas como reales. Rellenar con un caso real o activar el interruptor `hide-pending`. `Labels: contenido, P1`
 
-### 5. Más piezas de portafolio
-Hoy hay una (el reel de Instagram). Recomendado subir cada pieza a Vimeo o YouTube (no listado) y enlazarla; plantilla en la sección `#work`. `Labels: contenido, media, P2`
+### 5. Tres respuestas de FAQ
+White label con agencias · Rondas de revisión incluidas · Qué necesito del cliente para arrancar. `Labels: contenido, P2`
 
-### 6. Caso de estudio y testimonios
-El caso de estudio está oculto (comentado) y no hay sección de testimonios. Agregarlos cuando existan casos y citas reales. `Labels: contenido, P2`
+### 6. Ciudad en el footer
+Sigue con su chip "Pending" (`[City] · GMT-4`). `Labels: contenido, P2`
 
-### 7. Política de privacidad
-Se quitó el enlace "Privacidad" del footer (apuntaba a `#`). Crear la página y volver a enlazarla. `Labels: legal, P2`
+### 7. Testimonios
+El diseño no incluye la sección (a propósito, hasta tener citas reales). `Labels: contenido, P3`
 
-### 8. Optimizar imágenes
-`assets/img/logos/itacamba.png` pesa 1.1 MB y `fabio.jpg` / `fabio-about.jpg` ~0.5 MB cada una. Comprimirlas (p. ej. tinypng.com o convertir a WebP) acelera la carga en celular. `Labels: performance, P2`
+> Todo lo anterior se puede ocultar de una vez con `class="hide-pending"` en `<html>` (ver `docs/GUIA_EDICION.md`).
 
-### 9. Correo con dominio (opcional)
-Pasar de `fabioaioficial@gmail.com` a `contacto@fabionogales.com` (requiere servicio de correo + registros MX). `Labels: infra, P3`
+## Textos que redacté yo (confirmar)
+
+- Frase destacada de "Sobre mí": *"No elijo entre dirección de cámara y velocidad de IA — hago las dos cosas bien."*
+- Bio en inglés: pasé tu texto original a primera persona para que suene igual que el español.
+- Respuestas del FAQ sobre tiempos y sobre trabajo remoto/presencial, y el bloque "¿Cliente en otro país…?" del proceso: escritos a partir de lo que me contaste.
+- Pregunta del FAQ "¿Trabajas en remoto o solo de forma presencial?": reemplaza la original, que tenía `[city]`.
+
+## Mejoras opcionales
+
+- Política de privacidad (el diseño tiene un enlace "Privacy" que apunta a `#`).
+- Correo con dominio (`contacto@fabionogales.com`).
+- Search Console + sitemap tras conectar el dominio.
 
 ## Hecho
 
-- Rediseño publicado con el contenido real: cifra del hero, logos de clientes, tiempos de 5 días + bloque para clientes en otros países, bio, redes (Instagram, TikTok, LinkedIn, Facebook, X), reel de Instagram, precios del FAQ.
-- Calendario de Google, Formspree, cambio ES/EN, imagen para compartir (`og.jpg`), `robots.txt` y `sitemap.xml`.
-- Deploy en Firebase Hosting.
+- Diseño de `fabioai-landing` publicado respetando su estructura (mismas 14 secciones) con el contenido real.
+- Carrusel de logos de 7 clientes (Bransign, Itacamba, Yango, Grazia, Kinia, Wallbit, Clarita) con la misma velocidad lenta del diseño.
+- Calendario de `fabioaioficial@gmail.com`, formulario (Formspree), cambio ES/EN, redes reales, imagen para compartir (`og.jpg`), `robots.txt` y `sitemap.xml`.
+- Dominios `fabionogales.com` y `www` creados en Firebase Hosting.

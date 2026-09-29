@@ -94,7 +94,7 @@
       </figure>
       <!-- Portrait: drop your edited photo at assets/img/fabio.jpg (4:5 works best) -->
       <figure class="card card--photo">
-        <div class="ph"></div>
+        <div class="ph"><span data-i18n="ph.photo">Your photo — pending</span></div>
         <img src="assets/img/fabio.jpg" alt="Portrait of Fabio Nogales" width="600" height="800" onerror="this.remove()">
       </figure>
       <div class="card card--stat">
@@ -105,25 +105,34 @@
   </div>
 </section>
 
-<!-- ══ CLIENT LOGOS ════════════════════════════════════
-     To add a client: copy one <img> line (keep the <i></i> separator), point src to assets/img/logos/.
-     The set is repeated 3× so the marquee loops without gaps; only the first set carries alt text. -->
+<!-- ══ CLIENT LOGOS — slow, constant marquee (same dynamic and speed as the original strip) ══
+     To add a client: save the optimized PNG in assets/img/clients/, copy one <img> line (+ its <i></i> dot) into each of the
+     3 sets below, and give it a height in styles.css (.logo--name). The set is repeated 3x so the loop never shows a gap;
+     only the first set carries alt text. -->
 <div class="strip band--dark" aria-label="Clients">
-  <p class="strip__label" data-i18n="s.label">Brands I've worked with</p>
   <div class="strip__inner" id="stripInner">
     <div class="strip__track">
-      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="Bransign" loading="lazy"><i></i>
-      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="Itacamba" loading="lazy"><i></i>
-      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="Yango" loading="lazy"><i></i>
-      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="Grazia.ai" loading="lazy"><i></i>
-      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="" aria-hidden="true" loading="lazy"><i></i>
-      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--bransign" src="assets/img/clients/bransign.png" alt="Bransign" width="125" height="30"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/clients/itacamba.png" alt="Itacamba" width="57" height="44"><i></i>
+      <img class="logo logo--yango" src="assets/img/clients/yango.png" alt="Yango" width="97" height="32"><i></i>
+      <img class="logo logo--grazia" src="assets/img/clients/grazia.png" alt="Grazia.ai" width="57" height="34"><i></i>
+      <img class="logo logo--kinia" src="assets/img/clients/kinia.png" alt="Kinia" width="93" height="44"><i></i>
+      <img class="logo logo--wallbit" src="assets/img/clients/wallbit.png" alt="Wallbit" width="134" height="32"><i></i>
+      <img class="logo logo--clarita" src="assets/img/clients/clarita.png" alt="Productos Clarita" width="89" height="44"><i></i>
+      <img class="logo logo--bransign" src="assets/img/clients/bransign.png" alt="" aria-hidden="true" width="125" height="30"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/clients/itacamba.png" alt="" aria-hidden="true" width="57" height="44"><i></i>
+      <img class="logo logo--yango" src="assets/img/clients/yango.png" alt="" aria-hidden="true" width="97" height="32"><i></i>
+      <img class="logo logo--grazia" src="assets/img/clients/grazia.png" alt="" aria-hidden="true" width="57" height="34"><i></i>
+      <img class="logo logo--kinia" src="assets/img/clients/kinia.png" alt="" aria-hidden="true" width="93" height="44"><i></i>
+      <img class="logo logo--wallbit" src="assets/img/clients/wallbit.png" alt="" aria-hidden="true" width="134" height="32"><i></i>
+      <img class="logo logo--clarita" src="assets/img/clients/clarita.png" alt="" aria-hidden="true" width="89" height="44"><i></i>
+      <img class="logo logo--bransign" src="assets/img/clients/bransign.png" alt="" aria-hidden="true" width="125" height="30"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/clients/itacamba.png" alt="" aria-hidden="true" width="57" height="44"><i></i>
+      <img class="logo logo--yango" src="assets/img/clients/yango.png" alt="" aria-hidden="true" width="97" height="32"><i></i>
+      <img class="logo logo--grazia" src="assets/img/clients/grazia.png" alt="" aria-hidden="true" width="57" height="34"><i></i>
+      <img class="logo logo--kinia" src="assets/img/clients/kinia.png" alt="" aria-hidden="true" width="93" height="44"><i></i>
+      <img class="logo logo--wallbit" src="assets/img/clients/wallbit.png" alt="" aria-hidden="true" width="134" height="32"><i></i>
+      <img class="logo logo--clarita" src="assets/img/clients/clarita.png" alt="" aria-hidden="true" width="89" height="44"><i></i>
     </div>
   </div>
 </div>
@@ -267,40 +276,35 @@
   <div class="container">
     <div class="work__head" data-reveal>
       <h2 class="display h2" data-i18n="wrk.title">Selected <span class="accent">work</span></h2>
-      <!-- HIDDEN until there are 4+ real pieces (category filters are pointless with one card). Uncomment to bring them back:
-      <div class="filters" id="filters" role="group" aria-label="Filter work">
+      <div class="filters is-pending" id="filters" role="group" aria-label="Filter work">
         <button class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="wrk.f0">All</button>
         <button class="filter" data-filter="Brand film" aria-pressed="false" data-i18n="wrk.f1">Brand film</button>
         <button class="filter" data-filter="Social" aria-pressed="false" data-i18n="wrk.f2">Social</button>
         <button class="filter" data-filter="Product" aria-pressed="false" data-i18n="wrk.f3">Product</button>
         <button class="filter" data-filter="Testimonial" aria-pressed="false" data-i18n="wrk.f4">Testimonial</button>
       </div>
-      -->
     </div>
-    <div class="work work--few" id="work-grid">
-      <a class="wcard" data-tag="Social" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener">
-        <div class="wcard__bg"></div>
-        <span class="wcard__tag">Instagram</span>
-        <span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
-        <div class="wcard__meta"><p class="wcard__client" data-i18n="wrk.r1c">Latest reel</p><p class="wcard__line" data-i18n="wrk.r1l">Social · Published on @fabioai_</p></div>
-      </a>
-      <!-- ADD A PIECE: copy the card above and change data-tag (Brand film | Social | Product | Testimonial),
-           the href (Vimeo / YouTube / Instagram link), the tag label and the two texts.
-           When the grid reaches 4+ pieces: uncomment the filters above and remove the class "work--few" from #work-grid. -->
+    <!-- Each card: replace .wcard__bg with <video muted loop playsinline preload="none" data-src="..."> for hover previews -->
+    <div class="work" id="work-grid">
+      <a class="wcard" data-tag="Social" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Instagram</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client" data-i18n="wrk.r1c">Latest reel</p><p class="wcard__line" data-i18n="wrk.r1l">Social · Published on @fabioai_</p></div></a>
+      <article class="wcard is-pending" data-tag="Social"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pending</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 02]</p><p class="wcard__line" data-i18n="wrk.l2">Social · 12 pieces 9:16</p></div></article>
+      <article class="wcard is-pending" data-tag="Product"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pending</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 03]</p><p class="wcard__line" data-i18n="wrk.l3">Product · Studio</p></div></article>
+      <article class="wcard is-pending" data-tag="Testimonial"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pending</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 04]</p><p class="wcard__line" data-i18n="wrk.l4">Testimonial · Remote</p></div></article>
+      <article class="wcard is-pending" data-tag="Social"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pending</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 05]</p><p class="wcard__line" data-i18n="wrk.l5">Social · Paid campaign</p></div></article>
+      <article class="wcard is-pending" data-tag="Brand film"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pending</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 06]</p><p class="wcard__line" data-i18n="wrk.l6">Brand film · Multi-format</p></div></article>
     </div>
     <p class="work__empty" id="workEmpty" hidden data-i18n="wrk.empty">Nothing in this category yet.</p>
     <div class="work__foot">
       <a href="#book" class="btn btn--dark btn--lg" data-i18n="hero.cta">Book a diagnostic session</a>
-      <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="link-u" data-i18n="wrk.reel">See more on Instagram ↗</a>
+      <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="link-u" data-i18n="wrk.reel">See the full reel</a>
     </div>
   </div>
 </section>
 
-<!-- ══ CASE STUDY — HIDDEN until there is a real case with numbers you can defend on a call.
-     Uncomment the whole block to show it (the Spanish copy already lives in main.js, keys case.* and met.*).
-<section class="band band--dark">
+<!-- ══ CASE STUDY (dark) ═══════════════════════════════ -->
+<section class="band band--dark is-pending">
   <div class="container">
-    <p class="eyebrow" data-reveal><span class="accent" data-i18n="case.eyebrow">Case study</span></p>
+    <p class="eyebrow" data-reveal><span class="accent" data-i18n="case.eyebrow">Case study</span> <span class="todo" data-i18n="todo">Pending</span></p>
     <h2 class="display h2 case__title" data-reveal data-i18n="case.title">[Client] — 18 pieces from a <span class="accent">single shoot</span></h2>
     <div class="case-steps">
       <div class="case-step" data-reveal><p class="case-step__num">01</p><h3 data-i18n="case.1t">Context</h3><p data-i18n="case.1d">Who the client is and what was at stake.</p></div>
@@ -309,13 +313,12 @@
       <div class="case-step" data-reveal><p class="case-step__num">04</p><h3 data-i18n="case.4t">Result</h3><p data-i18n="case.4d">A number you can defend on a call, not adjectives.</p></div>
     </div>
     <div class="metrics" data-reveal>
-      <div><p class="metric__value" data-count="5">5</p><p class="metric__label" data-i18n="met.1">days from pre-production to delivery</p></div>
+      <div><p class="metric__value" data-count="7">7</p><p class="metric__label" data-i18n="met.1">days from brief to first cut</p></div>
       <div><p class="metric__value" data-count="18">18</p><p class="metric__label" data-i18n="met.2">pieces delivered from a single shoot</p></div>
       <div><p class="metric__value" data-count="40" data-prefix="−" data-suffix="%">−40%</p><p class="metric__label" data-i18n="met.3">cost vs. a traditional quote</p></div>
     </div>
   </div>
 </section>
--->
 
 <!-- ══ FIT (light) ═════════════════════════════════════ -->
 <section class="band band--light">
@@ -340,29 +343,19 @@
 <section class="band band--dark" id="about">
   <div class="container about">
     <figure class="about__photo" data-reveal>
-      <div class="ph"></div>
+      <div class="ph"><span data-i18n="ph.photo">Your photo — pending</span></div>
       <img src="assets/img/fabio-about.jpg" alt="Fabio Nogales" width="800" height="1000" loading="lazy" onerror="this.remove()">
     </figure>
     <div data-reveal>
       <h2 class="display h2" data-i18n="ab.title">About <span class="accent">me</span></h2>
       <p data-i18n="ab.body">I'm an audiovisual editor and AI content specialist with 4+ years of experience producing dynamic digital marketing content for social media. I bridge professional camera direction with fast-paced editing and generative AI. I work deep in the Adobe suite, DaVinci Resolve and CapCut, always focused on delivering complete, high-quality visual narratives that capture audience attention and scale modern brands' presence.</p>
       <p class="about__pull" data-i18n="ab.pull">I don't choose between camera direction and AI speed — I do both well.</p>
-      <div class="icon-row">
-        <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@fabioai_" target="_blank" rel="noopener" class="icon-btn" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3h-3.2v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.3 6.1V9.7a7.8 7.8 0 0 0 4.5 1.4V8a4.8 4.8 0 0 1-4.5-5Z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/fabio-nogales/" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.2a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.44 20h-3.37v-6.06c0-1.44-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V20H9.35V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.21-1.77 3.43 0 4.06 2.26 4.06 5.2V20Z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/FabioAI1" target="_blank" rel="noopener" class="icon-btn" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.8h2.6l.4-3h-3v-1.9c0-.87.24-1.46 1.5-1.46h1.6V4.14c-.28-.04-1.24-.12-2.35-.12-2.33 0-3.92 1.42-3.92 4.03v2.25H7.7v3h2.63V21h3.17Z"/></svg>
-        </a>
-        <a href="https://x.com/fabionogales95" target="_blank" rel="noopener" class="icon-btn" aria-label="X (Twitter)">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.6 10.6 20.3 3h-2l-5.8 6.6L7.9 3H3l7 9.9L3 21h2l6.1-7 5 7H21l-7.4-10.4Zm-2.2 2.5-.7-1L5 4.6h2l4.5 6.3.7 1 5.9 8.3h-2l-4.7-6.7Z"/></svg>
-        </a>
+      <div class="socials">
+        <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@fabioai_" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.linkedin.com/in/fabio-nogales/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.facebook.com/FabioAI1" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://x.com/fabionogales95" target="_blank" rel="noopener">X</a>
       </div>
     </div>
   </div>
@@ -378,13 +371,10 @@
       <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f1"><span data-i18n="faq.1q">How long does a production take, start to finish?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f1"><div><p class="faq__a" data-i18n="faq.1a">An in-person production runs 5 days from pre-production to delivery: pre-production (2 days), shooting (1 day), post-production (1 day) and delivery on day 5. If you're in another country and only need post-production, it's done remotely with an automated, AI-powered workflow that extracts varied content from every file you send.</p></div></div></div>
       <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f2"><span data-i18n="faq.2q">What exactly does "using AI" mean? Is the result generic content?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f2"><div><p class="faq__a" data-i18n="faq.2a">AI lives in the process, not the result. I use it to speed up ideation, outlines, footage organization and cut versioning: operational tasks that used to eat budget without adding judgment. Direction, shooting and creative decisions stay human. What gets compressed is the schedule, not the standard.</p></div></div></div>
       <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f3"><span data-i18n="faq.3q">How do the investment ranges work?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f3"><div><p class="faq__a" data-i18n="faq.3a">Rates start at $20 USD per video and go up to $400 USD for custom avatar creation and high-quality AI-generated content, together with a sales-funnel strategy and scripts tailored specifically for social media.</p></div></div></div>
+      <div class="faq__item is-pending"><button class="faq__q" aria-expanded="false" aria-controls="f4"><span data-i18n="faq.4q">Do you work with agencies on a white-label basis?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f4"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.4a">Yes/No and under what terms: credit, direct contact with the end client, NDAs.</span></p></div></div></div>
+      <div class="faq__item is-pending"><button class="faq__q" aria-expanded="false" aria-controls="f5"><span data-i18n="faq.5q">How many revision rounds are included?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f5"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.5a">Define the number included per stage and the cost of extra rounds.</span></p></div></div></div>
+      <div class="faq__item is-pending"><button class="faq__q" aria-expanded="false" aria-controls="f6"><span data-i18n="faq.6q">What do you need from me to get started?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f6"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.6a">A brief or business goal, brand guidelines or references, a delivery date and a single approver on your side.</span></p></div></div></div>
       <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f7"><span data-i18n="faq.7q">Do you work remotely or only in person?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f7"><div><p class="faq__a" data-i18n="faq.7a">Both. Shoots happen in person, locally. If you're in another country and only need post-production, we work 100% remotely: you send the material and I extract varied content from each piece you send, using an automated, AI-powered workflow.</p></div></div></div>
-      <!-- HIDDEN until answered (copy each answer into both places: the HTML below for English, the ES map in main.js for Spanish).
-           To show one, delete the "todo" chip and move the item above this comment.
-      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f4"><span data-i18n="faq.4q">Do you work with agencies on a white-label basis?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f4"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.4a">Yes/No and under what terms: credit, direct contact with the end client, NDAs.</span></p></div></div></div>
-      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f5"><span data-i18n="faq.5q">How many revision rounds are included?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f5"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.5a">Define the number included per stage and the cost of extra rounds.</span></p></div></div></div>
-      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f6"><span data-i18n="faq.6q">What do you need from me to get started?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f6"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.6a">A brief or business goal, brand guidelines or references, a delivery date and a single approver on your side.</span></p></div></div></div>
-      -->
     </div>
   </div>
 </section>
@@ -410,7 +400,7 @@
             var target = document.currentScript;
             window.addEventListener('load', function() {
               calendar.schedulingButton.load({
-                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2DbUABO-aI6Y-cJNaGZ0r7STMiXnv9GUWH0elAH9Nwf-Fm1RCFCqtWTBWcBeSOTVyTdxylrIYn?gv=true',
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1ZSTzkANlwl43oYq0Z_ldJjjrB80cOGT0R1lp8UKhFXDKgLg44XD0jgylnPszYBPWD7wphHhou?gv=true',
                 color: '#EF6C00',
                 label: document.documentElement.lang === 'es' ? 'Programar una cita' : 'Book a 30-min call',
                 target,
@@ -419,10 +409,11 @@
           })();
           </script>
           <!-- end Google Calendar Appointment Scheduling -->
+          <noscript><a href="https://calendar.app.google/5QZxMj7zXx48WkPA8" target="_blank" rel="noopener" class="link-u">Book a call</a></noscript>
         </div>
       </div>
-      <!-- Sends to Formspree (submissions land in the Formspree inbox + email). To swap providers (e.g. an n8n webhook) change data-endpoint;
-           if it is left empty the form falls back to opening the visitor's email app. -->
+      <!-- Sends to Formspree (submissions arrive in the Formspree inbox + email). Change data-endpoint to swap provider (e.g. an n8n webhook);
+           if it is left empty the form falls back to opening the visitor's email app (fabioaioficial@gmail.com). -->
       <form class="panel form" id="contactForm" data-endpoint="https://formspree.io/f/mqpklabq" data-reveal novalidate>
         <p class="eyebrow" data-i18n="bk.alt">Prefer not to book a call?</p>
         <label class="field"><span data-i18n="bk.f1">Name</span><input type="text" name="name" autocomplete="name" placeholder="Your name" data-i18n-ph="bk.p1" required></label>
@@ -453,28 +444,18 @@
         <a href="#process" data-i18n="nav.process">Process</a>
         <a href="#services" data-i18n="nav.services">Services</a>
         <a href="#book" data-i18n="nav.contact">Contact</a>
+        <a href="#" data-i18n="ft.privacy">Privacy</a>
       </nav>
       <nav class="footer__col" aria-label="Social">
-        <div class="icon-row">
-          <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@fabioai_" target="_blank" rel="noopener" class="icon-btn" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3h-3.2v12.4a2.9 2.9 0 1 1-2.1-2.8v-3.3a6.2 6.2 0 1 0 5.3 6.1V9.7a7.8 7.8 0 0 0 4.5 1.4V8a4.8 4.8 0 0 1-4.5-5Z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/fabio-nogales/" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.2a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.44 20h-3.37v-6.06c0-1.44-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V20H9.35V8.5h3.24v1.57h.05c.45-.86 1.56-1.77 3.21-1.77 3.43 0 4.06 2.26 4.06 5.2V20Z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/FabioAI1" target="_blank" rel="noopener" class="icon-btn" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.8h2.6l.4-3h-3v-1.9c0-.87.24-1.46 1.5-1.46h1.6V4.14c-.28-.04-1.24-.12-2.35-.12-2.33 0-3.92 1.42-3.92 4.03v2.25H7.7v3h2.63V21h3.17Z"/></svg>
-          </a>
-          <a href="https://x.com/fabionogales95" target="_blank" rel="noopener" class="icon-btn" aria-label="X (Twitter)">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.6 10.6 20.3 3h-2l-5.8 6.6L7.9 3H3l7 9.9L3 21h2l6.1-7 5 7H21l-7.4-10.4Zm-2.2 2.5-.7-1L5 4.6h2l4.5 6.3.7 1 5.9 8.3h-2l-4.7-6.7Z"/></svg>
-          </a>
-        </div>
+        <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@fabioai_" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.linkedin.com/in/fabio-nogales/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.facebook.com/FabioAI1" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://x.com/fabionogales95" target="_blank" rel="noopener">X</a>
       </nav>
       <div class="footer__col">
         <a href="mailto:fabioaioficial@gmail.com">fabioaioficial@gmail.com</a>
+        <span class="is-pending"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="ft.city">[City] · GMT-4</span></span>
       </div>
     </div>
     <p class="footer__legal">© 2026 Fabio Nogales. <span data-i18n="ft.rights">All rights reserved.</span></p>

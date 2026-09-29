@@ -203,16 +203,18 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 
 /* ---------- Capabilities strip ---------- */
 .strip { padding: 0; border-block: 1px solid var(--gray-900); overflow: hidden; }
-.strip__inner { display: flex; align-items: center; padding: 22px 0; }
-.strip__track { display: flex; align-items: center; gap: 40px; padding-right: 40px; flex: none; animation: marquee 38s linear infinite; }
+.strip__inner { display: flex; align-items: center; padding: 20px 0; } /* 20px: keeps the strip at ~85px tall with 44px-high logos */
+.strip__track { display: flex; align-items: center; gap: 40px; padding-right: 40px; flex: none; animation: marquee 99s linear infinite; } /* 99s over the 3-set logo track ≈ the same 38 px/s crawl as the original 38s text strip */
 .strip__track span { font-family: var(--font-serif); font-size: 26px; white-space: nowrap; color: var(--gray-300); }
 .strip__track i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex: none; }
-.strip__label { margin: 0; padding-top: 22px; text-align: center; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-600); }
-.strip__track img.logo { flex: none; width: auto; max-width: none; opacity: .9; }
+.strip__track img.logo { flex: none; width: auto; max-width: none; opacity: .92; }
 .logo--bransign { height: 30px; }
-.logo--itacamba { height: 58px; }
-.logo--yango { height: 34px; }
-.logo--grazia { height: 76px; }
+.logo--itacamba { height: 44px; }
+.logo--yango { height: 32px; }
+.logo--grazia { height: 34px; }
+.logo--kinia { height: 44px; }
+.logo--wallbit { height: 32px; }
+.logo--clarita { height: 44px; }
 @keyframes marquee { to { transform: translateX(-100%); } }
 
 /* ---------- Compare (light) ---------- */
@@ -302,7 +304,6 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 .link-u { font-weight: 600; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
 a.wcard { display: block; }
 .wcard__tag:not(.todo) { padding: 4px 11px; border-radius: var(--r-pill); background: rgba(249, 249, 249, .14); backdrop-filter: blur(8px); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-.work--few { grid-template-columns: repeat(auto-fit, minmax(280px, 360px)); } /* few pieces: keep cards a sensible size; remove the class at 4+ pieces */
 
 /* ---------- Case study (dark) ---------- */
 .case__title { max-width: 900px; margin-bottom: 56px; }
@@ -335,12 +336,9 @@ a.wcard { display: block; }
 .about p { color: var(--gray-300); font-size: 18px; max-width: 560px; }
 .about p + p { margin-top: 18px; }
 .about__pull { font-family: var(--font-serif); font-size: clamp(26px, 3vw, 34px) !important; line-height: 1.15; color: var(--white) !important; }
-/* Social icon buttons (About + footer) */
-.icon-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.about .icon-row { margin-top: 32px; }
-.icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(249, 249, 249, .3); color: var(--white); transition: background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease); }
-.icon-btn svg { width: 18px; height: 18px; }
-.icon-btn:hover, .footer__col .icon-btn:hover { background: var(--orange); border-color: var(--orange); color: var(--black); transform: translateY(-2px); }
+.socials { margin-top: 32px; display: flex; gap: 10px; flex-wrap: wrap; }
+.socials a { padding: 10px 20px; border-radius: var(--r-pill); border: 1px solid rgba(249, 249, 249, .3); font-size: 14px; font-weight: 500; transition: border-color .2s, background .2s; }
+.socials a:hover { border-color: var(--orange); background: rgba(232, 80, 2, .12); }
 
 /* ---------- FAQ (light) ---------- */
 .faq-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
@@ -428,7 +426,7 @@ a.wcard { display: block; }
   :root { --gutter: 20px; }
   .hide-sm { display: none; }
   .show-sm { display: inline; }
-  /* compact nav so logo + EN/ES + CTA + burger fit inside the pill down to 360px */
+  /* compact nav so logo + EN/ES + CTA + burger fit inside the pill down to 360px (they overflowed by 13px at 375px) */
   .nav { padding: 8px 8px 8px 16px; gap: 8px; }
   .brand { font-size: 20px; }
   .nav__right { gap: 6px; }
@@ -448,6 +446,12 @@ a.wcard { display: block; }
   .footer__grid { grid-template-columns: 1fr; }
   .cta__inner { align-items: flex-start; }
 }
+/* ---------- Pending-content switch ----------
+   Blocks that still hold template content carry class "is-pending". Add class="hide-pending" to <html> to hide them all
+   (case study, placeholder work cards + filters, unanswered FAQ items, footer city) without deleting anything. */
+.hide-pending .is-pending { display: none !important; }
+.hide-pending .work { grid-template-columns: repeat(auto-fit, minmax(280px, 360px)); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation: none !important; transition-duration: .01ms !important; }
