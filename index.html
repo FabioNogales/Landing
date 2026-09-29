@@ -3,377 +3,350 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Producción audiovisual para marcas y agencias | FabioAI</title>
-<meta name="description" content="Piezas de calidad cinematográfica en tiempos de startup. Dirección, rodaje y post end-to-end potenciados con IA. Agenda un diagnóstico de 30 minutos.">
-<meta name="theme-color" content="#0a0a0a">
+<title>Fabio AI — Producción audiovisual cinematográfica para marcas y agencias</title>
+<meta name="description" content="Calidad cinematográfica en tiempos de startup. Dirección, rodaje y post end-to-end potenciados con IA para marcas y agencias. Agenda un diagnóstico de 30 minutos.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://fabionogales.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23000'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23E85002'/%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="FabioAI">
-<meta property="og:title" content="Calidad cinematográfica. Tiempos de startup.">
-<meta property="og:description" content="Producción audiovisual end-to-end para marcas y agencias que necesitan piezas de alto nivel estético sin los plazos ni los costos de una productora tradicional.">
-<meta property="og:image" content="assets/img/fabio-portrait.jpg">
+<meta property="og:site_name" content="Fabio AI">
+<meta property="og:url" content="https://fabionogales.com/">
+<meta property="og:title" content="Fabio AI — Producción audiovisual cinematográfica para marcas y agencias">
+<meta property="og:description" content="Calidad cinematográfica en tiempos de startup. Dirección, rodaje y post end-to-end potenciados con IA para marcas y agencias. Agenda un diagnóstico de 30 minutos.">
+<meta property="og:image" content="https://fabionogales.com/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fabio AI — Calidad cinematográfica. Tiempos de startup.">
 <meta name="twitter:card" content="summary_large_image">
-<!-- [PENDIENTE] Cuando compres el dominio, descomenta y completa estas tres líneas: -->
-<!-- <link rel="canonical" href="https://tudominio.com/"> -->
-<!-- <meta property="og:url" content="https://tudominio.com/"> -->
-<!-- <meta name="twitter:url" content="https://tudominio.com/"> -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
-<noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.bar__fill{width:var(--w)!important}</style></noscript>
 </head>
 <body>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
 
-<!-- ══ HEADER ══════════════════════════════════════════ -->
-<header class="site-header" id="header">
-  <div class="site-header__inner">
-    <a href="#top" class="brand">FabioAI<span>.</span></a>
-    <nav class="nav" aria-label="Principal">
-      <div class="nav__links">
-        <a class="nav__link" href="#trabajo">Trabajo</a>
-        <a class="nav__link" href="#proceso">Proceso</a>
-        <a class="nav__link" href="#servicios">Servicios</a>
-        <a class="nav__link" href="#sobre-mi">Sobre mí</a>
-        <a class="nav__link" href="#agendar">Contacto</a>
-      </div>
-      <a href="#agendar" class="btn btn--primary btn--sm">
-        <span class="nav__cta-label--full">Agenda una sesión de diagnóstico</span>
-        <span class="nav__cta-label--short">Agendar</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span>
-        <span></span>
-      </button>
+<!-- ══ NAV ═════════════════════════════════════════════ -->
+<header class="nav-wrap" id="header">
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Fabio AI">Fabio<b>AI</b></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#book" data-i18n="nav.contact">Contact</a>
     </nav>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu__inner">
-      <a href="#trabajo">Trabajo</a>
-      <a href="#proceso">Proceso</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#agendar">Contacto</a>
+    <div class="nav__right">
+      <div class="lang" role="group" aria-label="Language">
+        <button class="lang__btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang__btn" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <a class="btn btn--primary btn--sm" href="#book">
+        <span class="hide-sm" data-i18n="nav.cta">Book a diagnostic</span>
+        <span class="show-sm" data-i18n="nav.ctaShort">Book</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button>
     </div>
+  </div>
+  <div class="mmenu" id="mmenu">
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#process" data-i18n="nav.process">Process</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#book" data-i18n="nav.contact">Contact</a>
   </div>
 </header>
 
+<main>
+
 <!-- ══ HERO ════════════════════════════════════════════ -->
-<section class="hero" id="top">
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="hero__glow" aria-hidden="true"></div>
-  <div class="hero__portrait" aria-hidden="true">
-    <img src="assets/img/fabio-portrait.jpg" alt="">
-  </div>
+<section class="hero band--dark" id="top">
+  <div class="orb" aria-hidden="true"></div>
   <div class="hero__scrim" aria-hidden="true"></div>
-  <div class="container hero__content">
-    <p class="hero__badge"><i aria-hidden="true"></i>Producción audiovisual end-to-end</p>
-    <h1 class="hero__title">Calidad cinematográfica.<br><em>Tiempos de startup.</em></h1>
-    <p class="hero__sub">Producción audiovisual end-to-end para marcas y agencias que necesitan piezas de alto nivel estético sin los plazos ni los costos de una productora tradicional. Dirección, rodaje y post potenciados con IA y automatización.</p>
-    <div class="hero__actions">
-      <a href="#agendar" class="btn btn--primary btn--lg">Agenda una sesión de diagnóstico</a>
-      <a href="#trabajo" class="btn btn--outline btn--lg">Ver portafolio</a>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <a class="pill-chip" href="#work">
+        <span data-i18n="hero.chip">End-to-end production, <b>powered by AI</b></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <h1 class="display h1" data-i18n="hero.title">Cinematic quality. Startup <span class="accent">speed.</span></h1>
+      <p class="hero__sub" data-i18n="hero.sub">End-to-end audiovisual production for brands and agencies that need high-end pieces without the timelines and costs of a traditional studio. Direction, shooting and post, powered by AI and automation.</p>
+      <div class="hero__actions">
+        <a href="#book" class="btn btn--primary btn--lg" data-i18n="hero.cta">Book a diagnostic session</a>
+        <a href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+          <span data-i18n="hero.reel">Watch the reel</span>
+        </a>
+      </div>
+      <p class="hero__note" data-i18n="hero.note">+40 pieces delivered in 2026 for Bransign, Itacamba and Grazia.ai.</p>
     </div>
-    <p class="hero__note">+40 piezas entregadas en 2026 para Bransign, Itacamba y Grazia.ai.</p>
+
+    <div class="hero__visual">
+      <!-- Reel card: swap .ph for <video autoplay muted loop playsinline poster="..."> when you have the clip -->
+      <figure class="card card--reel">
+        <div class="ph"><span data-i18n="ph.reel">Latest reel</span></div>
+        <a class="reel__play" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener" aria-label="Watch the latest reel on Instagram"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></a>
+      </figure>
+      <!-- Portrait: drop your edited photo at assets/img/fabio.jpg (4:5 works best) -->
+      <figure class="card card--photo">
+        <div class="ph"></div>
+        <img src="assets/img/fabio.jpg" alt="Portrait of Fabio Nogales" width="600" height="800" onerror="this.remove()">
+      </figure>
+      <div class="card card--stat">
+        <b>5</b>
+        <span data-i18n="hero.stat">days from pre-production to delivery</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ══ LOGOS ═══════════════════════════════════════════ -->
-<section class="logos" aria-label="Marcas y agencias con las que he trabajado">
-  <p class="eyebrow logos__label">Marcas y agencias con las que he trabajado</p>
-  <div class="logos__viewport">
-    <div class="logos__track">
-      <span class="logo"><img src="assets/img/logos/bransign.png" alt="Bransign" loading="lazy"></span>
-      <span class="logo"><img src="assets/img/logos/itacamba.png" alt="Itacamba" loading="lazy"></span>
-      <span class="logo"><img src="assets/img/logos/yango.png" alt="Yango" loading="lazy"></span>
-      <span class="logo"><img src="assets/img/logos/grazia.jpg" alt="Grazia.ai" loading="lazy"></span>
-      <span class="logo" aria-hidden="true"><img src="assets/img/logos/bransign.png" alt="" loading="lazy"></span>
-      <span class="logo" aria-hidden="true"><img src="assets/img/logos/itacamba.png" alt="" loading="lazy"></span>
-      <span class="logo" aria-hidden="true"><img src="assets/img/logos/yango.png" alt="" loading="lazy"></span>
-      <span class="logo" aria-hidden="true"><img src="assets/img/logos/grazia.jpg" alt="" loading="lazy"></span>
+<!-- ══ CLIENT LOGOS ════════════════════════════════════
+     To add a client: copy one <img> line (keep the <i></i> separator), point src to assets/img/logos/.
+     The set is repeated 3× so the marquee loops without gaps; only the first set carries alt text. -->
+<div class="strip band--dark" aria-label="Clients">
+  <p class="strip__label" data-i18n="s.label">Brands I've worked with</p>
+  <div class="strip__inner" id="stripInner">
+    <div class="strip__track">
+      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="Bransign" loading="lazy"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="Itacamba" loading="lazy"><i></i>
+      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="Yango" loading="lazy"><i></i>
+      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="Grazia.ai" loading="lazy"><i></i>
+      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--bransign" src="assets/img/logos/bransign.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--itacamba" src="assets/img/logos/itacamba.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--yango" src="assets/img/logos/yango.png" alt="" aria-hidden="true" loading="lazy"><i></i>
+      <img class="logo logo--grazia" src="assets/img/logos/grazia.jpg" alt="" aria-hidden="true" loading="lazy"><i></i>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ══ TENSIÓN ═════════════════════════════════════════ -->
-<section class="section section--black">
+<!-- ══ THE PROBLEM (light) ═════════════════════════════ -->
+<section class="band band--light">
   <div class="container">
-    <div class="tension" data-reveal>
-      <h2 class="tension__title">Producir bonito<br>ya no alcanza.</h2>
-      <p class="tension__body">Hoy una marca necesita 20 piezas donde antes necesitaba una. La productora tradicional te entrega una obra maestra en seis semanas. El freelance te entrega volumen sin criterio. Yo resuelvo las dos cosas: dirección con lenguaje de marca y una infraestructura de trabajo diseñada para escalar.</p>
+    <div class="compare__head" data-reveal>
+      <p class="eyebrow" data-i18n="cmp.eyebrow">The problem</p>
+      <h2 class="display h2" data-i18n="cmp.title">Producing beautifully is <span class="accent">no longer enough.</span></h2>
+      <p class="lede" data-i18n="cmp.body">Today a brand needs 20 pieces where it used to need one. A traditional studio hands you a masterpiece in six weeks. A freelancer hands you volume with no judgment. I solve both: direction with a brand language, and a workflow designed to scale.</p>
     </div>
-    <div class="compare">
-      <div class="compare__card" data-reveal>
-        <p class="eyebrow compare__label">Productora tradicional</p>
-        <ul class="compare__list">
-          <li>Calidad alta, 6 semanas</li>
-          <li>Costo estructural</li>
-          <li>1 pieza</li>
-        </ul>
+
+    <div class="bars" data-reveal>
+      <div class="bar">
+        <div class="bar__label"><span data-i18n="cmp.trad">Traditional studio</span><em data-i18n="cmp.tradVal">≈ 6 weeks · 1 piece</em></div>
+        <div class="bar__track"><i class="bar__fill" style="--w:100%"></i></div>
       </div>
-      <div class="compare__card" data-reveal>
-        <p class="eyebrow compare__label">Freelance</p>
-        <ul class="compare__list">
-          <li>Rápido, sin criterio</li>
-          <li>Sin dirección</li>
-          <li>Volumen inconsistente</li>
-        </ul>
+      <div class="bar bar--me">
+        <div class="bar__label"><span data-i18n="cmp.me">Fabio AI workflow</span><em data-i18n="cmp.meVal">≈ 5 days · multi-format</em></div>
+        <div class="bar__track"><i class="bar__fill" style="--w:12%"></i></div>
       </div>
-      <div class="compare__card compare__card--highlight" data-reveal>
-        <p class="eyebrow compare__label">Este modelo</p>
-        <ul class="compare__list">
-          <li>Calidad de agencia, tiempos de startup</li>
-          <li>Un solo interlocutor</li>
-          <li>Multiformato desde una producción</li>
-        </ul>
+    </div>
+
+    <div class="cols3">
+      <div class="mini" data-reveal>
+        <p class="eyebrow" data-i18n="cmp.c1">Traditional studio</p>
+        <ul><li data-i18n="cmp.c1a">High quality, 6 weeks</li><li data-i18n="cmp.c1b">Structural cost</li><li data-i18n="cmp.c1c">1 piece</li></ul>
+      </div>
+      <div class="mini" data-reveal>
+        <p class="eyebrow" data-i18n="cmp.c2">Freelancer</p>
+        <ul><li data-i18n="cmp.c2a">Fast, no judgment</li><li data-i18n="cmp.c2b">No direction</li><li data-i18n="cmp.c2c">Inconsistent volume</li></ul>
+      </div>
+      <div class="mini mini--hl" data-reveal>
+        <p class="eyebrow" data-i18n="cmp.c3">This model</p>
+        <ul><li data-i18n="cmp.c3a">Agency quality, startup timelines</li><li data-i18n="cmp.c3b">One point of contact</li><li data-i18n="cmp.c3c">Multi-format from one production</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PILARES ═════════════════════════════════════════ -->
-<section class="section section--near" id="pilares">
+<!-- ══ PILLARS (dark) ══════════════════════════════════ -->
+<section class="band band--dark" id="why">
   <div class="container">
-    <h2 class="h2 pillars__title" data-reveal>Por qué esto funciona distinto</h2>
+    <h2 class="display h2 pillars__title" data-reveal data-i18n="pil.title">Why this works <span class="accent">differently</span></h2>
 
     <div class="pillar" data-reveal>
-      <div>
-        <p class="pillar__num">01</p>
-        <h3 class="pillar__title">Estética de agencia, ejecución comercial</h3>
-      </div>
-      <div class="pillar__body">
-        <p>Vengo de la producción ejecutiva y la dirección para agencias de branding, y trabajo con la agilidad del ecosistema tech. El resultado: piezas con precisión narrativa, código visual consistente y una métrica clara detrás de cada decisión creativa. La belleza no es el objetivo; es el vehículo de la conversión.</p>
-      </div>
+      <div><p class="pillar__num">01</p><h3 class="pillar__title" data-i18n="pil.1t">Agency aesthetics, commercial execution</h3></div>
+      <div class="pillar__body"><p data-i18n="pil.1b">I come from executive production and direction for branding agencies, and I work at the pace of the tech ecosystem. The result: pieces with narrative precision, a consistent visual code and a clear metric behind every creative decision. Beauty isn't the goal; it's the vehicle for conversion.</p></div>
     </div>
 
     <div class="pillar" data-reveal>
-      <div>
-        <p class="pillar__num">02</p>
-        <h3 class="pillar__title">IA y automatización aplicadas al proceso, no al resultado</h3>
-      </div>
+      <div><p class="pillar__num">02</p><h3 class="pillar__title" data-i18n="pil.2t">AI and automation applied to the process, not the result</h3></div>
       <div class="pillar__body">
-        <p>Las productoras tradicionales operan 100% manual. Yo diseño flujos automatizados que comprimen el cronograma sin tocar el estándar de calidad:</p>
-        <ul class="pillar__list">
-          <li><i aria-hidden="true"></i><span><strong>Preproducción acelerada:</strong> ideación, escaletas y guionización en días, no semanas.</span></li>
-          <li><i aria-hidden="true"></i><span><strong>Postproducción escalable:</strong> sistemas que multiplican el volumen de piezas manteniendo el mismo acabado.</span></li>
-          <li><i aria-hidden="true"></i><span><strong>Menos tiempos muertos,</strong> menos costo logístico, menos fricción en cada revisión.</span></li>
+        <p data-i18n="pil.2b">Traditional studios run 100% manually. I design automated flows that compress the schedule without touching the quality bar:</p>
+        <ul class="ticks">
+          <li><i></i><span data-i18n="pil.2l1"><strong>Accelerated pre-production:</strong> ideation, outlines and scripting in days, not weeks.</span></li>
+          <li><i></i><span data-i18n="pil.2l2"><strong>Scalable post-production:</strong> systems that multiply the number of pieces while keeping the same finish.</span></li>
+          <li><i></i><span data-i18n="pil.2l3"><strong>Less dead time,</strong> lower logistics cost, less friction in every review.</span></li>
         </ul>
-        <blockquote class="pull-quote">La IA no reemplaza la dirección. Elimina lo que nunca debió consumir tu presupuesto.</blockquote>
+        <blockquote class="pull" data-i18n="pil.2q">AI doesn't replace direction. It removes what should never have eaten your budget.</blockquote>
       </div>
     </div>
 
     <div class="pillar" data-reveal>
-      <div>
-        <p class="pillar__num">03</p>
-        <h3 class="pillar__title">Un solo interlocutor de principio a fin</h3>
-      </div>
-      <div class="pillar__body">
-        <p>Sin coordinación entre tres proveedores. Sin culpas cruzadas cuando algo se retrasa. Estrategia, rodaje, post y adaptación de formatos bajo una sola dirección creativa y una sola responsabilidad.</p>
-      </div>
+      <div><p class="pillar__num">03</p><h3 class="pillar__title" data-i18n="pil.3t">One point of contact, start to finish</h3></div>
+      <div class="pillar__body"><p data-i18n="pil.3b">No coordinating between three vendors. No finger-pointing when something slips. Strategy, shooting, post and format adaptation under one creative direction and one accountable person.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ══ PROCESO ═════════════════════════════════════════ -->
-<section class="section section--black" id="proceso">
+<!-- ══ PROCESS (light) ═════════════════════════════════ -->
+<section class="band band--light" id="process">
   <div class="container">
     <div data-reveal>
-      <h2 class="h2">Cómo se ve el proceso</h2>
-      <p class="lede process__intro">De brief a entrega multiformato, con un solo responsable en cada etapa.</p>
+      <h2 class="display h2" data-i18n="proc.title">How the process <span class="accent">looks</span></h2>
+      <p class="lede" style="margin-top:24px" data-i18n="proc.intro">From brief to multi-format delivery, with one person accountable at every stage.</p>
     </div>
     <div class="process">
-      <div class="process__node" data-reveal>
-        <div class="process__head"><span class="process__step">01</span><span class="process__rule" aria-hidden="true"></span></div>
-        <h3 class="process__title">Brief</h3>
-        <p class="process__detail">Objetivo de negocio, canal y métrica de éxito.</p>
-        <p class="process__time">Día 0</p>
+      <div class="step" data-reveal>
+        <div class="step__head"><span class="step__num">01</span><span class="step__rule" aria-hidden="true"></span></div>
+        <h3 data-i18n="proc.1t">Brief</h3>
+        <p data-i18n="proc.1d">Business goal, channel and success metric.</p>
+        <span class="time" data-i18n="proc.1x">Day 0</span>
       </div>
-      <div class="process__node" data-reveal>
-        <div class="process__head"><span class="process__step">02</span><span class="process__rule" aria-hidden="true"></span></div>
-        <h3 class="process__title">Preproducción con IA</h3>
-        <p class="process__detail">Ideación, escaleta, guion y referencias.</p>
-        <p class="process__time">Días 1–2</p>
+      <div class="step" data-reveal>
+        <div class="step__head"><span class="step__num">02</span><span class="step__rule" aria-hidden="true"></span></div>
+        <h3 data-i18n="proc.2t">AI-assisted pre-production</h3>
+        <p data-i18n="proc.2d">Ideation, outline, script and references.</p>
+        <span class="time" data-i18n="proc.2x">Days 1–2</span>
       </div>
-      <div class="process__node" data-reveal>
-        <div class="process__head"><span class="process__step">03</span><span class="process__rule" aria-hidden="true"></span></div>
-        <h3 class="process__title">Rodaje</h3>
-        <p class="process__detail">Dirección, cámara, luz y sonido.</p>
-        <p class="process__time">Día 3</p>
+      <div class="step" data-reveal>
+        <div class="step__head"><span class="step__num">03</span><span class="step__rule" aria-hidden="true"></span></div>
+        <h3 data-i18n="proc.3t">Shoot</h3>
+        <p data-i18n="proc.3d">Direction, camera, light and sound.</p>
+        <span class="time" data-i18n="proc.3x">Day 3</span>
       </div>
-      <div class="process__node" data-reveal>
-        <div class="process__head"><span class="process__step">04</span><span class="process__rule" aria-hidden="true"></span></div>
-        <h3 class="process__title">Post automatizada</h3>
-        <p class="process__detail">Edición, color, motion y sistema de plantillas.</p>
-        <p class="process__time">Día 4</p>
+      <div class="step" data-reveal>
+        <div class="step__head"><span class="step__num">04</span><span class="step__rule" aria-hidden="true"></span></div>
+        <h3 data-i18n="proc.4t">Automated post</h3>
+        <p data-i18n="proc.4d">Editing, color, motion and a template system.</p>
+        <span class="time" data-i18n="proc.4x">Day 4</span>
       </div>
-      <div class="process__node" data-reveal>
-        <div class="process__head"><span class="process__step">05</span><span class="process__rule" aria-hidden="true"></span></div>
-        <h3 class="process__title">Entrega multiformato</h3>
-        <p class="process__detail">16:9 / 9:16 / 1:1 · cortes de 6 s a 60 s.</p>
-        <p class="process__time">Día 5</p>
+      <div class="step" data-reveal>
+        <div class="step__head"><span class="step__num">05</span><span class="step__rule" aria-hidden="true"></span></div>
+        <h3 data-i18n="proc.5t">Multi-format delivery</h3>
+        <p data-i18n="proc.5d">16:9 / 9:16 / 1:1 · cuts from 6 s to 60 s.</p>
+        <span class="time" data-i18n="proc.5x">Day 5</span>
       </div>
     </div>
-    <div class="process-alt" data-reveal>
-      <p class="process-alt__label">¿Cliente fuera del país o sin rodaje?</p>
-      <p class="process-alt__text">Si el servicio es 100% digital y solo necesitas post-producción, el proceso se automatiza y se potencia con IA para extraer contenido variado a partir del material que envíes — eficiencia desde el primer entregable, pensado para clientes fuera de Bolivia.</p>
+    <div class="alt" data-reveal>
+      <p class="eyebrow" data-i18n="proc.altT">Client in another country, or no shoot needed?</p>
+      <p data-i18n="proc.altB">If the service is 100% digital and you only need post-production, the process is automated and AI-powered to extract varied content from the material you send — efficiency from the very first deliverable, built for clients in other countries.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA 1 ═══════════════════════════════════════════ -->
-<section class="cta-band cta-band--accent">
-  <div class="container cta-band__inner">
-    <p class="cta-band__text">¿Tienes un lanzamiento en el calendario? Veamos si los tiempos dan.</p>
-    <a href="#agendar" class="btn btn--inverse">Agenda una sesión de diagnóstico</a>
+<!-- ══ CTA BAND ════════════════════════════════════════ -->
+<section class="cta">
+  <div class="container cta__inner">
+    <p class="cta__text" data-i18n="cta.text">Got a launch on the calendar? Let's see if the timing works.</p>
+    <a href="#book" class="btn btn--dark btn--lg" data-i18n="hero.cta">Book a diagnostic session</a>
   </div>
 </section>
 
-<!-- ══ SERVICIOS ═══════════════════════════════════════ -->
-<section class="section section--near" id="servicios">
+<!-- ══ SERVICES (dark) ═════════════════════════════════ -->
+<section class="band band--dark" id="services">
   <div class="container">
-    <h2 class="h2 services__title" data-reveal>Servicios</h2>
+    <h2 class="display h2 services__title" data-reveal data-i18n="srv.title">What I <span class="accent">do</span></h2>
     <div class="services">
-      <article class="service" data-reveal>
-        <p class="service__num">01</p>
-        <h3 class="service__title">Estrategia y dirección creativa</h3>
-        <p>Concepto, tono y narrativa alineados al objetivo de negocio, no al gusto personal.</p>
-      </article>
-      <article class="service" data-reveal>
-        <p class="service__num">02</p>
-        <h3 class="service__title">Rodaje profesional</h3>
-        <p>Dirección de cámara, iluminación, sonido y estabilización. Locación o estudio.</p>
-      </article>
-      <article class="service" data-reveal>
-        <p class="service__num">03</p>
-        <h3 class="service__title">Postproducción y motion graphics</h3>
-        <p>Edición, construcción de código visual, corrección de color y animación digital.</p>
-      </article>
-      <article class="service" data-reveal>
-        <p class="service__num">04</p>
-        <h3 class="service__title">Escalabilidad multiformato</h3>
-        <p>Una producción, múltiples entregables optimizados por canal para maximizar alcance y rendimiento del pauta.</p>
-      </article>
+      <article class="service" data-reveal><p class="service__num">01</p><h3 data-i18n="srv.1t">Strategy &amp; creative direction</h3><p data-i18n="srv.1d">Concept, tone and narrative aligned with the business goal, not personal taste.</p></article>
+      <article class="service" data-reveal><p class="service__num">02</p><h3 data-i18n="srv.2t">Professional shooting</h3><p data-i18n="srv.2d">Camera direction, lighting, sound and stabilization. On location or in studio.</p></article>
+      <article class="service" data-reveal><p class="service__num">03</p><h3 data-i18n="srv.3t">Post-production &amp; motion graphics</h3><p data-i18n="srv.3d">Editing, visual-code building, color grading and digital animation.</p></article>
+      <article class="service" data-reveal><p class="service__num">04</p><h3 data-i18n="srv.4t">Multi-format scalability</h3><p data-i18n="srv.4d">One production, multiple deliverables optimized per channel to maximize reach and ad performance.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ══ TRABAJO ═════════════════════════════════════════ -->
-<section class="section section--black" id="trabajo">
+<!-- ══ WORK (light) ════════════════════════════════════ -->
+<section class="band band--light" id="work">
   <div class="container">
     <div class="work__head" data-reveal>
-      <h2 class="h2">Trabajo</h2>
-      <div class="filters" id="filters" role="group" aria-label="Filtrar trabajos">
-        <button class="filter is-active" data-filter="Todos" aria-pressed="true">Todos</button>
-        <button class="filter" data-filter="Brand film" aria-pressed="false">Brand film</button>
-        <button class="filter" data-filter="Social" aria-pressed="false">Social</button>
-        <button class="filter" data-filter="Producto" aria-pressed="false">Producto</button>
-        <button class="filter" data-filter="Testimonial" aria-pressed="false">Testimonial</button>
+      <h2 class="display h2" data-i18n="wrk.title">Selected <span class="accent">work</span></h2>
+      <!-- HIDDEN until there are 4+ real pieces (category filters are pointless with one card). Uncomment to bring them back:
+      <div class="filters" id="filters" role="group" aria-label="Filter work">
+        <button class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="wrk.f0">All</button>
+        <button class="filter" data-filter="Brand film" aria-pressed="false" data-i18n="wrk.f1">Brand film</button>
+        <button class="filter" data-filter="Social" aria-pressed="false" data-i18n="wrk.f2">Social</button>
+        <button class="filter" data-filter="Product" aria-pressed="false" data-i18n="wrk.f3">Product</button>
+        <button class="filter" data-filter="Testimonial" aria-pressed="false" data-i18n="wrk.f4">Testimonial</button>
       </div>
+      -->
     </div>
-    <div class="work" id="work">
-      <a class="work__card" data-tag="Social" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__cta">Ver en Instagram ↗</div>
-        <div class="work__meta">
-          <p class="work__client">Reel reciente</p>
-          <p class="work__tagline">Social · Publicado en @fabioai_</p>
-        </div>
+    <div class="work work--few" id="work-grid">
+      <a class="wcard" data-tag="Social" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener">
+        <div class="wcard__bg"></div>
+        <span class="wcard__tag">Instagram</span>
+        <span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+        <div class="wcard__meta"><p class="wcard__client" data-i18n="wrk.r1c">Latest reel</p><p class="wcard__line" data-i18n="wrk.r1l">Social · Published on @fabioai_</p></div>
       </a>
-      <article class="work__card" data-tag="Brand film">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 01]</p>
-          <p class="work__tagline">Brand film · Dirección + post</p>
-        </div>
-      </article>
-      <article class="work__card" data-tag="Social">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 02]</p>
-          <p class="work__tagline">Social · 12 piezas 9:16</p>
-        </div>
-      </article>
-      <article class="work__card" data-tag="Producto">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 03]</p>
-          <p class="work__tagline">Producto · Estudio</p>
-        </div>
-      </article>
-      <article class="work__card" data-tag="Testimonial">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 04]</p>
-          <p class="work__tagline">Testimonial · Remoto</p>
-        </div>
-      </article>
-      <article class="work__card" data-tag="Social">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 05]</p>
-          <p class="work__tagline">Social · Campaña de pauta</p>
-        </div>
-      </article>
-      <article class="work__card" data-tag="Brand film">
-        <div class="work__texture" aria-hidden="true"></div>
-        <div class="work__placeholder">[PENDIENTE] video</div>
-        <div class="work__meta">
-          <p class="work__client">[Cliente 06]</p>
-          <p class="work__tagline">Brand film · Multiformato</p>
-        </div>
-      </article>
+      <!-- ADD A PIECE: copy the card above and change data-tag (Brand film | Social | Product | Testimonial),
+           the href (Vimeo / YouTube / Instagram link), the tag label and the two texts.
+           When the grid reaches 4+ pieces: uncomment the filters above and remove the class "work--few" from #work-grid. -->
     </div>
-    <p class="work__empty" id="workEmpty" hidden>No hay piezas en esta categoría todavía.</p>
+    <p class="work__empty" id="workEmpty" hidden data-i18n="wrk.empty">Nothing in this category yet.</p>
     <div class="work__foot">
-      <a href="#agendar" class="btn btn--primary btn--lg">Agenda una sesión de diagnóstico</a>
-      <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="link-underline">Ver reel completo ↗</a>
+      <a href="#book" class="btn btn--dark btn--lg" data-i18n="hero.cta">Book a diagnostic session</a>
+      <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="link-u" data-i18n="wrk.reel">See more on Instagram ↗</a>
     </div>
   </div>
 </section>
 
-<!-- ══ PARA QUIÉN ══════════════════════════════════════ -->
-<section class="section section--near">
+<!-- ══ CASE STUDY — HIDDEN until there is a real case with numbers you can defend on a call.
+     Uncomment the whole block to show it (the Spanish copy already lives in main.js, keys case.* and met.*).
+<section class="band band--dark">
+  <div class="container">
+    <p class="eyebrow" data-reveal><span class="accent" data-i18n="case.eyebrow">Case study</span></p>
+    <h2 class="display h2 case__title" data-reveal data-i18n="case.title">[Client] — 18 pieces from a <span class="accent">single shoot</span></h2>
+    <div class="case-steps">
+      <div class="case-step" data-reveal><p class="case-step__num">01</p><h3 data-i18n="case.1t">Context</h3><p data-i18n="case.1d">Who the client is and what was at stake.</p></div>
+      <div class="case-step" data-reveal><p class="case-step__num">02</p><h3 data-i18n="case.2t">Challenge</h3><p data-i18n="case.2d">The real constraint: time, volume or budget.</p></div>
+      <div class="case-step" data-reveal><p class="case-step__num">03</p><h3 data-i18n="case.3t">How it was solved</h3><p data-i18n="case.3d">The direction decision + which part of the process was automated.</p></div>
+      <div class="case-step" data-reveal><p class="case-step__num">04</p><h3 data-i18n="case.4t">Result</h3><p data-i18n="case.4d">A number you can defend on a call, not adjectives.</p></div>
+    </div>
+    <div class="metrics" data-reveal>
+      <div><p class="metric__value" data-count="5">5</p><p class="metric__label" data-i18n="met.1">days from pre-production to delivery</p></div>
+      <div><p class="metric__value" data-count="18">18</p><p class="metric__label" data-i18n="met.2">pieces delivered from a single shoot</p></div>
+      <div><p class="metric__value" data-count="40" data-prefix="−" data-suffix="%">−40%</p><p class="metric__label" data-i18n="met.3">cost vs. a traditional quote</p></div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ══ FIT (light) ═════════════════════════════════════ -->
+<section class="band band--light">
   <div class="container fit">
     <div data-reveal>
-      <h2 class="h2 fit__title">Con quién trabajo mejor</h2>
+      <h2 class="display h2" data-i18n="fit.title">Who I work <span class="accent">best</span> with</h2>
       <ul class="fit__list">
-        <li><span class="fit__check" aria-hidden="true">✓</span><span>Agencias que necesitan un socio de producción confiable y que entienda briefs de marca.</span></li>
-        <li><span class="fit__check" aria-hidden="true">✓</span><span>Marcas con calendario de contenido constante que hoy dependen de proveedores lentos.</span></li>
-        <li><span class="fit__check" aria-hidden="true">✓</span><span>Startups y empresas tech que necesitan piezas de nivel sin estructura interna de producción.</span></li>
+        <li data-i18n="fit.1">Agencies that need a reliable production partner who understands brand briefs.</li>
+        <li data-i18n="fit.2">Brands with a steady content calendar that depend on slow vendors today.</li>
+        <li data-i18n="fit.3">Startups and tech companies that need top-tier pieces without an in-house production team.</li>
       </ul>
+      <div class="fit__cta"><a href="#book" class="btn btn--dark btn--lg" data-i18n="fit.cta">30 minutes. Scope, real timelines and an honest estimate.</a></div>
     </div>
-    <div class="not-for" data-reveal>
-      <span class="not-for__icon" aria-hidden="true">✕</span>
-      <p>No soy la mejor opción si buscas el precio más bajo del mercado o una pieza suelta sin objetivo definido.</p>
+    <div class="notfor" data-reveal>
+      <b aria-hidden="true">✕</b>
+      <p data-i18n="fit.no">I'm not the best option if you're after the lowest price on the market or a one-off piece with no defined goal.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA 2 ═══════════════════════════════════════════ -->
-<section class="cta-band cta-band--dark">
-  <div class="container cta-band__inner">
-    <p class="cta-band__text">30 minutos. Alcance, tiempos reales y una estimación honesta.</p>
-    <a href="#agendar" class="btn btn--primary btn--lg">Agenda una sesión de diagnóstico</a>
-  </div>
-</section>
-
-<!-- ══ SOBRE MÍ ════════════════════════════════════════ -->
-<section class="section section--black" id="sobre-mi">
+<!-- ══ ABOUT (dark) ════════════════════════════════════ -->
+<section class="band band--dark" id="about">
   <div class="container about">
-    <div class="about__photo" data-reveal>
-      <img src="assets/img/fabio-portrait.jpg" alt="Retrato de Fabio, editor audiovisual y especialista en contenido con IA">
-    </div>
+    <figure class="about__photo" data-reveal>
+      <div class="ph"></div>
+      <img src="assets/img/fabio-about.jpg" alt="Fabio Nogales" width="800" height="1000" loading="lazy" onerror="this.remove()">
+    </figure>
     <div data-reveal>
-      <h2 class="h2 about__title">Sobre mí</h2>
-      <p>Soy editor audiovisual y especialista en contenido con IA, con más de 4 años de experiencia produciendo contenido dinámico de marketing digital para redes sociales. Combino dirección de cámara profesional con edición ágil y aplicaciones de IA generativa. Trabajo a fondo con Adobe Suite, DaVinci Resolve y CapCut, siempre enfocado en entregar narrativas visuales completas y de alta calidad que capturan la atención de la audiencia y escalan la presencia de marcas modernas.</p>
-      <p class="about__pull">No elijo entre dirección de cámara y velocidad de IA — hago las dos cosas bien.</p>
+      <h2 class="display h2" data-i18n="ab.title">About <span class="accent">me</span></h2>
+      <p data-i18n="ab.body">I'm an audiovisual editor and AI content specialist with 4+ years of experience producing dynamic digital marketing content for social media. I bridge professional camera direction with fast-paced editing and generative AI. I work deep in the Adobe suite, DaVinci Resolve and CapCut, always focused on delivering complete, high-quality visual narratives that capture audience attention and scale modern brands' presence.</p>
+      <p class="about__pull" data-i18n="ab.pull">I don't choose between camera direction and AI speed — I do both well.</p>
       <div class="icon-row">
         <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -395,141 +368,93 @@
   </div>
 </section>
 
-<!-- ══ FAQ ═════════════════════════════════════════════ -->
-<section class="section section--near">
+<!-- Testimonials intentionally left out until there are real quotes (see estructura-landing.md). -->
+
+<!-- ══ FAQ (light) ═════════════════════════════════════ -->
+<section class="band band--light">
   <div class="container faq-layout">
-    <h2 class="h2 faq-layout__title" data-reveal>Preguntas frecuentes</h2>
+    <h2 class="display h2" data-reveal data-i18n="faq.title">Frequently asked <span class="accent">questions</span></h2>
     <div class="faq" id="faq">
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-1">
-          <span>¿Cuánto tarda una producción de principio a fin?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-1"><div>
-          <p class="faq__a">[PENDIENTE] Define tu rango real. Referencia: de brief a primer corte en 7 días para piezas de social; 2 a 3 semanas para un brand film con rodaje en locación.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-2">
-          <span>¿Qué significa exactamente que uses IA? ¿El resultado es contenido genérico?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-2"><div>
-          <p class="faq__a">La IA vive en el proceso, no en el resultado. La uso para acelerar ideación, escaletas, organización de material y versionado de cortes: tareas operativas que antes consumían presupuesto sin aportar criterio. La dirección, el rodaje y las decisiones creativas siguen siendo humanas. Lo que se comprime es el cronograma, no el estándar.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-3">
-          <span>¿Cómo funcionan los rangos de inversión?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-3"><div>
-          <p class="faq__a">Van desde $20 USD por video hasta $400 USD para creación específica de avatares y contenido generado por IA de alta calidad, acompañado de una estrategia de funnel de ventas y scripts adaptados específicamente para redes sociales.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-4">
-          <span>¿Trabajas con agencias en modelo white label?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-4"><div>
-          <p class="faq__a">[PENDIENTE] Sí/No y en qué condiciones: crédito, contacto directo con el cliente final, acuerdos de confidencialidad.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-5">
-          <span>¿Cuántas rondas de revisión incluye?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-5"><div>
-          <p class="faq__a">[PENDIENTE] Define el número incluido por etapa y el costo de rondas adicionales.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-6">
-          <span>¿Qué necesitas de mi parte para arrancar?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-6"><div>
-          <p class="faq__a">[PENDIENTE] Brief u objetivo de negocio, manual de marca o referencias, fecha de entrega y un único aprobador del lado del cliente.</p>
-        </div></div>
-      </div>
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-7">
-          <span>¿Trabajas en remoto o solo en [ciudad]?</span>
-          <span class="faq__icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq__panel" id="faq-7"><div>
-          <p class="faq__a">[PENDIENTE] Define base, disponibilidad para viajar y cómo funcionan los rodajes remotos.</p>
-        </div></div>
-      </div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f1"><span data-i18n="faq.1q">How long does a production take, start to finish?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f1"><div><p class="faq__a" data-i18n="faq.1a">An in-person production runs 5 days from pre-production to delivery: pre-production (2 days), shooting (1 day), post-production (1 day) and delivery on day 5. If you're in another country and only need post-production, it's done remotely with an automated, AI-powered workflow that extracts varied content from every file you send.</p></div></div></div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f2"><span data-i18n="faq.2q">What exactly does "using AI" mean? Is the result generic content?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f2"><div><p class="faq__a" data-i18n="faq.2a">AI lives in the process, not the result. I use it to speed up ideation, outlines, footage organization and cut versioning: operational tasks that used to eat budget without adding judgment. Direction, shooting and creative decisions stay human. What gets compressed is the schedule, not the standard.</p></div></div></div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f3"><span data-i18n="faq.3q">How do the investment ranges work?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f3"><div><p class="faq__a" data-i18n="faq.3a">Rates start at $20 USD per video and go up to $400 USD for custom avatar creation and high-quality AI-generated content, together with a sales-funnel strategy and scripts tailored specifically for social media.</p></div></div></div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f7"><span data-i18n="faq.7q">Do you work remotely or only in person?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f7"><div><p class="faq__a" data-i18n="faq.7a">Both. Shoots happen in person, locally. If you're in another country and only need post-production, we work 100% remotely: you send the material and I extract varied content from each piece you send, using an automated, AI-powered workflow.</p></div></div></div>
+      <!-- HIDDEN until answered (copy each answer into both places: the HTML below for English, the ES map in main.js for Spanish).
+           To show one, delete the "todo" chip and move the item above this comment.
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f4"><span data-i18n="faq.4q">Do you work with agencies on a white-label basis?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f4"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.4a">Yes/No and under what terms: credit, direct contact with the end client, NDAs.</span></p></div></div></div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f5"><span data-i18n="faq.5q">How many revision rounds are included?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f5"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.5a">Define the number included per stage and the cost of extra rounds.</span></p></div></div></div>
+      <div class="faq__item"><button class="faq__q" aria-expanded="false" aria-controls="f6"><span data-i18n="faq.6q">What do you need from me to get started?</span><span class="faq__icon" aria-hidden="true">+</span></button><div class="faq__panel" id="f6"><div><p class="faq__a"><span class="todo" data-i18n="todo">Pending</span> <span data-i18n="faq.6a">A brief or business goal, brand guidelines or references, a delivery date and a single approver on your side.</span></p></div></div></div>
+      -->
     </div>
   </div>
 </section>
 
-<!-- ══ AGENDAR ═════════════════════════════════════════ -->
-<section class="booking" id="agendar">
-  <div class="booking__glow" aria-hidden="true"></div>
+<!-- ══ BOOKING (dark) ══════════════════════════════════ -->
+<section class="band band--dark booking" id="book">
+  <div class="orb" aria-hidden="true"></div>
   <div class="container booking__inner">
     <div class="booking__head" data-reveal>
-      <h2 class="booking__title">Hablemos de tu próximo lanzamiento.</h2>
-      <p class="booking__sub">En 30 minutos definimos alcance, tiempos reales y una estimación honesta. Si no soy la solución correcta, te lo digo en esa llamada.</p>
+      <h2 class="display h2" data-i18n="bk.title">Let's talk about your <span class="accent">next launch.</span></h2>
+      <p class="lede" data-i18n="bk.sub">In 30 minutes we define scope, real timelines and an honest estimate. If I'm not the right fit, I'll tell you on that call.</p>
     </div>
     <div class="booking__grid">
-      <div class="panel panel--calendar" data-reveal>
-        <p class="eyebrow panel__label">Calendario</p>
-        <div class="calendar-embed">
-          <iframe
-            src="https://calendar.app.google/tJ7RTz2SGqrbMKpdA"
-            title="Agendar sesión de diagnóstico"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+      <div class="panel" data-reveal>
+        <p class="eyebrow" data-i18n="bk.cal">Google Calendar</p>
+        <div class="calslot">
+          <p data-i18n="bk.calHint">Pick a time that works for you — you'll get a calendar invite right away.</p>
+          <!-- Google Calendar Appointment Scheduling begin -->
+          <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+          <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+          <script>
+          (function() {
+            var target = document.currentScript;
+            window.addEventListener('load', function() {
+              calendar.schedulingButton.load({
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2DbUABO-aI6Y-cJNaGZ0r7STMiXnv9GUWH0elAH9Nwf-Fm1RCFCqtWTBWcBeSOTVyTdxylrIYn?gv=true',
+                color: '#EF6C00',
+                label: document.documentElement.lang === 'es' ? 'Programar una cita' : 'Book a 30-min call',
+                target,
+              });
+            });
+          })();
+          </script>
+          <!-- end Google Calendar Appointment Scheduling -->
         </div>
-        <a href="https://calendar.app.google/tJ7RTz2SGqrbMKpdA" target="_blank" rel="noopener" class="calendar-embed__fallback">¿No carga? Ábrelo en una pestaña nueva →</a>
       </div>
-      <form class="panel form" id="contactForm" data-reveal novalidate action="https://formspree.io/f/mqpklabq" method="POST">
-        <p class="eyebrow">¿Prefieres no agendar llamada?</p>
-        <input type="hidden" name="_subject" value="Nueva consulta desde la landing FabioAI">
-        <input type="text" name="_gotcha" class="field--honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="field">Nombre
-          <input type="text" name="nombre" placeholder="Tu nombre" required>
-        </label>
-        <label class="field">Email
-          <input type="email" name="email" placeholder="tu@empresa.com" required>
-        </label>
-        <label class="field">Empresa
-          <input type="text" name="empresa" placeholder="Marca o agencia">
-        </label>
-        <label class="field">Qué necesitas
-          <input type="text" name="necesidad" placeholder="Brand film, social, producto…">
-        </label>
-        <label class="field">Fecha estimada de entrega
-          <input type="text" name="fecha" placeholder="Mes / semana">
-        </label>
-        <button type="submit" class="form__submit">Enviar</button>
+      <!-- Sends to Formspree (submissions land in the Formspree inbox + email). To swap providers (e.g. an n8n webhook) change data-endpoint;
+           if it is left empty the form falls back to opening the visitor's email app. -->
+      <form class="panel form" id="contactForm" data-endpoint="https://formspree.io/f/mqpklabq" data-reveal novalidate>
+        <p class="eyebrow" data-i18n="bk.alt">Prefer not to book a call?</p>
+        <label class="field"><span data-i18n="bk.f1">Name</span><input type="text" name="name" autocomplete="name" placeholder="Your name" data-i18n-ph="bk.p1" required></label>
+        <label class="field"><span data-i18n="bk.f2">Email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
+        <label class="field"><span data-i18n="bk.f3">Company</span><input type="text" name="company" autocomplete="organization" placeholder="Brand or agency" data-i18n-ph="bk.p3"></label>
+        <label class="field"><span data-i18n="bk.f4">What you need</span><input type="text" name="need" placeholder="Brand film, social, product…" data-i18n-ph="bk.p4"></label>
+        <label class="field"><span data-i18n="bk.f5">Estimated delivery date</span><input type="text" name="date" placeholder="Month / week" data-i18n-ph="bk.p5"></label>
+        <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit" class="btn btn--primary btn--lg" data-i18n="bk.send">Send</button>
         <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ══ FOOTER ══════════════════════════════════════════ -->
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <div class="site-footer__grid">
+    <div class="footer__grid">
       <div>
-        <p class="site-footer__brand">FabioAI<span>.</span></p>
-        <p class="site-footer__tagline">Producción audiovisual end-to-end para marcas y agencias.</p>
+        <p class="footer__brand">Fabio<b>AI</b></p>
+        <p class="footer__tag" data-i18n="ft.tag">End-to-end audiovisual production for brands and agencies.</p>
       </div>
-      <nav class="site-footer__col" aria-label="Secciones">
-        <a href="#trabajo">Trabajo</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#agendar">Contacto</a>
-        <a href="#">Privacidad</a>
+      <nav class="footer__col" aria-label="Sections">
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#book" data-i18n="nav.contact">Contact</a>
       </nav>
-      <nav class="site-footer__col" aria-label="Redes">
+      <nav class="footer__col" aria-label="Social">
         <div class="icon-row">
           <a href="https://www.instagram.com/fabioai_/" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -548,18 +473,15 @@
           </a>
         </div>
       </nav>
-      <div class="site-footer__col">
+      <div class="footer__col">
         <a href="mailto:fabioaioficial@gmail.com">fabioaioficial@gmail.com</a>
-        <span>[Ciudad] · GMT-3</span>
       </div>
     </div>
-    <p class="site-footer__legal">© 2026 FabioAI. Todos los derechos reservados.</p>
+    <p class="footer__legal">© 2026 Fabio Nogales. <span data-i18n="ft.rights">All rights reserved.</span></p>
   </div>
 </footer>
 
-<div class="sticky-cta" id="stickyCta">
-  <a href="#agendar">Agendar diagnóstico</a>
-</div>
+<div class="sticky" id="sticky"><a href="#book" class="btn btn--primary btn--lg" data-i18n="nav.cta">Book a diagnostic</a></div>
 
 <script src="assets/js/main.js" defer></script>
 </body>
