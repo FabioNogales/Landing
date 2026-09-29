@@ -14,7 +14,17 @@
       "assets/img/logos/**",
       "assets/img/LOGO-ITACAMBA-8cm.png"
     ],
-    "cleanUrls": true,
-    "trailingSlash": false
+    "cleanUrls": false,
+    "trailingSlash": false,
+    "headers": [
+      {
+        "source": "**/*.@(html|css|js|xml|txt)",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      },
+      {
+        "source": "/",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+      }
+    ]
   }
 }
