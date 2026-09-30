@@ -29,14 +29,15 @@ Reglas rápidas:
 | Prefijo de clave | Sección |
 |---|---|
 | `nav.` | menú superior |
-| `hero.` `ph.` | portada (título, subtítulo, botones, "5 días", tarjeta del reel) |
+| `hero.` `ph.` | portada (título, subtítulo, botones, "5–7 días", tarjeta del reel) |
 | `cmp.` | "El problema" (barras y 3 columnas) |
 | `pil.` | "Por qué esto funciona distinto" |
-| `proc.` | proceso (5 pasos + bloque para clientes en otros países) |
+| `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) |
+| `num.` | banda "En cifras" (`1`, `2`, `3` = etiquetas de cada cifra) |
 | `cta.text` | banda naranja |
 | `srv.` | servicios |
 | `wrk.` `todo.` | trabajo |
-| `case.` `met.` | caso de estudio |
+| `case.` | caso de estudio (plantilla) |
 | `fit.` | "Con quién trabajo mejor" |
 | `ab.` | sobre mí |
 | `faq.` | preguntas frecuentes (`1q` pregunta, `1a` respuesta) |
@@ -48,8 +49,8 @@ Reglas rápidas:
 Tu diseño trae bloques de ejemplo. Hoy siguen **visibles**, tal como los diseñaste:
 
 - Trabajo: 5 tarjetas `[Client 02…06]` ("Video pending") — la 1ª ya es el reel real.
-- Caso de estudio completo (⚠️ sus cifras 5 / 18 / −40 % son de ejemplo, no tuyas).
-- FAQ: white label, revisiones y qué necesito del cliente.
+- Caso de estudio: plantilla de un cliente (Contexto / Reto / Cómo se resolvió / Resultado). Ya no lleva cifras de ejemplo.
+- FAQ: white label y qué necesito del cliente (las demás ya tienen respuesta real).
 - Footer: la ciudad.
 
 Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
@@ -57,6 +58,10 @@ Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y 
 **Interruptor para ocultarlos todos de una vez** (sin borrar nada): en `index.html`, cambia `<html lang="es">` por `<html lang="es" class="hide-pending">`. Para volver a mostrarlos, quita la clase.
 
 ## 3. Tareas frecuentes
+
+**Cambiar una cifra** — la banda "En cifras" (`id="numbers"`) tiene 3 cifras. Cada una es `<p class="metric__value" data-count="6" data-count2="7">6–7</p>`: `data-count` es el número (o el primero de un rango) y `data-count2` el segundo del rango; `data-prefix` / `data-suffix` añaden símbolos (`−`, `%`). Si es un número único, borra `data-count2`. Cambia también el texto entre las etiquetas, que es lo que ven quienes no tienen JavaScript. La etiqueta de debajo (`num.1`…`num.3`) va en inglés en el HTML y en español en `main.js`. Las mismas cifras aparecen en la portada ("5–7"), en la barra del "problema" y en el FAQ de tiempos.
+
+**Cambiar el proceso** — las 3 etapas están en `id="process"`. Cada etapa tiene título (`proc.1t`), resumen (`proc.1d`), viñetas (`proc.1a`, `1b`, `1c`) y un chip de tiempo (`proc.1x`); para quitar o añadir una viñeta, borra o copia un `<li>` y su clave. El bloque de producciones con IA es `proc.altT` / `proc.altB`.
 
 **Agregar una pieza de portafolio** — copia la tarjeta 1 (`<a class="wcard" …>`), cambia `data-tag` (Brand film / Social / Product / Testimonial), el enlace (Vimeo / YouTube / Instagram), la etiqueta y los dos textos. Para una tarjeta con enlace, usa la etiqueta `<a>`; las de plantilla son `<article>`.
 

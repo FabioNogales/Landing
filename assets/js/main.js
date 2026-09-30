@@ -29,7 +29,7 @@
     'cmp.title': 'Producir bonito <span class="accent">ya no alcanza.</span>',
     'cmp.body': 'Hoy una marca necesita 20 piezas donde antes necesitaba una. La productora tradicional te entrega una obra maestra en seis semanas. El freelance te entrega volumen sin criterio. Yo resuelvo las dos cosas: dirección con lenguaje de marca y una infraestructura de trabajo diseñada para escalar.',
     'cmp.trad': 'Productora tradicional', 'cmp.tradVal': '≈ 6 semanas · 1 pieza',
-    'cmp.me': 'Flujo Fabio AI', 'cmp.meVal': '≈ 5 días · multiformato',
+    'cmp.me': 'Flujo Fabio AI', 'cmp.meVal': '≈ 5 a 7 días · multiformato',
     'cmp.c1': 'Productora tradicional', 'cmp.c1a': 'Calidad alta, 6 semanas', 'cmp.c1b': 'Costo estructural', 'cmp.c1c': '1 pieza',
     'cmp.c2': 'Freelance', 'cmp.c2a': 'Rápido, sin criterio', 'cmp.c2b': 'Sin dirección', 'cmp.c2c': 'Volumen inconsistente',
     'cmp.c3': 'Este modelo', 'cmp.c3a': 'Calidad de agencia, tiempos de startup', 'cmp.c3b': 'Un solo interlocutor', 'cmp.c3c': 'Multiformato desde una producción',
@@ -45,14 +45,24 @@
     'pil.3t': 'Un solo interlocutor de principio a fin',
     'pil.3b': 'Sin coordinación entre tres proveedores. Sin culpas cruzadas cuando algo se retrasa. Estrategia, rodaje, post y adaptación de formatos bajo una sola dirección creativa y una sola responsabilidad.',
     'proc.title': 'Cómo se ve el <span class="accent">proceso</span>',
-    'proc.intro': 'De brief a entrega multiformato, con un solo responsable en cada etapa.',
-    'proc.1t': 'Brief', 'proc.1d': 'Objetivo de negocio, canal y métrica de éxito.', 'proc.1x': 'Día 0',
-    'proc.2t': 'Preproducción con IA', 'proc.2d': 'Ideación, escaleta, guion y referencias.', 'proc.2x': 'Días 1–2',
-    'proc.3t': 'Rodaje', 'proc.3d': 'Dirección, cámara, luz y sonido.', 'proc.3x': 'Día 3',
-    'proc.4t': 'Post automatizada', 'proc.4d': 'Edición, color, motion y sistema de plantillas.', 'proc.4x': 'Día 4',
-    'proc.5t': 'Entrega multiformato', 'proc.5d': '16:9 / 9:16 / 1:1 · cortes de 6 s a 60 s.', 'proc.5x': 'Día 5',
-    'proc.altT': '¿Cliente en otro país o sin necesidad de rodaje?',
-    'proc.altB': 'Si el servicio es 100% digital y solo necesitas postproducción, el proceso se automatiza y se potencia con IA para extraer contenido variado del material que envíes — eficiencia desde el primer entregable, pensado para clientes en otros países.',
+    'proc.intro': 'Tres etapas, con un solo responsable en cada una. Cada proyecto y cada pieza entregada incluye 2 rondas de revisión.',
+    'proc.kind1': 'Producciones estándar · 5 a 7 días',
+    'proc.1t': 'Preproducción', 'proc.1d': 'Se planifica contigo antes de rodar; el tiempo depende de tus revisiones.',
+    'proc.1a': 'Planificación y adecuación del contenido con una estructura de guion de alto impacto y retención.',
+    'proc.1b': 'Locaciones, agenda de rodaje y logística.',
+    'proc.1c': 'Equipo técnico y coordinación de dron para tomas aéreas clave.',
+    'proc.1x': 'Hasta 3 días',
+    'proc.2t': 'Producción', 'proc.2d': 'Rodaje en 4K, con el apoyo adecuado a la magnitud del evento.',
+    'proc.2a': 'Cámara de alta definición 4K; los requerimientos se confirman contigo antes del rodaje.',
+    'proc.2b': 'La asistencia de cámara y la iluminación se definen según la magnitud del evento.',
+    'proc.2x': '1 día · 5 a 7 horas de rodaje',
+    'proc.3t': 'Postproducción', 'proc.3d': 'Donde la pieza toma forma y queda lista para publicar.',
+    'proc.3a': 'Edición profesional y corrección de color.',
+    'proc.3b': 'Diseño de sonido y musicalización libre de derechos.',
+    'proc.3c': 'Entrega del material final en formatos para redes sociales o presentaciones.',
+    'proc.3x': '≈ 2 a 3 días',
+    'proc.altT': 'Producciones con IA · 3 a 4 días',
+    'proc.altB': 'Un flujo mucho más simple y automatizado. Partimos de tus videos pregrabados y generamos avatares digitales y tomas B-roll hiperrealistas de alta calidad, adecuadas a cada caso: contenido comercial de producto o contenido UGC con avatares. Sin rodaje presencial, así que se trabaja a distancia, también para clientes en otros países.',
     'cta.text': '¿Tienes un lanzamiento en el calendario? Veamos si los tiempos dan.',
     'srv.title': 'Qué <span class="accent">hago</span>',
     'srv.1t': 'Estrategia y dirección creativa', 'srv.1d': 'Concepto, tono y narrativa alineados al objetivo de negocio, no al gusto personal.',
@@ -65,12 +75,16 @@
     'wrk.l4': 'Testimonial · Remoto', 'wrk.l5': 'Social · Campaña de pauta', 'wrk.l6': 'Brand film · Multiformato',
     'wrk.empty': 'No hay piezas en esta categoría todavía.', 'wrk.reel': 'Ver el reel completo',
     'case.eyebrow': 'Caso de estudio',
-    'case.title': '[Cliente] — 18 piezas desde un <span class="accent">solo rodaje</span>',
+    'case.title': '[Cliente] — <span class="accent">[resultado principal]</span>',
     'case.1t': 'Contexto', 'case.1d': 'Quién es el cliente y qué estaba en juego.',
     'case.2t': 'Reto', 'case.2d': 'La restricción real: tiempo, volumen o presupuesto.',
     'case.3t': 'Cómo se resolvió', 'case.3d': 'Decisión de dirección + qué parte del proceso se automatizó.',
     'case.4t': 'Resultado', 'case.4d': 'Una cifra sostenible en la llamada, no adjetivos.',
-    'met.1': 'días de brief a primer corte', 'met.2': 'piezas entregadas desde un solo rodaje', 'met.3': 'en costo vs. cotización tradicional',
+    'num.eyebrow': 'En cifras',
+    'num.title': 'Lo que rinde una <span class="accent">jornada de producción</span>',
+    'num.1': 'videos verticales de alta retención por jornada de 5 horas de producción, para marcas comerciales',
+    'num.2': 'piezas de storytelling y UGC de alto impacto (aprox.) con 6 horas de producción, para creadores e influencers',
+    'num.3': 'menos costo, gracias a contenido adaptado a las tendencias de conversión y retención',
     'fit.title': 'Con quién trabajo <span class="accent">mejor</span>',
     'fit.1': 'Agencias que necesitan un socio de producción confiable y que entienda briefs de marca.',
     'fit.2': 'Marcas con calendario de contenido constante que hoy dependen de proveedores lentos.',
@@ -82,19 +96,19 @@
     'ab.pull': 'No elijo entre dirección de cámara y velocidad de IA — hago las dos cosas bien.',
     'faq.title': 'Preguntas <span class="accent">frecuentes</span>',
     'faq.1q': '¿Cuánto tarda una producción de principio a fin?',
-    'faq.1a': 'Una producción presencial toma 5 días desde la preproducción hasta la entrega: preproducción (2 días), rodaje (1 día), postproducción (1 día) y entrega el día 5. Si estás en otro país y solo necesitas postproducción, se hace en remoto con un flujo automatizado y potenciado con IA que extrae contenido variado de cada material que envíes.',
+    'faq.1a': 'Las producciones estándar toman de 5 a 7 días desde la preproducción hasta la entrega: preproducción (hasta 3 días, según las revisiones del cliente), rodaje (1 día, de 5 a 7 horas) y postproducción (2 a 3 días). Las producciones con IA son más simples: de 3 a 4 días, partiendo de tus videos pregrabados.',
     'faq.2q': '¿Qué significa exactamente que uses IA? ¿El resultado es contenido genérico?',
-    'faq.2a': 'La IA vive en el proceso, no en el resultado. La uso para acelerar ideación, escaletas, organización de material y versionado de cortes: tareas operativas que antes consumían presupuesto sin aportar criterio. La dirección, el rodaje y las decisiones creativas siguen siendo humanas. Lo que se comprime es el cronograma, no el estándar.',
+    'faq.2a': 'La IA vive en el proceso, no en el resultado. La uso para acelerar ideación, escaletas, organización de material y versionado de cortes: tareas operativas que antes consumían presupuesto sin aportar criterio. La dirección, el rodaje y las decisiones creativas siguen siendo humanas. Lo que se comprime es el cronograma, no el estándar. La excepción son las producciones con IA, donde los avatares digitales y las tomas B-roll se generan con IA a propósito, adecuadas a cada caso.',
     'faq.3q': '¿Cómo funcionan los rangos de inversión?',
     'faq.3a': 'Van desde $20 USD por video hasta $400 USD para creación específica de avatares y contenido generado por IA de alta calidad, acompañado de una estrategia de funnel de ventas y scripts adaptados específicamente para redes sociales.',
     'faq.4q': '¿Trabajas con agencias en modelo white label?',
     'faq.4a': 'Sí/No y en qué condiciones: crédito, contacto directo con el cliente final, acuerdos de confidencialidad.',
     'faq.5q': '¿Cuántas rondas de revisión incluye?',
-    'faq.5a': 'Define el número incluido por etapa y el costo de rondas adicionales.',
+    'faq.5a': 'Cada proyecto y cada pieza entregada incluye 2 rondas de revisión.',
     'faq.6q': '¿Qué necesitas de mi parte para arrancar?',
     'faq.6a': 'Brief u objetivo de negocio, manual de marca o referencias, fecha de entrega y un único aprobador del lado del cliente.',
     'faq.7q': '¿Trabajas en remoto o solo de forma presencial?',
-    'faq.7a': 'Ambas. Los rodajes son presenciales y locales. Si estás en otro país y solo necesitas postproducción, trabajamos 100% en remoto: me envías el material y de cada pieza que envíes extraigo contenido variado con un flujo automatizado y potenciado con IA.',
+    'faq.7a': 'Ambas. Las producciones estándar se ruedan de forma presencial y local. Las producciones con IA se trabajan 100% en remoto a partir de tus videos pregrabados, así que también son una opción si estás en otro país.',
     'bk.title': 'Hablemos de tu <span class="accent">próximo lanzamiento.</span>',
     'bk.sub': 'En 30 minutos definimos alcance, tiempos reales y una estimación honesta. Si no soy la solución correcta, te lo digo en esa llamada.',
     'bk.cal': 'Google Calendar',
@@ -196,13 +210,14 @@
 
   /* ───────── Reveal + count-up ───────── */
   function countUp(el) {
-    var end = parseFloat(el.dataset.count), pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
-    if (reduce || isNaN(end)) { el.textContent = pre + end + suf; return; }
+    var end = parseFloat(el.dataset.count), end2 = el.dataset.count2 != null ? parseFloat(el.dataset.count2) : null, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    var fmt = function (k) { return pre + Math.round(end * k) + (end2 !== null ? '–' + Math.round(end2 * k) : '') + suf; }; // end2 → range like 6–7
+    if (reduce || isNaN(end)) { el.textContent = fmt(1); return; }
     var t0 = null, dur = 1100;
     function tick(t) {
       if (t0 === null) t0 = t;
       var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = pre + Math.round(end * e) + suf;
+      el.textContent = fmt(e);
       if (p < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
