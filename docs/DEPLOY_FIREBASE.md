@@ -14,9 +14,9 @@ Requiere sesión iniciada (`firebase.cmd login`; si caduca, `firebase.cmd login 
 
 ## Estado del dominio
 
-Ya están **creados en Firebase** `fabionogales.com` y `www.fabionogales.com` (redirección). Falta **crear 3 registros DNS en Cloudflare**; Firebase verifica solo y emite el certificado HTTPS al detectarlos.
+**Activo.** `fabionogales.com` y `www.fabionogales.com` están conectados en Firebase Hosting (host, propiedad y certificado activos). `www` redirige al dominio sin `www` y `http` redirige a `https`.
 
-**Cloudflare** → `fabionogales.com` → **DNS** → **Records** → *Add record*:
+**Registros en Cloudflare** (ya creados; **no los borres**: Firebase los necesita para renovar el certificado):
 
 | Tipo | Nombre | Contenido | Proxy |
 |---|---|---|---|
@@ -24,13 +24,10 @@ Ya están **creados en Firebase** `fabionogales.com` y `www.fabionogales.com` (r
 | `TXT` | `@` | `hosting-site=fabioai-landing` | — |
 | `CNAME` | `www` | `fabioai-landing.web.app` | **DNS only** (nube gris) |
 
-> ⚠️ Las nubes deben estar **grises (DNS only)**. Con el proxy de Cloudflare encendido (naranja) Firebase no puede verificar el dominio ni emitir el HTTPS.
+> ⚠️ Las nubes deben seguir **grises (DNS only)**. Con el proxy de Cloudflare encendido (naranja) Firebase no puede renovar el certificado.
 > Los valores salen del asistente de Firebase (API de dominios) y son exactos para este proyecto.
 
-**Después:**
-1. Espera unos minutos (hasta ~24 h en casos lentos). Firebase pasa el dominio de *Pending* a *Connected* y emite el certificado.
-2. Comprueba: https://fabionogales.com y https://www.fabionogales.com (debe redirigir al primero).
-3. Estado en la consola: Firebase Console → Hosting → *Custom domains*. O pídeme que lo verifique.
+Estado en la consola: Firebase Console → Hosting → *Custom domains*.
 
 Verificación rápida desde una terminal:
 ```powershell
@@ -39,7 +36,11 @@ Resolve-DnsName fabionogales.com -Type TXT       # debe incluir hosting-site=fab
 Resolve-DnsName www.fabionogales.com -Type CNAME # debe apuntar a fabioai-landing.web.app
 ```
 
-## Después de conectar el dominio
+## Pendiente de decidir: `fabioai-landing.web.app`
+
+La URL `fabioai-landing.web.app` sigue activa. Opciones (a la espera de tu decisión): añadir otro sitio de Hosting en el mismo proyecto para reutilizarlo con otros proyectos, redirigir `web.app` al dominio, o mover la landing a otro host.
+
+## Con el dominio ya conectado
 
 - Probar la vista previa al compartir el enlace (WhatsApp / LinkedIn / X): debe salir la tarjeta con tu foto y el titular.
 - Dar de alta el sitio en **Google Search Console** (propiedad de dominio, verificación por DNS en Cloudflare) y enviar `https://fabionogales.com/sitemap.xml`.

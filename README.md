@@ -3,7 +3,7 @@
 Landing page de una sola página (bilingüe ES/EN) para el portafolio de Fabio Nogales: producción audiovisual end-to-end para marcas y agencias, potenciada con IA. Sitio estático, sin build step.
 
 - **Sitio en vivo:** https://fabioai-landing.web.app
-- **Dominio propio:** https://fabionogales.com (ver `docs/DEPLOY_FIREBASE.md`)
+- **Dominio propio (activo):** https://fabionogales.com (ver `docs/DEPLOY_FIREBASE.md`)
 - **Diseño original:** carpeta `fabioai-landing` (referencia intacta); este repo es el sitio publicado.
 
 ## Estructura
@@ -13,12 +13,13 @@ index.html                Toda la página (textos en inglés + marcado)
 assets/css/styles.css     Estilos (paleta y tipografías al inicio del archivo)
 assets/js/main.js         Interacciones, cambio ES/EN y diccionario en español (objeto ES)
 assets/img/               fabio.jpg, fabio-about.jpg, og.jpg (vista previa al compartir)
+assets/img/bts/           Fotos de "Detrás de cámaras" (bts-1…3.jpg; pendientes)
 assets/img/clients/       Logos optimizados del carrusel (se publican)
 assets/img/logos/         Logos originales (fuente; NO se publican)
 robots.txt, sitemap.xml   SEO
 firebase.json             Configuración de Firebase Hosting
 docs/GUIA_EDICION.md      Cómo editar textos, fotos, logos y secciones
-docs/DEPLOY_FIREBASE.md   Publicar y conectar el dominio (registros DNS de Cloudflare)
+docs/DEPLOY_FIREBASE.md   Publicar y dominio (registros DNS de Cloudflare)
 docs/ISSUES_BACKLOG.md    Pendientes
 estructura-landing.md     Wireframe y copy original de referencia
 ```

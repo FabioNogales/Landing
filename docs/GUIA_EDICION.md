@@ -29,15 +29,14 @@ Reglas rápidas:
 | Prefijo de clave | Sección |
 |---|---|
 | `nav.` | menú superior |
-| `hero.` `ph.` | portada (título, subtítulo, botones, "5–7 días", tarjeta del reel) |
-| `cmp.` | "El problema" (barras y 3 columnas) |
-| `pil.` | "Por qué esto funciona distinto" |
+| `hero.` `ph.` | portada (título, subtítulo, botones, nombre y rol bajo la foto `hero.role`, nota "+250 piezas…", "3–6 días", tarjeta del reel) |
+| `cmp.` | "El problema" (barras, 3 columnas y recuadro de propuesta de valor `vpT` / `vpB`) |
+| `pil.` | "Por qué esto funciona distinto" (cada pilar: título + una línea) y galería "Detrás de cámaras" (`pil.bts`) |
 | `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) |
 | `num.` | banda "En cifras" (`1`, `2`, `3` = etiquetas de cada cifra) |
 | `cta.text` | banda naranja |
 | `srv.` | servicios |
-| `wrk.` `todo.` | trabajo |
-| `case.` | caso de estudio (plantilla) |
+| `wrk.` `todo.` | trabajo y chips "Pending" (`todo.video`, `todo.bts`) |
 | `fit.` | "Con quién trabajo mejor" |
 | `ab.` | sobre mí |
 | `faq.` | preguntas frecuentes (`1q` pregunta, `1a` respuesta) |
@@ -48,10 +47,11 @@ Reglas rápidas:
 
 Tu diseño trae bloques de ejemplo. Hoy siguen **visibles**, tal como los diseñaste:
 
-- Trabajo: 5 tarjetas `[Client 02…06]` ("Video pending") — la 1ª ya es el reel real.
-- Caso de estudio: plantilla de un cliente (Contexto / Reto / Cómo se resolvió / Resultado). Ya no lleva cifras de ejemplo.
-- FAQ: white label y qué necesito del cliente (las demás ya tienen respuesta real).
+- Trabajo: 5 tarjetas `[Client 02…06]` ("Video pending") — la 1ª ya es un reel real ("Reel destacado").
+- Detrás de cámaras: 3 huecos de foto (ver "Fotos de Detrás de cámaras" abajo).
 - Footer: la ciudad.
+
+Ya no quedan FAQ pendientes ni caso de estudio (esa sección se eliminó).
 
 Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
 
@@ -59,9 +59,13 @@ Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y 
 
 ## 3. Tareas frecuentes
 
-**Cambiar una cifra** — la banda "En cifras" (`id="numbers"`) tiene 3 cifras. Cada una es `<p class="metric__value" data-count="6" data-count2="7">6–7</p>`: `data-count` es el número (o el primero de un rango) y `data-count2` el segundo del rango; `data-prefix` / `data-suffix` añaden símbolos (`−`, `%`). Si es un número único, borra `data-count2`. Cambia también el texto entre las etiquetas, que es lo que ven quienes no tienen JavaScript. La etiqueta de debajo (`num.1`…`num.3`) va en inglés en el HTML y en español en `main.js`. Las mismas cifras aparecen en la portada ("5–7"), en la barra del "problema" y en el FAQ de tiempos.
+**Cambiar una cifra** — la banda "En cifras" (`id="numbers"`) tiene 3 cifras. Cada una es `<p class="metric__value" data-count="6" data-count2="7">6–7</p>`: `data-count` es el número (o el primero de un rango) y `data-count2` el segundo del rango; `data-prefix` / `data-suffix` añaden símbolos (`−`, `%`). Si es un número único, borra `data-count2`. Cambia también el texto entre las etiquetas, que es lo que ven quienes no tienen JavaScript. La etiqueta de debajo (`num.1`…`num.3`) va en inglés en el HTML y en español en `main.js`. Hoy: **6** (piezas por jornada de 5 h), **7–8** (creadores, 6 h) y **+30 %** (rendimiento por video, ej. Bransign). Los tiempos aparecen en la portada ("3–6"), en la barra del "problema" ("≈ 3 a 6 días · multiformato") y en el FAQ de tiempos; mantenlos coherentes.
 
-**Cambiar el proceso** — las 3 etapas están en `id="process"`. Cada etapa tiene título (`proc.1t`), resumen (`proc.1d`), viñetas (`proc.1a`, `1b`, `1c`) y un chip de tiempo (`proc.1x`); para quitar o añadir una viñeta, borra o copia un `<li>` y su clave. El bloque de producciones con IA es `proc.altT` / `proc.altB`.
+**Cambiar el proceso** — las 3 etapas están en `id="process"`. Cada etapa tiene título (`proc.1t`), resumen (`proc.1d`), viñetas (`proc.1a`, `1b`, `1c`) y un chip de tiempo (`proc.1x`); para quitar o añadir una viñeta, borra o copia un `<li>` y su clave. El estándar es ≈ 6 días (preproducción hasta 3, producción 1 día de 5–7 h, postproducción ≈ 2) con 2 rondas de revisión. El bloque "Producciones sistematizadas y con IA · 3 días" es `proc.altT` / `proc.altB`.
+
+**Fotos de Detrás de cámaras** — la galería (`pil.bts`) tiene 3 huecos. Sube `assets/img/bts/bts-1.jpg`, `bts-2.jpg` y `bts-3.jpg` (JPG, horizontal o 4:3, ~1600 px de ancho, < 300 KB) y en las 3 etiquetas `<img>` de `index.html` cambia `data-src` por `src`; el estado "pendiente" desaparece solo (un comentario HTML lo explica). Se usa `data-src` mientras tanto para no generar 404.
+
+**Separador `.band--seam`** — línea fina entre dos bandas claras consecutivas (añádela a la segunda `<section class="band …">`).
 
 **Agregar una pieza de portafolio** — copia la tarjeta 1 (`<a class="wcard" …>`), cambia `data-tag` (Brand film / Social / Product / Testimonial), el enlace (Vimeo / YouTube / Instagram), la etiqueta y los dos textos. Para una tarjeta con enlace, usa la etiqueta `<a>`; las de plantilla son `<article>`.
 
@@ -84,6 +88,7 @@ python -m http.server 4321      # probar en http://localhost:4321
 firebase.cmd deploy --only hosting                    # publicar (Git Bash: firebase deploy --only hosting)
 firebase.cmd hosting:channel:deploy vista-previa      # URL temporal para revisar sin tocar el sitio en vivo
 ```
+Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20260930` y `main.js?v=20260930`) para evitar la caché.
 Después guarda en GitHub: `git add -A`, `git commit -m "descripción"`, `git push`.
 
 > Atajo: dime "cambia X por Y y publícalo" y lo hago en los dos idiomas, lo pruebo y lo publico.
