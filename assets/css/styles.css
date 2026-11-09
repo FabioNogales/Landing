@@ -351,7 +351,8 @@ a.wcard { display: block; }
 /* ---------- Film strip (dark) — photo marquee, same technique as .strip ---------- */
 .film { --film-h: clamp(190px, 24vw, 320px); overflow: hidden; padding: 24px 0 clamp(64px, 8vw, 104px); }
 .film__inner { display: flex; }
-.film__track { display: flex; gap: 20px; padding-right: 20px; flex: none; animation: marquee 75s linear infinite; }
+.film__track { display: flex; gap: 20px; padding-right: 20px; flex: none; }
+.film.is-on .film__track { animation: marquee 75s linear infinite; } /* .is-on is added by main.js after cloning */
 .film:hover .film__track { animation-play-state: paused; }
 .film__frame { flex: none; height: var(--film-h); border-radius: var(--r-card); overflow: hidden; background: var(--ink-elev); border: 1px solid rgba(249, 249, 249, .1); }
 .film__frame:nth-child(odd) { rotate: -1.2deg; translate: 0 6px; }

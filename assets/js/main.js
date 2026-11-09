@@ -173,23 +173,31 @@
   }
 
   /* Film strip: same loop with two clones (covers ultra-wide screens); under reduced motion it stays one scrollable set.
-     Off-screen frames are clipped, so lazy images would pop in while moving: load them all once the strip is near. */
+     Set up only when the strip is near: clones would fetch their images right away (lazy doesn't apply to them), and
+     off-screen frames are clipped, so lazy images would pop in while moving. .is-on starts every track at the same
+     moment, which is what keeps the loop seamless. */
   var film = $('#filmInner');
   if (film && film.firstElementChild) {
-    if (!reduce) {
-      for (var fc = 0; fc < 2; fc++) {
-        var filmClone = film.firstElementChild.cloneNode(true);
-        filmClone.setAttribute('aria-hidden', 'true');
-        film.appendChild(filmClone);
+    var filmStart = function () {
+      if (!reduce) {
+        for (var fc = 0; fc < 2; fc++) {
+          var filmClone = film.firstElementChild.cloneNode(true);
+          filmClone.setAttribute('aria-hidden', 'true');
+          film.appendChild(filmClone);
+        }
+        film.parentNode.classList.add('is-on');
       }
-    }
+      $$('img', film).forEach(function (im) { im.loading = 'eager'; });
+    };
     if ('IntersectionObserver' in window) {
       var filmIO = new IntersectionObserver(function (es) {
         if (!es[0].isIntersecting) return;
-        $$('img', film).forEach(function (im) { im.loading = 'eager'; });
         filmIO.disconnect();
+        filmStart();
       }, { rootMargin: '800px 0px' });
       filmIO.observe(film);
+    } else {
+      filmStart();
     }
   }
 
