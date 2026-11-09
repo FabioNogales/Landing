@@ -31,12 +31,12 @@ Reglas rápidas:
 | `nav.` | menú superior |
 | `hero.` `ph.` | portada (título, subtítulo, botones, nombre y rol bajo la foto `hero.role`, nota "+250 piezas…", "3–6 días", tarjeta del reel) |
 | `cmp.` | "El problema" (barras, 3 columnas y recuadro de propuesta de valor `vpT` / `vpB`) |
-| `pil.` | "Por qué esto funciona distinto" (cada pilar: título + una línea) y galería "Detrás de cámaras" (`pil.bts`) |
-| `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) |
+| `pil.` | "Por qué esto funciona distinto" (cada pilar: título + una línea) y collage "Detrás de cámaras" (`pil.bts`) |
+| `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) y etiquetas de las fotos (`proc.tag1` "Preproducción", `proc.tag2` "Rodaje") |
 | `num.` | banda "En cifras" (`1`, `2`, `3` = etiquetas de cada cifra) |
 | `cta.text` | banda naranja |
 | `srv.` | servicios |
-| `wrk.` `todo.` | trabajo y chips "Pending" (`todo.video`, `todo.bts`) |
+| `wrk.` `todo.` | trabajo y chips "Pending" (`todo.video`) |
 | `fit.` | "Con quién trabajo mejor" |
 | `ab.` | sobre mí |
 | `faq.` | preguntas frecuentes (`1q` pregunta, `1a` respuesta) |
@@ -63,7 +63,7 @@ Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y 
 
 **Cambiar el proceso** — las 3 etapas están en `id="process"`. Cada etapa tiene título (`proc.1t`), resumen (`proc.1d`), viñetas (`proc.1a`, `1b`, `1c`) y un chip de tiempo (`proc.1x`); para quitar o añadir una viñeta, borra o copia un `<li>` y su clave. El estándar es ≈ 6 días (preproducción hasta 3, producción 1 día de 5–7 h, postproducción ≈ 2) con 2 rondas de revisión. El bloque "Producciones sistematizadas y con IA · 3 días" es `proc.altT` / `proc.altB`.
 
-**Fotos de Detrás de cámaras** — la galería (`pil.bts`) tiene 3 huecos. Sube `assets/img/bts/bts-1.jpg`, `bts-2.jpg` y `bts-3.jpg` (JPG, horizontal o 4:3, ~1600 px de ancho, < 300 KB) y en las 3 etiquetas `<img>` de `index.html` cambia `data-src` por `src`; el estado "pendiente" desaparece solo (un comentario HTML lo explica). Se usa `data-src` mientras tanto para no generar 404.
+**Fotos de proceso / detrás de cámaras** — hay tres tramos: el collage inclinado de la sección de pilares (3 tarjetas `.bts__card`, con parallax), las fotos de la sección de proceso (Preproducción con una foto de montaje y Producción con un grupo de 5 tarjetas; Postproducción no lleva imagen a propósito) y la tira continua `.film` entre "En cifras" y la banda naranja (75 s por vuelta, se pausa al pasar el cursor; se clona y arranca solo al acercarse, para no cargar fotos por adelantado; la velocidad está en `.film.is-on .film__track` de `styles.css`). Para añadir o cambiar una foto: optimízala a ≈ 1400–1600 px en el lado largo, < 250 KB, sin EXIF/GPS; guarda la copia en `assets/img/process/` (las publicadas son `shoot-01…07`, `set-01`, `crew-01`, `film-01…06`) y apunta el `src` de la etiqueta `<img>` correspondiente en `index.html`. Los originales van en `assets/img/bts/` (no se publican ni se suben a git). O pásame la foto y la agrego.
 
 **Separador `.band--seam`** — línea fina entre dos bandas claras consecutivas (añádela a la segunda `<section class="band …">`).
 
@@ -88,7 +88,7 @@ python -m http.server 4321      # probar en http://localhost:4321
 firebase.cmd deploy --only hosting                    # publicar (Git Bash: firebase deploy --only hosting)
 firebase.cmd hosting:channel:deploy vista-previa      # URL temporal para revisar sin tocar el sitio en vivo
 ```
-Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20260930` y `main.js?v=20260930`) para evitar la caché.
+Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20261109` y `main.js?v=20261109`) para evitar la caché.
 Después guarda en GitHub: `git add -A`, `git commit -m "descripción"`, `git push`.
 
 > Atajo: dime "cambia X por Y y publícalo" y lo hago en los dos idiomas, lo pruebo y lo publico.

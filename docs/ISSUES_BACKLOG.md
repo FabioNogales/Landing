@@ -26,8 +26,11 @@ La respuesta dice que la IA vive "en el proceso, no en el resultado" (con una ex
 ### 6. Trabajo seleccionado
 Solo la 1ª tarjeta es real (reel de Instagram, "Reel destacado"). Quedan 5 tarjetas `[Client 02…06]`; tú elegirás qué piezas van. Recomendado subirlas a Vimeo o YouTube (no listado) y enlazarlas. `Labels: contenido, media, P1`
 
-### 7. Fotos de Detrás de cámaras (3)
-Subir `assets/img/bts/bts-1.jpg`, `bts-2.jpg`, `bts-3.jpg` (JPG, horizontal o 4:3, ~1600 px, < 300 KB) y cambiar `data-src` por `src` en las 3 etiquetas `<img>` de `index.html`. Ver `docs/GUIA_EDICION.md`. `Labels: contenido, media, P1`
+### 7. Imágenes de postproducción
+La etapa de Postproducción no tiene imagen. Falta material: capturas de la línea de tiempo, color o sonido, sin cuenta ni datos de clientes (por ahora no hay). `Labels: contenido, media, P2`
+
+### 7b. Fotos fijas candidatas
+Decidir sobre `P-to reggeton - Foto fija-398.jpg` (candidata) y `Foto fija-48.jpg` (la claqueta muestra nombres; habría que recortarla). `Labels: contenido, media, P3`
 
 ### 8. Ciudad en el footer
 Sigue con su chip "Pending" (`[City] · GMT-4`). `Labels: contenido, P2`
@@ -60,8 +63,9 @@ El diseño no incluye la sección (a propósito, hasta tener citas reales). `Lab
 - Proceso en 3 etapas (preproducción hasta 3 días, producción 1 día de 5–7 h, postproducción ≈ 2): estándar ≈ 6 días, más producciones sistematizadas y con IA en 3 días, con 2 rondas de revisión.
 - Portada: reels enlazados a `instagram.com/reel/DctRV_Agm3n/`, nombre y rol bajo la foto, nota "+250 piezas…" y 3–6 días.
 - "El problema": recuadro de propuesta de valor. Pilares condensados (título + una línea), pilar 02 reformulado ("IA y automatización para producir y escalar más rápido"; coherencia del mensaje de IA resuelta) y galería "Detrás de cámaras" preparada.
+- Fotos reales de detrás de cámaras: collage en pilares, fotos en las etapas de proceso y tira continua (`assets/img/process/`; originales en `assets/img/bts/`, sin publicar). La selfie de quirófano (`shoot-07.jpg`) está recortada y con el fondo muy desenfocado.
 - Caso de estudio eliminado de la página.
 - FAQ completas: inversión 20–500 USD por proyecto estratégico de marketing digital, white label, necesidades del cliente y rondas de revisión.
-- Ayuda de CSS `.band--seam` y versionado de assets `?v=20260930`.
+- Ayuda de CSS `.band--seam` y versionado de assets `?v=20261109`.
 - Calendario de `fabioaioficial@gmail.com`, formulario (Formspree), cambio ES/EN, redes reales, imagen para compartir, `robots.txt` y `sitemap.xml`.
 - Dominio `fabionogales.com` y `www` **activos** en Firebase Hosting (HTTPS; `www` y `http` redirigen). Los 3 registros DNS de Cloudflare están puestos y no deben borrarse (renovación del certificado).
