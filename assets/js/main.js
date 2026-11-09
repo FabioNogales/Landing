@@ -24,7 +24,7 @@
     'hero.role': 'AI Content Producer y Video Editor',
     'hero.note': '+250 piezas de video entregadas en 2026 para Bransign, Itacamba y Grazia.ai.',
     'hero.stat': 'días de preproducción a entrega',
-    'todo': 'Pendiente', 'todo.confirm': 'Confirmar', 'todo.video': 'Video pendiente', 'todo.bts': 'Foto BTS pendiente',
+    'todo': 'Pendiente', 'todo.confirm': 'Confirmar', 'todo.video': 'Video pendiente',
     'ph.reel': 'Último reel', 'ph.photo': 'Tu foto — pendiente',
     'cmp.eyebrow': 'El problema',
     'cmp.title': 'Producir bonito <span class="accent">ya no alcanza.</span>',
@@ -44,6 +44,7 @@
     'pil.3t': 'Un solo interlocutor de principio a fin',
     'pil.3b': 'Estrategia, rodaje, post y formatos bajo una sola dirección y una sola responsabilidad.',
     'pil.bts': 'Detrás de cámaras',
+    'proc.tag1': 'Preproducción', 'proc.tag2': 'Rodaje',
     'proc.title': 'Cómo se ve el <span class="accent">proceso</span>',
     'proc.intro': 'El objetivo principal: optimizar flujos de trabajo repetitivos. Una producción estándar toma ≈ 6 días; sistematizada, se reduce a 3, comprimiendo al máximo preproducción, producción y postproducción para lograr la mayor cantidad de contenido de alta calidad, adaptado a cada cliente. Este enfoque aplica sobre todo a producciones con IA. Cada proyecto y cada pieza entregada incluye 2 rondas de revisión.',
     'proc.kind1': 'Producciones estándar · ≈ 6 días',
@@ -171,6 +172,27 @@
     strip.appendChild(clone);
   }
 
+  /* Film strip: same loop with two clones (covers ultra-wide screens); under reduced motion it stays one scrollable set.
+     Off-screen frames are clipped, so lazy images would pop in while moving: load them all once the strip is near. */
+  var film = $('#filmInner');
+  if (film && film.firstElementChild) {
+    if (!reduce) {
+      for (var fc = 0; fc < 2; fc++) {
+        var filmClone = film.firstElementChild.cloneNode(true);
+        filmClone.setAttribute('aria-hidden', 'true');
+        film.appendChild(filmClone);
+      }
+    }
+    if ('IntersectionObserver' in window) {
+      var filmIO = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        $$('img', film).forEach(function (im) { im.loading = 'eager'; });
+        filmIO.disconnect();
+      }, { rootMargin: '800px 0px' });
+      filmIO.observe(film);
+    }
+  }
+
   var saved = store.get('fabioai-lang');
   var browserEs = (navigator.language || '').toLowerCase().indexOf('es') === 0;
   setLang(saved || 'es', false); // Spanish first; English available via the toggle
@@ -229,6 +251,26 @@
     targets.forEach(function (t) { io.observe(t); });
   } else {
     targets.forEach(function (t) { t.classList.add('in'); });
+  }
+
+  /* ───────── Collage parallax (data-plx = max offset in px) ───────── */
+  var plxBoxes = $$('.bts__collage, .proc__cluster');
+  if (plxBoxes.length && !reduce) {
+    var plxQueued = false;
+    var plxApply = function () {
+      plxQueued = false;
+      var vh = window.innerHeight;
+      plxBoxes.forEach(function (box) {
+        var r = box.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        var p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+        $$('[data-plx]', box).forEach(function (c) { c.style.translate = '0 ' + (p * c.dataset.plx).toFixed(1) + 'px'; });
+      });
+    };
+    window.addEventListener('scroll', function () {
+      if (!plxQueued) { plxQueued = true; requestAnimationFrame(plxApply); }
+    }, { passive: true });
+    plxApply();
   }
 
   /* ───────── Work filters ───────── */

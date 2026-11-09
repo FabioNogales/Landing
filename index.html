@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=20260930">
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.bar__fill{width:var(--w)!important}</style></noscript>
+<link rel="stylesheet" href="assets/css/styles.css?v=20261109">
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.bar__fill{width:var(--w)!important}.film__track{animation:none}.film{overflow-x:auto}</style></noscript>
 </head>
 <body>
 
@@ -205,25 +205,13 @@
       <div class="pillar__body"><p data-i18n="pil.3b">Strategy, shooting, post and formats under one direction and one accountable person.</p></div>
     </div>
 
-    <!-- BTS gallery. Photos go in assets/img/bts/ (bts-1.jpg, bts-2.jpg, bts-3.jpg).
-         To publish them: rename data-src → src on each <img> below. Once loaded, the image covers the
-         placeholder and onload drops the "pending" state; if a file is missing, onerror removes the <img>.
-         (data-src is used meanwhile so the live site doesn't request images that don't exist yet → no 404s.) -->
+    <!-- Behind the scenes: tilted-card collage (echoes the hero cards). Position/tilt of each card in .bts__card--a…c; data-plx = max parallax in px. -->
     <div class="bts" data-reveal>
       <p class="eyebrow" data-i18n="pil.bts">Behind the scenes</p>
-      <div class="bts__grid">
-        <figure class="bts__item is-pending">
-          <div class="ph"><span class="todo" data-i18n="todo.bts">BTS photo pending</span></div>
-          <img data-src="assets/img/bts/bts-1.jpg" alt="Fabio AI — behind the scenes 1" width="800" height="1000" loading="lazy" onload="this.parentNode.classList.remove('is-pending')" onerror="this.remove()">
-        </figure>
-        <figure class="bts__item is-pending">
-          <div class="ph"><span class="todo" data-i18n="todo.bts">BTS photo pending</span></div>
-          <img data-src="assets/img/bts/bts-2.jpg" alt="Fabio AI — behind the scenes 2" width="800" height="1000" loading="lazy" onload="this.parentNode.classList.remove('is-pending')" onerror="this.remove()">
-        </figure>
-        <figure class="bts__item is-pending">
-          <div class="ph"><span class="todo" data-i18n="todo.bts">BTS photo pending</span></div>
-          <img data-src="assets/img/bts/bts-3.jpg" alt="Fabio AI — behind the scenes 3" width="800" height="1000" loading="lazy" onload="this.parentNode.classList.remove('is-pending')" onerror="this.remove()">
-        </figure>
+      <div class="bts__collage">
+        <figure class="bts__card bts__card--a" data-plx="-12"><img src="assets/img/process/shoot-01.jpg" alt="Equipo de rodaje en un set con pantallas naranjas, humo y luz difusa" width="1600" height="1067" loading="lazy"></figure>
+        <figure class="bts__card bts__card--b" data-plx="26"><img src="assets/img/process/shoot-02.jpg" alt="Camarógrafo con gimbal durante un evento" width="1120" height="1400" loading="lazy"></figure>
+        <figure class="bts__card bts__card--c" data-plx="-22"><img src="assets/img/process/shoot-03.jpg" alt="Camarógrafo filmando a una mujer con vestido de lentejuelas" width="1400" height="933" loading="lazy"></figure>
       </div>
     </div>
   </div>
@@ -237,7 +225,12 @@
       <p class="lede" style="margin-top:24px" data-i18n="proc.intro">The main goal: optimizing repetitive workflows. A standard production takes ≈ 6 days; systematized, it drops to 3, compressing pre-production, production and post-production to the max to get the most high-quality content, tailored to each client. This approach applies mostly to AI productions. Every project and every delivered piece includes 2 revision rounds.</p>
     </div>
     <p class="eyebrow proc__kind" data-reveal data-i18n="proc.kind1">Standard productions · ≈ 6 days</p>
+    <!-- Stage photos: on desktop they form a row above the three steps (order:-1); on mobile each block sits right before its step. Post-production has no photos yet. -->
     <div class="process">
+      <figure class="proc__photo" data-reveal>
+        <img src="assets/img/process/set-01.jpg" alt="Sala preparada para grabar: cámara en trípode, luces, monitor y portátil" width="1171" height="1400" loading="lazy">
+        <figcaption class="proc__tag" data-i18n="proc.tag1">Pre-production</figcaption>
+      </figure>
       <div class="step" data-reveal>
         <div class="step__head"><span class="step__num">01</span><span class="step__rule" aria-hidden="true"></span></div>
         <h3 data-i18n="proc.1t">Pre-production</h3>
@@ -248,6 +241,13 @@
           <li data-i18n="proc.1c">Technical crew and drone coordination for key aerial shots.</li>
         </ul>
         <span class="time" data-i18n="proc.1x">Up to 3 days</span>
+      </div>
+      <div class="proc__cluster" data-reveal>
+        <figure class="bts__card proc__shot--a" data-plx="-10"><img src="assets/img/process/shoot-04.jpg" alt="Camarógrafo con gimbal en pleno rodaje" width="1500" height="697" loading="lazy"><figcaption class="proc__tag" data-i18n="proc.tag2">On set</figcaption></figure>
+        <figure class="bts__card proc__shot--b" data-plx="18"><img src="assets/img/process/shoot-07.jpg" alt="Operador con ropa quirúrgica sosteniendo un rig de celular" width="1120" height="1400" loading="lazy"></figure>
+        <figure class="bts__card proc__shot--c" data-plx="-14"><img src="assets/img/process/crew-01.jpg" alt="Dos integrantes del equipo en un estudio oscuro" width="1400" height="933" loading="lazy"></figure>
+        <figure class="bts__card proc__shot--d" data-plx="22"><img src="assets/img/process/shoot-05.jpg" alt="Dos técnicos preparando el piso blanco de un set" width="1400" height="933" loading="lazy"></figure>
+        <figure class="bts__card proc__shot--e" data-plx="-8"><img src="assets/img/process/shoot-06.jpg" alt="Tres personas en un estudio junto a una luz y un monitor" width="1400" height="935" loading="lazy"></figure>
       </div>
       <div class="step" data-reveal>
         <div class="step__head"><span class="step__num">02</span><span class="step__rule" aria-hidden="true"></span></div>
@@ -290,6 +290,20 @@
     </div>
   </div>
 </section>
+
+<!-- ══ FILM STRIP — slow marquee of on-set photos (same technique as the client logos). main.js clones the track so the loop is seamless. ══ -->
+<div class="film band--dark" role="group" aria-label="Fotos de rodaje">
+  <div class="film__inner" id="filmInner">
+    <div class="film__track">
+      <figure class="film__frame"><img src="assets/img/process/film-05.jpg" alt="Integrante del equipo bajo lámparas colgantes en un set" width="1000" height="666" loading="lazy"></figure>
+      <figure class="film__frame"><img src="assets/img/process/film-01.jpg" alt="Camarógrafo con gimbal mirando hacia el escenario" width="750" height="1000" loading="lazy"></figure>
+      <figure class="film__frame"><img src="assets/img/process/film-03.jpg" alt="Cámara en trípode con la pantalla abierta, lista para grabar" width="1000" height="667" loading="lazy"></figure>
+      <figure class="film__frame"><img src="assets/img/process/film-02.jpg" alt="Técnico con un reflector dorado junto a una luz de set" width="750" height="1000" loading="lazy"></figure>
+      <figure class="film__frame"><img src="assets/img/process/film-06.jpg" alt="Técnico agachado sobre el piso blanco iluminado de un set" width="1000" height="667" loading="lazy"></figure>
+      <figure class="film__frame"><img src="assets/img/process/film-04.jpg" alt="Camarógrafo con audífonos frente a un reflector blanco" width="801" height="1000" loading="lazy"></figure>
+    </div>
+  </div>
+</div>
 
 <!-- ══ CTA BAND ════════════════════════════════════════ -->
 <section class="cta">
@@ -486,6 +500,6 @@
 
 <div class="sticky" id="sticky"><a href="#book" class="btn btn--primary btn--lg" data-i18n="nav.cta">Book a diagnostic</a></div>
 
-<script src="assets/js/main.js?v=20260930" defer></script>
+<script src="assets/js/main.js?v=20261109" defer></script>
 </body>
 </html>

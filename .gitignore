@@ -18,6 +18,10 @@ npm-debug.log*
 # Assets de trabajo pesados (no versionar video crudo)
 assets/video/raw/
 
+# Fotos BTS originales (traen GPS en EXIF): no versionar ni publicar. Las optimizadas van en assets/img/process/
+assets/img/bts/*
+!assets/img/bts/.gitkeep
+
 # Firebase
 .firebase/
 firebase-debug.log

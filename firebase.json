@@ -12,6 +12,7 @@
       "estructura-landing.md",
       "README.md",
       "assets/img/logos/**",
+      "assets/img/bts/**",
       "assets/img/LOGO-ITACAMBA-8cm.png"
     ],
     "cleanUrls": false,
