@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>(function(){var h=location.hostname;if(h==='fabioai-landing.web.app'||h==='fabioai-landing.firebaseapp.com')location.replace('https://fabionogales.com'+location.pathname+location.search+location.hash);})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fabio Nogales | Producción Audiovisual y Creación de Contenido con IA</title>
 <meta name="description" content="Productor audiovisual y estratega de video corto (Reels, TikTok y Ads) potenciado con IA. Rodaje 4K, B-roll hiperrealista y postproducción en 3 a 6 días.">
@@ -25,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=20261110c">
+<link rel="stylesheet" href="assets/css/styles.css?v=20261111">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.bar__fill{width:var(--w)!important}.film{overflow-x:auto}</style></noscript>
 </head>
 <body>
@@ -256,6 +257,7 @@
         <ul class="step__list">
           <li data-i18n="proc.2a">Dirección de talento frente a cámara para lograr naturalidad y autoridad.</li>
           <li data-i18n="proc.2b">Esquema de iluminación y audio profesional adaptado a tu espacio o estudio.</li>
+          <li data-i18n="proc.2c">Rodaje en 4K con iluminación profesional y asistente de cámara cuando el proyecto lo requiere.</li>
         </ul>
         <span class="time" data-i18n="proc.2x">1 jornada (4 a 7 horas)</span>
       </div>
@@ -333,24 +335,34 @@
   <div class="container">
     <div class="work__head" data-reveal>
       <h2 class="display h2" data-i18n="wrk.title">Trabajo <span class="accent">seleccionado</span></h2>
-      <div class="filters is-pending" id="filters" role="group" aria-label="Filter work">
+      <div class="filters" id="filters" role="group" aria-label="Filter work">
         <button class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="wrk.f0">Todos</button>
-        <button class="filter" data-filter="Brand film" aria-pressed="false" data-i18n="wrk.f1">Brand film</button>
-        <button class="filter" data-filter="Social" aria-pressed="false" data-i18n="wrk.f2">Social 9:16</button>
-        <button class="filter" data-filter="Product" aria-pressed="false" data-i18n="wrk.f3">Producto & IA</button>
-        <button class="filter" data-filter="Testimonial" aria-pressed="false" data-i18n="wrk.f4">UGC / Testimonial</button>
+        <button class="filter" data-filter="ugc" aria-pressed="false" data-i18n="wrk.f1">UGC con IA</button>
+        <button class="filter" data-filter="eventos" aria-pressed="false" data-i18n="wrk.f2">Eventos y marcas</button>
+        <button class="filter" data-filter="producto" aria-pressed="false" data-i18n="wrk.f3">Producto e IA</button>
+        <button class="filter" data-filter="agencia" aria-pressed="false" data-i18n="wrk.f4">Agencia</button>
       </div>
     </div>
-    <!-- Each card: replace .wcard__bg with <video muted loop playsinline preload="none" data-src="..."> for hover previews -->
+    <!-- Poster cards: each links to its Instagram post. Cards are interleaved by category so the first 8 show a mix; the rest sit behind "Ver más". -->
     <div class="work" id="work-grid">
-      <a class="wcard" data-tag="Social" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Instagram</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client" data-i18n="wrk.r1c">Reel destacado</p><p class="wcard__line" data-i18n="wrk.r1l">Social · Dirección y Postproducción</p></div></a>
-      <article class="wcard is-pending" data-tag="Social"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pendiente</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 02]</p><p class="wcard__line" data-i18n="wrk.l2">Social · Lote de 12 piezas 9:16</p></div></article>
-      <article class="wcard is-pending" data-tag="Product"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pendiente</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 03]</p><p class="wcard__line" data-i18n="wrk.l3">Producto · Integración visual IA</p></div></article>
-      <article class="wcard is-pending" data-tag="Testimonial"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pendiente</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 04]</p><p class="wcard__line" data-i18n="wrk.l4">UGC · Producción remota</p></div></article>
-      <article class="wcard is-pending" data-tag="Social"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pendiente</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 05]</p><p class="wcard__line" data-i18n="wrk.l5">Paid Ads · Creativos de conversión</p></div></article>
-      <article class="wcard is-pending" data-tag="Brand film"><div class="wcard__bg"></div><span class="wcard__tag todo" data-i18n="todo.video">Video pendiente</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client">[Client 06]</p><p class="wcard__line" data-i18n="wrk.l6">Brand film · Campaña multiformato</p></div></article>
+      <a class="wcard" data-tag="ugc" href="https://www.instagram.com/reel/Dd9CYr6jY9m/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f1">UGC con IA</span> · 01</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="eventos" href="https://www.instagram.com/reel/DNooBZPJ9UZ/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f2">Eventos y marcas</span> · 01</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="producto" href="https://www.instagram.com/reel/Dc_YnV8C2k9/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f3">Producto e IA</span> · 01</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="agencia" href="https://www.instagram.com/reel/DawDRbUDK4L/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f4">Agencia</span> · 01</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="ugc" href="https://www.instagram.com/reel/DUoLUj2kbfS/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f1">UGC con IA</span> · 02</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="eventos" href="https://www.instagram.com/reel/DM81_qotpeJ/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f2">Eventos y marcas</span> · 02</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="producto" href="https://www.instagram.com/reel/DbTnSavkmbX/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f3">Producto e IA</span> · 02</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="agencia" href="https://www.instagram.com/reel/DctPuayCTWE/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f4">Agencia</span> · 02</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="ugc" href="https://www.instagram.com/reel/DcbLWXRCk3n/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f1">UGC con IA</span> · 03</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="eventos" href="https://www.instagram.com/reel/DM23Jpfy-Ft/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f2">Eventos y marcas</span> · 03</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="agencia" href="https://www.instagram.com/reel/DdW_QT3iQKx/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f4">Agencia</span> · 03</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="ugc" href="https://www.instagram.com/reel/DUJs9-AkeYv/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f1">UGC con IA</span> · 04</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="eventos" href="https://www.instagram.com/p/DS7pqwtgGTu/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Post</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f2">Eventos y marcas</span> · 04</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="agencia" href="https://www.instagram.com/reel/Dcw1kwVAmxL/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f4">Agencia</span> · 04</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="ugc" href="https://www.instagram.com/reel/DTTcp5VkSWL/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f1">UGC con IA</span> · 05</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
+      <a class="wcard" data-tag="agencia" href="https://www.instagram.com/reel/DbY7GqAj1gT/" target="_blank" rel="noopener"><div class="wcard__bg"></div><span class="wcard__tag">Reel</span><span class="wcard__play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span><div class="wcard__meta"><p class="wcard__client"><span data-i18n="wrk.f4">Agencia</span> · 05</p><p class="wcard__line" data-i18n="wrk.ig">Ver en Instagram</p></div></a>
     </div>
-    <p class="work__empty" id="workEmpty" hidden data-i18n="wrk.empty">Próximamente nuevas piezas en esta categoría.</p>
+    <div class="work__more"><button class="btn btn--dark" id="workMore" type="button" aria-expanded="false"><span class="more__on" data-i18n="wrk.more">Ver más</span><span class="more__off" data-i18n="wrk.less">Ver menos</span></button></div>
     <div class="work__foot">
       <a href="#book" class="btn btn--dark btn--lg" data-i18n="hero.cta">Hablemos de tu proyecto</a>
       <a href="https://www.instagram.com/reel/DctRV_Agm3n/" target="_blank" rel="noopener" class="link-u" data-i18n="wrk.reel">Ver el reel completo</a>
@@ -493,6 +505,6 @@
 
 <div class="sticky" id="sticky"><a href="#book" class="btn btn--primary btn--lg" data-i18n="nav.cta">Agenda un diagnóstico</a></div>
 
-<script src="assets/js/main.js?v=20261110c" defer></script>
+<script src="assets/js/main.js?v=20261111" defer></script>
 </body>
 </html>

@@ -82,6 +82,7 @@
     "proc.2d": "Agile 4K capture with on-set direction.",
     "proc.2a": "Directing on-camera talent for naturalness and authority.",
     "proc.2b": "Professional lighting and audio setup adapted to your space or studio.",
+    "proc.2c": "4K shooting with professional lighting and a camera assistant when the project requires it.",
     "proc.2x": "1 shoot day (4 to 7 hours)",
     "proc.tag3": "Post-production",
     "proc.3t": "3. Post-production + AI",
@@ -107,19 +108,13 @@
     "srv.4d": "Hyper-realistic B-roll, visual assets and multi-format versions for ads and social.",
     "wrk.title": "Selected <span class=\"accent\">work</span>",
     "wrk.f0": "All",
-    "wrk.f1": "Brand film",
-    "wrk.f2": "Social 9:16",
+    "wrk.f1": "AI UGC",
+    "wrk.f2": "Events &amp; brands",
     "wrk.f3": "Product &amp; AI",
-    "wrk.f4": "UGC / Testimonial",
-    "wrk.r1c": "Featured reel",
-    "wrk.r1l": "Social · Direction &amp; Post-production",
-    "todo.video": "Video pending",
-    "wrk.l2": "Social · Batch of 12 pieces 9:16",
-    "wrk.l3": "Product · AI visual integration",
-    "wrk.l4": "UGC · Remote production",
-    "wrk.l5": "Paid Ads · Conversion creatives",
-    "wrk.l6": "Brand film · Multi-format campaign",
-    "wrk.empty": "New pieces coming soon in this category.",
+    "wrk.f4": "Agency",
+    "wrk.ig": "View on Instagram",
+    "wrk.more": "Show more",
+    "wrk.less": "Show less",
     "wrk.reel": "See the full reel",
     "fit.title": "Who this service <span class=\"accent\">is for</span>",
     "fit.1": "Marketing agencies that need a timely, resourceful audiovisual partner with brand judgment.",
@@ -385,19 +380,27 @@
     plxApply();
   }
 
-  /* ───────── Work filters ───────── */
-  var filters = $$('.filter'), cards = $$('.wcard'), empty = $('#workEmpty');
+  /* ───────── Work filters + "ver más" ───────── */
+  var filters = $$('.filter'), cards = $$('.wcard'), moreBtn = $('#workMore'), LIMIT = 8, curTag = 'all', expanded = false;
+  function applyWork() {
+    var n = 0;
+    cards.forEach(function (c) {
+      var match = curTag === 'all' || c.dataset.tag === curTag;
+      if (match) n++;
+      c.hidden = !match || (!expanded && n > LIMIT);
+    });
+    moreBtn.parentNode.hidden = n <= LIMIT;
+    moreBtn.setAttribute('aria-expanded', String(expanded));
+  }
   filters.forEach(function (f) {
     f.addEventListener('click', function () {
       filters.forEach(function (x) { x.classList.toggle('is-active', x === f); x.setAttribute('aria-pressed', String(x === f)); });
-      var tag = f.dataset.filter, shown = 0;
-      cards.forEach(function (c) {
-        var show = tag === 'all' || c.dataset.tag === tag;
-        c.hidden = !show; if (show) shown++;
-      });
-      empty.hidden = shown > 0;
+      curTag = f.dataset.filter;
+      applyWork();
     });
   });
+  moreBtn.addEventListener('click', function () { expanded = !expanded; applyWork(); });
+  applyWork();
 
   /* ───────── FAQ ───────── */
   $$('.faq__q').forEach(function (q) {
