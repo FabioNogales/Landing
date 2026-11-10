@@ -113,8 +113,6 @@
     "wrk.f3": "Product &amp; AI",
     "wrk.f4": "Agency",
     "wrk.ig": "View on Instagram",
-    "wrk.more": "Show more",
-    "wrk.less": "Show less",
     "wrk.reel": "See the full reel",
     "fit.title": "Who this service <span class=\"accent\">is for</span>",
     "fit.1": "Marketing agencies that need a timely, resourceful audiovisual partner with brand judgment.",
@@ -380,27 +378,14 @@
     plxApply();
   }
 
-  /* ───────── Work filters + "ver más" ───────── */
-  var filters = $$('.filter'), cards = $$('.wcard'), moreBtn = $('#workMore'), LIMIT = 8, curTag = 'all', expanded = false;
-  function applyWork() {
-    var n = 0;
-    cards.forEach(function (c) {
-      var match = curTag === 'all' || c.dataset.tag === curTag;
-      if (match) n++;
-      c.hidden = !match || (!expanded && n > LIMIT);
-    });
-    moreBtn.parentNode.hidden = n <= LIMIT;
-    moreBtn.setAttribute('aria-expanded', String(expanded));
-  }
+  /* ───────── Work filters ───────── */
+  var filters = $$('.filter'), cards = $$('.wcard');
   filters.forEach(function (f) {
     f.addEventListener('click', function () {
       filters.forEach(function (x) { x.classList.toggle('is-active', x === f); x.setAttribute('aria-pressed', String(x === f)); });
-      curTag = f.dataset.filter;
-      applyWork();
+      cards.forEach(function (c) { c.hidden = f.dataset.filter !== 'all' && c.dataset.tag !== f.dataset.filter; });
     });
   });
-  moreBtn.addEventListener('click', function () { expanded = !expanded; applyWork(); });
-  applyWork();
 
   /* ───────── FAQ ───────── */
   $$('.faq__q').forEach(function (q) {
