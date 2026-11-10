@@ -1,5 +1,8 @@
-/* Fabio AI — interactions + EN/ES switch.
-   English lives in the HTML (good for SEO / no-JS); Spanish lives in the ES map below. */
+/* Fabio AI — interactions + ES/EN switch.
+   Spanish is the native language: all copy lives in index.html (what crawlers and no-JS visitors get).
+   English lives in the EN map below, keyed by data-i18n / data-i18n-ph. setLang('en') swaps it in;
+   setLang('es') restores the Spanish read from the DOM on first run. STR holds runtime-only strings
+   (form messages, WhatsApp, calendar label, English head tags) that have no DOM element. */
 (function () {
   'use strict';
 
@@ -11,148 +14,227 @@
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
   };
 
-  var WA_URL = 'https://wa.me/59162165130?text=' + encodeURIComponent('Hola Fabio, vi tu web y me gustaría recibir más información sobre tus servicios de producción audiovisual y contenido con IA.');
-  var WA_URL_EN = 'https://wa.me/59162165130?text=' + encodeURIComponent("Hi Fabio, I saw your website and I'd like more information about your audiovisual production and AI content services.");
-
-  /* ───────── Spanish copy ───────── */
-  var ES = {
-    'meta.title': 'Fabio Nogales | Producción Audiovisual y Creación de Contenido con IA',
-    'meta.desc': 'Productor audiovisual y estratega de video corto (Reels, TikTok y Ads) potenciado con IA. Rodaje 4K, B-roll hiperrealista y postproducción en 3 a 6 días.',
-    'nav.work': 'Portafolio', 'nav.process': 'Proceso', 'nav.services': 'Servicios', 'nav.about': 'Sobre mí', 'nav.contact': 'Contacto',
-    'nav.cta': 'Agenda un diagnóstico', 'nav.ctaShort': 'Agendar',
-    'hero.chip': 'Producción Audiovisual & <b>Flujos de Contenido con IA</b>',
-    'hero.title': 'Producción Audiovisual & <span class="accent">Contenido con IA</span> para Marcas',
-    'hero.sub': 'Dirección audiovisual, rodaje y postproducción con IA para marcas y agencias. Escala tu contenido vertical y campañas publicitarias con resultados realistas, sin los costos ni demoras de una productora tradicional.',
-    'hero.cta': 'Hablemos de tu proyecto', 'hero.reel': 'Ver el reel (1 min)',
-    'hero.role': 'AI Video Producer & Short-Form Content Strategist',
-    'hero.note': '+250 piezas entregadas para marcas y agencias como Bransign, Itacamba y Grazia.ai.',
-    'hero.stat': 'días de preproducción a entrega final',
-    'todo': 'Pendiente', 'todo.confirm': 'Confirmar', 'todo.video': 'Video pendiente',
-    'ph.reel': 'Último reel', 'ph.photo': 'Fabio Nogales',
-    'cmp.eyebrow': 'El problema',
-    'cmp.title': 'Publicar por publicar <span class="accent">ya no convierte.</span>',
-    'cmp.body': 'Tu marca necesita volumen constante sin perder autoridad visual. Una productora tradicional tarda semanas en entregar una sola pieza; un editor genérico entrega volumen sin dirección ni retención. Mi modelo resuelve ambos frentes: criterio cinematográfico y flujos de IA para escalar con realismo.',
-    'cmp.trad': 'Productora tradicional', 'cmp.tradVal': '≈ 6 semanas · 1 pieza',
-    'cmp.me': 'Mi sistema de trabajo', 'cmp.meVal': '≈ 3 a 6 días · multiformato',
-    'cmp.c1': 'Productora tradicional', 'cmp.c1a': 'Alta calidad, entrega lenta', 'cmp.c1b': 'Costos fijos elevados', 'cmp.c1c': 'Poca adaptabilidad a redes',
-    'cmp.c2': 'Freelance tradicional', 'cmp.c2a': 'Rápido, sin visión comercial', 'cmp.c2b': 'Sin dirección creativa', 'cmp.c2c': 'Resultados inconsistentes',
-    'cmp.c3': 'Mi sistema de trabajo', 'cmp.c3a': 'Estética de agencia en días', 'cmp.c3b': 'Dirección integral de principio a fin', 'cmp.c3c': 'Múltiples piezas listas para convertir',
-    'cmp.vpT': 'Dirección humana y eficiencia con IA. <span class="accent">Contenido realista que escala.</span>',
-    'cmp.vpB': 'Diseño y produzco piezas audiovisuales pensadas en retención, narrativa clara y objetivos comerciales para tu cliente ideal.',
-    'pil.title': 'Por qué este enfoque <span class="accent">funciona</span>',
-    'pil.1t': 'Visión comercial y estética de marca',
-    'pil.1b': 'Cada guion, encuadre y corte responde a métricas de retención y conversión, respaldado por mi base en Ingeniería Comercial.',
-    'pil.2t': 'Flujos de trabajo con IA integrados',
-    'pil.2b': 'Acelero la preproducción, el desarrollo de B-roll hiperrealista y la adaptación de formatos manteniendo un acabado orgánico.',
-    'pil.3t': 'Un solo responsable creativo',
-    'pil.3b': 'Tratas directamente con quien diseña la estrategia, dirige el rodaje y supervisa la postproducción.',
-    'pil.bts': 'Detrás de cámaras',
-    'proc.tag1': 'Preproducción', 'proc.tag2': 'Rodaje', 'proc.tag3': 'Postproducción',
-    'proc.title': 'Un proceso creativo <span class="accent">claro y ágil</span>',
-    'proc.intro': 'Elimino la fricción operativa. Una producción con rodaje presencial toma ≈ 6 días; una producción 100% asistida por IA toma 3 días. Ambos caminos siguen un proceso estructurado con 2 rondas de revisión incluidas.',
-    'proc.kind1': 'Producción presencial · ≈ 6 días',
-    'proc.1t': '1. Preproducción y Guion', 'proc.1d': 'Aterrizamos el mensaje antes de encender la cámara.',
-    'proc.1a': 'Diseño de ganchos (hooks) y estructura narrativa enfocada en retención.',
-    'proc.1b': 'Definición de locaciones, referencias visuales y plan de rodaje.',
-    'proc.1c': 'Preparación técnica de cámara, óptica, iluminación y sonido.',
-    'proc.1x': '1 a 2 días',
-    'proc.2t': '2. Rodaje y Dirección', 'proc.2d': 'Captura ágil en 4K con dirección en set.',
-    'proc.2a': 'Dirección de talento frente a cámara para lograr naturalidad y autoridad.',
-    'proc.2b': 'Esquema de iluminación y audio profesional adaptado a tu espacio o estudio.',
-    'proc.2x': '1 jornada (4 a 7 horas)',
-    'proc.3t': '3. Postproducción + IA', 'proc.3d': 'Edición de ritmo preciso y acabado visual.',
-    'proc.3a': 'Montaje dinámico, corrección de color y diseño sonoro.',
-    'proc.3b': 'Integración de apoyos visuales (B-roll generativo o motion graphics) cuando la narrativa lo pide.',
-    'proc.3c': 'Entrega optimizada para Reels, TikTok, Shorts o pauta publicitaria.',
-    'proc.3x': '≈ 2 a 3 días',
-    'proc.altT': 'Producción remota con IA · 3 días',
-    'proc.altB': 'A partir de material base o grabaciones previas, desarrollo piezas completas integrando B-roll realista, síntesis de voz y avatares digitales orgánicos. Ideal para escalar contenido de producto y campañas UGC desde cualquier país.',
-    'cta.text': '¿Tienes una campaña o lanzamiento en puerta? Revisemos tu calendario.',
-    'srv.title': 'Qué <span class="accent">ofrezco</span>',
-    'srv.1t': 'Estrategia y guion de video corto', 'srv.1d': 'Conceptos, ganchos y estructuras diseñadas para captar atención en los primeros 3 segundos.',
-    'srv.2t': 'Producción y rodaje audiovisual', 'srv.2d': 'Grabación profesional en locación o estudio con dirección técnica y narrativa.',
-    'srv.3t': 'Postproducción y ritmo de retención', 'srv.3d': 'Edición avanzada, diseño sonoro, colorimetría y gráficas que sostienen el interés.',
-    'srv.4t': 'Creación y escalado con IA', 'srv.4d': 'Generación de B-roll hiperrealista, activos visuales y réplicas multiformato para anuncios y redes.',
-    'wrk.title': 'Trabajo <span class="accent">seleccionado</span>',
-    'wrk.f0': 'Todos', 'wrk.f1': 'Brand film', 'wrk.f2': 'Social 9:16', 'wrk.f3': 'Producto & IA', 'wrk.f4': 'UGC / Testimonial',
-    'wrk.r1c': 'Reel destacado', 'wrk.r1l': 'Social · Dirección y Postproducción', 'wrk.l2': 'Social · Lote de 12 piezas 9:16', 'wrk.l3': 'Producto · Integración visual IA',
-    'wrk.l4': 'UGC · Producción remota', 'wrk.l5': 'Paid Ads · Creativos de conversión', 'wrk.l6': 'Brand film · Campaña multiformato',
-    'wrk.empty': 'Próximamente nuevas piezas en esta categoría.', 'wrk.reel': 'Ver el reel completo',
-    'num.eyebrow': 'Resultados',
-    'num.title': 'El rendimiento de una <span class="accent">producción bien dirigida</span>',
-    'num.3': 'de mejora en rendimiento por video: más retención y mejor entrega',
-    'fit.title': 'Para quién es <span class="accent">este servicio</span>',
-    'fit.1': 'Agencias de marketing que necesitan un socio audiovisual puntual, resolutivo y con criterio de marca.',
-    'fit.2': 'Marcas y empresas que buscan profesionalizar su presencia en video corto y anuncios sin contratar un equipo interno.',
-    'fit.3': 'Startups y creadores que requieren escalar su producción combinando video real e inteligencia artificial.',
-    'fit.cta': '30 minutos para evaluar tus objetivos, tiempos de entrega y presupuesto.',
-    'fit.no': 'No soy el proveedor adecuado si buscas edición genérica por volumen al menor precio o piezas sin un objetivo comercial claro.',
-    'ab.title': 'Sobre <span class="accent">mí</span>',
-    'ab.body': 'Soy Fabio Nogales, productor audiovisual, estratega de contenido con IA e Ingeniero Comercial. Co-fundé la productora Studio 404 y he liderado la creación de cientos de piezas para marcas corporativas, agencias y startups internacionales de IA como Grazia.ai. Mi enfoque une la dirección de cámara e iluminación tradicional con flujos de inteligencia artificial generativa para crear videos realistas, rentables y diseñados para convertir.',
-    'ab.pull': 'No reemplazo el criterio humano con IA: uso la IA para multiplicar el impacto de una buena dirección.',
-    'faq.title': 'Preguntas <span class="accent">frecuentes</span>',
-    'faq.1q': '¿Cuánto tarda una producción de principio a fin?',
-    'faq.1a': 'Una producción presencial toma alrededor de 6 días hábiles (1–2 de preproducción, 1 día de rodaje y 2–3 de postproducción). Las producciones remotas potenciadas con IA se entregan en 3 días hábiles.',
-    'faq.2q': '¿Usar IA hace que los videos se vean artificiales o genéricos?',
-    'faq.2a': 'No. El problema del contenido genérico con IA es la falta de dirección audiovisual. Aplico criterio de fotografía, ritmo de edición y narrativa real para que el B-roll generativo, la voz o los avatares se integren con naturalidad y mantengan la identidad de tu marca.',
-    'faq.3q': '¿Cómo se estructura la inversión?',
-    'faq.3a': 'Trabajo por paquete de piezas o por proyecto específico según el nivel de producción requerido (rodaje presencial, edición avanzada o flujo 100% con IA). En nuestra llamada de diagnóstico o vía WhatsApp te entrego un presupuesto cerrado y sin costos ocultos.',
-    'faq.4q': '¿Trabajas con agencias en modalidad marca blanca (White Label)?',
-    'faq.4a': 'Sí. Me integro al flujo de tu agencia como brazo de producción y postproducción, respetando tus tiempos y manuales de cliente.',
-    'faq.5q': '¿Cuántas rondas de ajustes incluye cada entrega?',
-    'faq.5a': 'Cada proyecto incluye 2 rondas de revisión estructuradas para asegurar que el corte final cumpla exactamente con lo acordado en preproducción.',
-    'faq.6q': '¿Qué necesitas de mi parte para iniciar?',
-    'faq.6a': 'Tener claro el objetivo comercial de las piezas, referencias visuales o manual de marca, y definir una persona responsable de aprobar el guion y los cortes.',
-    'faq.7q': '¿Trabajas de forma presencial o remota?',
-    'faq.7a': 'Realizo rodajes presenciales en Santa Cruz de la Sierra (con disponibilidad para viajar) y trabajo 100% en remoto para clientes y agencias de cualquier país mediante flujos de postproducción e IA.',
-    'bk.title': 'Hablemos de tu <span class="accent">próximo proyecto.</span>',
-    'bk.sub': 'Agenda una llamada de 30 minutos o escríbeme directo por WhatsApp para evaluar qué formato se adapta mejor a tu marca.',
-    'bk.cal': 'Reunión de diagnóstico',
-    'bk.calHint': 'Elige el horario en el calendario o contáctame por WhatsApp para una respuesta rápida.',
-    'bk.calBtn': 'Agendar reunión',
-    'bk.alt': '¿Prefieres contacto directo? <a href="' + WA_URL + '" target="_blank" rel="noopener" class="accent" style="text-decoration:underline;font-weight:600;">Escríbeme por WhatsApp (+591 62165130)</a> o completa el formulario:',
-    'bk.f1': 'Nombre', 'bk.f2': 'Email', 'bk.f3': 'Empresa o Marca', 'bk.f4': '¿Qué tipo de contenido necesitas?', 'bk.f5': 'Fecha ideal de lanzamiento',
-    'bk.p1': 'Tu nombre', 'bk.p3': 'Nombre de tu marca o agencia', 'bk.p4': 'Ej. Lote de Reels, video de producto con IA, cobertura...', 'bk.p5': 'Ej. Esta semana / Próximo mes',
-    'bk.send': 'Enviar consulta',
-    'ft.tag': 'Dirección audiovisual y estrategia de contenido con IA para marcas y agencias.',
-    'ft.email': 'fabioaioficial@gmail.com', 'ft.privacy': 'Privacidad', 'ft.city': 'Santa Cruz, Bolivia · Disponible Global (GMT-4)', 'ft.rights': 'Todos los derechos reservados.',
-    'js.needs': 'Por favor, completa tu nombre y un correo válido.',
-    'js.sending': 'Enviando…',
-    'js.ok': 'Recibido. Te responderé en menos de 24 horas.',
-    'js.fail': 'No se pudo enviar. Escríbeme por WhatsApp al +591 62165130 o a fabioaioficial@gmail.com.',
-    'js.noEndpoint': 'Abriendo tu cliente de correo con el mensaje listo…'
+  var WA_URL = {
+    es: 'https://wa.me/59162165130?text=' + encodeURIComponent('Hola Fabio, vi tu web y me gustaría recibir más información sobre tus servicios de producción audiovisual y contenido con IA.'),
+    en: 'https://wa.me/59162165130?text=' + encodeURIComponent("Hi Fabio, I saw your website and I'd like more information about your audiovisual production and AI content services.")
   };
-  var EN_MSG = {
-    'js.needs': 'Please add your name and a valid email.',
-    'js.sending': 'Sending…',
-    'js.ok': "Received. I'll reply within 24 hours.",
-    'js.fail': 'Could not send. Message me on WhatsApp (+591 62165130) or fabioaioficial@gmail.com.',
-    'js.noEndpoint': 'Opening your email app with the message ready to send…'
+
+  /* ───────── English copy (DOM), keyed by data-i18n / data-i18n-ph ───────── */
+  var EN = {
+    "nav.work": "Portfolio",
+    "nav.process": "Process",
+    "nav.services": "Services",
+    "nav.about": "About",
+    "nav.contact": "Contact",
+    "nav.cta": "Book a diagnostic",
+    "nav.ctaShort": "Book",
+    "hero.chip": "Video Production & <b>AI Content Workflows</b>",
+    "hero.title": "Video Production & <span class=\"accent\">AI Content</span> for Brands",
+    "hero.sub": "Audiovisual direction, shooting and AI-powered post-production for brands and agencies. Scale your vertical content and ad campaigns with realistic results, without the costs or delays of a traditional production company.",
+    "hero.cta": "Let's talk about your project",
+    "hero.reel": "Watch the reel (1 min)",
+    "hero.note": "+250 pieces delivered for brands and agencies such as Bransign, Itacamba and Grazia.ai.",
+    "ph.reel": "Latest reel",
+    "ph.photo": "Fabio Nogales",
+    "hero.role": "AI Video Producer &amp; Short-Form Content Strategist",
+    "hero.stat": "days from pre-production to final delivery",
+    "cmp.eyebrow": "The problem",
+    "cmp.title": "Posting for the sake of posting <span class=\"accent\">no longer converts.</span>",
+    "cmp.body": "Your brand needs steady volume without losing visual authority. A traditional studio takes weeks to deliver a single piece; a generic editor delivers volume with no direction or retention. My model solves both: cinematic judgment and AI workflows to scale with realism.",
+    "cmp.trad": "Traditional production company",
+    "cmp.tradVal": "≈ 6 weeks · 1 piece",
+    "cmp.me": "My workflow",
+    "cmp.meVal": "≈ 3–6 days · multi-format",
+    "cmp.c1": "Traditional studio",
+    "cmp.c1a": "High quality, slow delivery",
+    "cmp.c1b": "High fixed costs",
+    "cmp.c1c": "Poorly adapted to social",
+    "cmp.c2": "Traditional freelancer",
+    "cmp.c2a": "Fast, no commercial vision",
+    "cmp.c2b": "No creative direction",
+    "cmp.c2c": "Inconsistent results",
+    "cmp.c3": "My work system",
+    "cmp.c3a": "Agency aesthetics in days",
+    "cmp.c3b": "End-to-end integrated direction",
+    "cmp.c3c": "Multiple pieces ready to convert",
+    "cmp.vpT": "Human direction and AI efficiency. <span class=\"accent\">Realistic content that scales.</span>",
+    "cmp.vpB": "I design and produce audiovisual pieces built for retention, clear storytelling and commercial goals, for your ideal client.",
+    "pil.title": "Why this approach <span class=\"accent\">works</span>",
+    "pil.1t": "Commercial vision and brand aesthetics",
+    "pil.1b": "Every script, frame and cut answers to retention and conversion metrics, backed by my background in Business Engineering.",
+    "pil.2t": "Integrated AI workflows",
+    "pil.2b": "I speed up pre-production, hyper-realistic B-roll development and format adaptation while keeping an organic finish.",
+    "pil.3t": "One creative owner",
+    "pil.3b": "You deal directly with the person who designs the strategy, directs the shoot and oversees post-production.",
+    "pil.bts": "Behind the scenes",
+    "proc.title": "A clear and agile <span class=\"accent\">creative process</span>",
+    "proc.intro": "I remove operational friction. An on-site shoot takes ≈ 6 days; a 100% AI-assisted production takes 3 days. Both paths follow a structured process with 2 revision rounds included.",
+    "proc.kind1": "On-site production · ≈ 6 days",
+    "proc.tag1": "Pre-production",
+    "proc.1t": "1. Pre-production &amp; Script",
+    "proc.1d": "We pin down the message before turning on the camera.",
+    "proc.1a": "Hook design and narrative structure focused on retention.",
+    "proc.1b": "Locations, visual references and shooting plan.",
+    "proc.1c": "Technical prep of camera, optics, lighting and sound.",
+    "proc.1x": "1 to 2 days",
+    "proc.tag2": "On set",
+    "proc.2t": "2. Shooting &amp; Direction",
+    "proc.2d": "Agile 4K capture with on-set direction.",
+    "proc.2a": "Directing on-camera talent for naturalness and authority.",
+    "proc.2b": "Professional lighting and audio setup adapted to your space or studio.",
+    "proc.2x": "1 shoot day (4 to 7 hours)",
+    "proc.tag3": "Post-production",
+    "proc.3t": "3. Post-production + AI",
+    "proc.3d": "Precisely paced editing and visual finish.",
+    "proc.3a": "Dynamic editing, color correction and sound design.",
+    "proc.3b": "Visual support (generative B-roll or motion graphics) when the story calls for it.",
+    "proc.3c": "Delivery optimized for Reels, TikTok, Shorts or paid ads.",
+    "proc.3x": "≈ 2 to 3 days",
+    "proc.altT": "Remote AI production · 3 days",
+    "proc.altB": "From base material or earlier recordings, I develop complete pieces with realistic B-roll, voice synthesis and organic digital avatars. Ideal for scaling product content and UGC campaigns from any country.",
+    "num.eyebrow": "Results",
+    "num.title": "The performance of a <span class=\"accent\">well-directed production</span>",
+    "num.3": "improvement in per-video performance: higher retention and better delivery",
+    "cta.text": "Got a campaign or launch coming up? Let's check your calendar.",
+    "srv.title": "What I <span class=\"accent\">offer</span>",
+    "srv.1t": "Short-form video strategy &amp; scripting",
+    "srv.1d": "Concepts, hooks and structures designed to grab attention in the first 3 seconds.",
+    "srv.2t": "Audiovisual production &amp; shooting",
+    "srv.2d": "Professional filming on location or in studio, with technical and narrative direction.",
+    "srv.3t": "Post-production &amp; retention pacing",
+    "srv.3d": "Advanced editing, sound design, color grading and graphics that sustain interest.",
+    "srv.4t": "AI creation &amp; scaling",
+    "srv.4d": "Hyper-realistic B-roll, visual assets and multi-format versions for ads and social.",
+    "wrk.title": "Selected <span class=\"accent\">work</span>",
+    "wrk.f0": "All",
+    "wrk.f1": "Brand film",
+    "wrk.f2": "Social 9:16",
+    "wrk.f3": "Product &amp; AI",
+    "wrk.f4": "UGC / Testimonial",
+    "wrk.r1c": "Featured reel",
+    "wrk.r1l": "Social · Direction &amp; Post-production",
+    "todo.video": "Video pending",
+    "wrk.l2": "Social · Batch of 12 pieces 9:16",
+    "wrk.l3": "Product · AI visual integration",
+    "wrk.l4": "UGC · Remote production",
+    "wrk.l5": "Paid Ads · Conversion creatives",
+    "wrk.l6": "Brand film · Multi-format campaign",
+    "wrk.empty": "New pieces coming soon in this category.",
+    "wrk.reel": "See the full reel",
+    "fit.title": "Who this service <span class=\"accent\">is for</span>",
+    "fit.1": "Marketing agencies that need a timely, resourceful audiovisual partner with brand judgment.",
+    "fit.2": "Brands and companies looking to professionalize their short-form video and ads without hiring an in-house team.",
+    "fit.3": "Startups and creators who need to scale production by combining real video and generative AI.",
+    "fit.cta": "30 minutes to assess your goals, delivery times and budget.",
+    "fit.no": "I'm not the right provider if you want generic bulk editing at the lowest price, or pieces with no clear commercial goal.",
+    "ab.title": "About <span class=\"accent\">me</span>",
+    "ab.body": "I'm Fabio Nogales, audiovisual producer, AI content strategist and Business Engineer. I co-founded the production company Studio 404 and have led the creation of hundreds of pieces for corporate brands, agencies and international AI startups such as Grazia.ai. My approach joins traditional camera and lighting direction with generative AI workflows to create realistic, profitable videos designed to convert.",
+    "ab.pull": "I don't replace human judgment with AI: I use AI to multiply the impact of good direction.",
+    "faq.title": "Frequently asked <span class=\"accent\">questions</span>",
+    "faq.1q": "How long does a production take, start to finish?",
+    "faq.1a": "An on-site production takes around 6 business days (1–2 of pre-production, 1 shoot day and 2–3 of post-production). Remote AI-powered productions are delivered in 3 business days.",
+    "faq.2q": "Does using AI make videos look artificial or generic?",
+    "faq.2a": "No. The problem with generic AI content is the lack of audiovisual direction. I apply cinematography judgment, editing rhythm and real storytelling so generative B-roll, voice or avatars blend in naturally and keep your brand identity.",
+    "faq.3q": "How is the investment structured?",
+    "faq.3a": "I work per package of pieces or per specific project, depending on the production level required (on-site shoot, advanced editing or 100% AI workflow). On our diagnostic call or via WhatsApp I give you a fixed quote with no hidden costs.",
+    "faq.4q": "Do you work with agencies on a white-label basis?",
+    "faq.4a": "Yes. I plug into your agency's workflow as a production and post-production arm, respecting your timelines and client guidelines.",
+    "faq.5q": "How many revision rounds does each delivery include?",
+    "faq.5a": "Every project includes 2 structured revision rounds to make sure the final cut matches exactly what was agreed in pre-production.",
+    "faq.6q": "What do you need from me to get started?",
+    "faq.6a": "A clear commercial goal for the pieces, visual references or a brand guide, and one person responsible for approving the script and the cuts.",
+    "faq.7q": "Do you work on-site or remotely?",
+    "faq.7a": "I shoot on-site in Santa Cruz de la Sierra (available to travel) and work 100% remotely for clients and agencies in any country through post-production and AI workflows.",
+    "bk.title": "Let's talk about your <span class=\"accent\">next project.</span>",
+    "bk.sub": "Book a 30-minute call or message me directly on WhatsApp to see which format fits your brand best.",
+    "bk.cal": "Diagnostic meeting",
+    "bk.calHint": "Pick a time on the calendar, or contact me on WhatsApp for a quick reply.",
+    "bk.alt": "Prefer direct contact? <a href=\"" + WA_URL.en + "\" target=\"_blank\" rel=\"noopener\" class=\"accent\" style=\"text-decoration:underline;font-weight:600;\">Message me on WhatsApp (+591 62165130)</a> or fill in the form:",
+    "bk.f1": "Name",
+    "bk.f2": "Email",
+    "bk.f3": "Company or Brand",
+    "bk.f4": "What type of content do you need?",
+    "bk.f5": "Ideal launch date",
+    "bk.send": "Send inquiry",
+    "ft.tag": "Audiovisual direction and AI content strategy for brands and agencies.",
+    "ft.privacy": "Privacy",
+    "ft.city": "Santa Cruz, Bolivia · Available worldwide (GMT-4)",
+    "ft.rights": "All rights reserved.",
+    "bk.p1": "Your name",
+    "bk.p3": "Your brand or agency name",
+    "bk.p4": "E.g. batch of Reels, AI product video, coverage…",
+    "bk.p5": "E.g. this week / next month"
+  };
+
+  /* ───────── Runtime strings (no DOM element holds their Spanish) ───────── */
+  var STR = {
+    es: {
+      'wa.btn': 'Contactar por WhatsApp',
+      'cal.btn': 'Programar una cita',
+      'js.needs': 'Por favor, completa tu nombre y un correo válido.',
+      'js.sending': 'Enviando…',
+      'js.ok': 'Recibido. Te responderé en menos de 24 horas.',
+      'js.fail': 'No se pudo enviar. Escríbeme por WhatsApp al +591 62165130 o a fabioaioficial@gmail.com.',
+      'js.noEndpoint': 'Abriendo tu cliente de correo con el mensaje listo…'
+    },
+    en: {
+      'meta.title': 'Fabio Nogales | Video Production & AI Content Creation',
+      'meta.desc': 'Video producer and short-form strategist (Reels, TikTok & Ads) powered by AI. 4K shooting, hyperrealistic B-roll and post-production in 3 to 6 days.',
+      'meta.locale': 'en_US',
+      'meta.localeAlt': 'es_LA',
+      'wa.btn': 'Chat on WhatsApp',
+      'cal.btn': 'Book a 30-min call',
+      'js.needs': 'Please add your name and a valid email.',
+      'js.sending': 'Sending…',
+      'js.ok': "Received. I'll reply within 24 hours.",
+      'js.fail': 'Could not send. Message me on WhatsApp (+591 62165130) or fabioaioficial@gmail.com.',
+      'js.noEndpoint': 'Opening your email app with the message ready to send…'
+    }
   };
 
   /* ───────── i18n ───────── */
   var lang = 'es';
-  var metaDesc = $('meta[name="description"]');
-  var EN_META = { title: 'Fabio Nogales | Video Production & AI Content Creation', desc: 'Video producer and short-form strategist (Reels, TikTok & Ads) powered by AI. 4K shooting, hyperrealistic B-roll and post-production in 3 to 6 days.' };
+  /* Head tags that follow the language; their Spanish value is read from the HTML on first use. */
+  var HEAD = [
+    ['title', 'meta.title'],
+    ['meta[name="description"]', 'meta.desc'],
+    ['meta[property="og:title"]', 'meta.title'],
+    ['meta[property="og:description"]', 'meta.desc'],
+    ['meta[property="og:image:alt"]', 'meta.title'],
+    ['meta[property="og:locale"]', 'meta.locale'],
+    ['meta[property="og:locale:alternate"]', 'meta.localeAlt']
+  ];
 
-  $$('[data-i18n]').forEach(function (n) { n.dataset.en = n.innerHTML; });
-  $$('[data-i18n-ph]').forEach(function (n) { n.dataset.enPh = n.getAttribute('placeholder'); });
+  function msg(k) { return STR[lang][k]; }
 
-  function msg(k) { return lang === 'es' ? ES[k] : EN_MSG[k]; }
-
+  /* The native Spanish of each node is stored once (data-es / data-es-ph) and restored for 'es'.
+     A node is only written when its value really changes, so a Spanish page load rewrites nothing. */
   function setLang(l, persist) {
-    lang = l === 'es' ? 'es' : 'en';
+    lang = l === 'en' ? 'en' : 'es';
     document.documentElement.lang = lang;
     $$('[data-i18n]').forEach(function (n) {
-      var k = n.dataset.i18n;
-      n.innerHTML = (lang === 'es' && ES[k] != null) ? ES[k] : n.dataset.en;
+      if (n.dataset.es == null) n.dataset.es = n.innerHTML;
+      var en = EN[n.dataset.i18n];
+      var v = (lang === 'en' && en != null) ? en : n.dataset.es;
+      if (n.innerHTML !== v) n.innerHTML = v;
     });
     $$('[data-i18n-ph]').forEach(function (n) {
-      var k = n.dataset.i18nPh;
-      n.setAttribute('placeholder', (lang === 'es' && ES[k] != null) ? ES[k] : n.dataset.enPh);
+      if (n.dataset.esPh == null) n.dataset.esPh = n.getAttribute('placeholder') || '';
+      var en = EN[n.dataset.i18nPh];
+      var v = (lang === 'en' && en != null) ? en : n.dataset.esPh;
+      if (n.getAttribute('placeholder') !== v) n.setAttribute('placeholder', v);
     });
-    document.title = lang === 'es' ? ES['meta.title'] : EN_META.title;
-    if (metaDesc) metaDesc.content = lang === 'es' ? ES['meta.desc'] : EN_META.desc;
+    HEAD.forEach(function (h) {
+      var el = $(h[0]);
+      if (!el) return;
+      var isTitle = el.tagName === 'TITLE';
+      var cur = isTitle ? document.title : el.getAttribute('content');
+      if (el.dataset.es == null) el.dataset.es = cur;
+      var en = STR.en[h[1]];
+      var v = (lang === 'en' && en != null) ? en : el.dataset.es;
+      if (cur === v) return;
+      if (isTitle) document.title = v; else el.setAttribute('content', v);
+    });
     $$('.lang__btn').forEach(function (b) {
       var on = b.dataset.lang === lang;
       b.classList.toggle('is-active', on);
@@ -160,17 +242,37 @@
     });
     var waBtn = $('#waDirectBtn');
     if (waBtn) {
-      waBtn.textContent = lang === 'es' ? 'Contactar por WhatsApp' : 'Chat on WhatsApp';
-      waBtn.href = lang === 'es' ? WA_URL : WA_URL_EN;
+      if (waBtn.textContent !== msg('wa.btn')) waBtn.textContent = msg('wa.btn');
+      if (waBtn.getAttribute('href') !== WA_URL[lang]) waBtn.setAttribute('href', WA_URL[lang]);
     }
+    renderCal();
     if (persist) store.set('fabioai-lang', lang);
   }
+
+  /* ───────── Google Calendar appointment button ─────────
+     Google's script renders one <button> right after `target` and never updates its label, so on each
+     language change #calBtn is emptied and the button rendered again with the new label.
+     #calBtn is display:contents, so the button still lays out as a direct item of .calslot's grid. */
+  var calBox = $('#calBtn'), calReady = false, calLabel = null;
+  function renderCal() {
+    if (!calReady || !calBox || !window.calendar || !calendar.schedulingButton) return;
+    var label = msg('cal.btn');
+    if (label === calLabel) return;
+    calLabel = label;
+    calBox.textContent = '';
+    var mark = document.createElement('span');
+    mark.hidden = true;
+    calBox.appendChild(mark);
+    calendar.schedulingButton.load({ url: calBox.dataset.url, color: '#EF6C00', label: label, target: mark });
+  }
+  function calStart() { calReady = true; renderCal(); }
+  if (document.readyState === 'complete') calStart(); else window.addEventListener('load', calStart);
 
   $$('.lang__btn').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.lang, true); });
   });
 
-  /* Marquee: clone the track once so the loop is seamless (after EN capture, so clones translate too). */
+  /* Marquee: clone the track once so the loop is seamless (the strip holds no translatable copy). */
   var strip = $('#stripInner');
   if (strip && strip.firstElementChild) {
     var clone = strip.firstElementChild.cloneNode(true);
