@@ -12,6 +12,7 @@
   };
 
   var WA_URL = 'https://wa.me/59162165130?text=' + encodeURIComponent('Hola Fabio, vi tu web y me gustaría recibir más información sobre tus servicios de producción audiovisual y contenido con IA.');
+  var WA_URL_EN = 'https://wa.me/59162165130?text=' + encodeURIComponent("Hi Fabio, I saw your website and I'd like more information about your audiovisual production and AI content services.");
 
   /* ───────── Spanish copy ───────── */
   var ES = {
@@ -32,7 +33,7 @@
     'cmp.title': 'Publicar por publicar <span class="accent">ya no convierte.</span>',
     'cmp.body': 'Tu marca necesita volumen constante sin perder autoridad visual. Una productora tradicional tarda semanas en entregar una sola pieza; un editor genérico entrega volumen sin dirección ni retención. Mi modelo resuelve ambos frentes: criterio cinematográfico y flujos de IA para escalar con realismo.',
     'cmp.trad': 'Productora tradicional', 'cmp.tradVal': '≈ 6 semanas · 1 pieza',
-    'cmp.me': 'Flujo Fabio AI', 'cmp.meVal': '≈ 3 a 6 días · multiformato',
+    'cmp.me': 'Mi sistema de trabajo', 'cmp.meVal': '≈ 3 a 6 días · multiformato',
     'cmp.c1': 'Productora tradicional', 'cmp.c1a': 'Alta calidad, entrega lenta', 'cmp.c1b': 'Costos fijos elevados', 'cmp.c1c': 'Poca adaptabilidad a redes',
     'cmp.c2': 'Freelance tradicional', 'cmp.c2a': 'Rápido, sin visión comercial', 'cmp.c2b': 'Sin dirección creativa', 'cmp.c2c': 'Resultados inconsistentes',
     'cmp.c3': 'Mi sistema de trabajo', 'cmp.c3a': 'Estética de agencia en días', 'cmp.c3b': 'Dirección integral de principio a fin', 'cmp.c3c': 'Múltiples piezas listas para convertir',
@@ -46,7 +47,7 @@
     'pil.3t': 'Un solo responsable creativo',
     'pil.3b': 'Tratas directamente con quien diseña la estrategia, dirige el rodaje y supervisa la postproducción.',
     'pil.bts': 'Detrás de cámaras',
-    'proc.tag1': 'Preproducción', 'proc.tag2': 'Rodaje',
+    'proc.tag1': 'Preproducción', 'proc.tag2': 'Rodaje', 'proc.tag3': 'Postproducción',
     'proc.title': 'Un proceso creativo <span class="accent">claro y ágil</span>',
     'proc.intro': 'Elimino la fricción operativa. Una producción con rodaje presencial toma ≈ 6 días; una producción 100% asistida por IA toma 3 días. Ambos caminos siguen un proceso estructurado con 2 rondas de revisión incluidas.',
     'proc.kind1': 'Producción presencial · ≈ 6 días',
@@ -162,6 +163,7 @@
     var waBtn = $('#waDirectBtn');
     if (waBtn) {
       waBtn.textContent = lang === 'es' ? 'Contactar por WhatsApp' : 'Chat on WhatsApp';
+      waBtn.href = lang === 'es' ? WA_URL : WA_URL_EN;
     }
     if (persist) store.set('fabioai-lang', lang);
   }
@@ -169,23 +171,6 @@
   $$('.lang__btn').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.lang, true); });
   });
-
-  /* Direct WhatsApp CTA injection next to main booking button */
-  var calBtn = $('[data-i18n="bk.calBtn"]');
-  if (calBtn && calBtn.parentNode && !$('#waDirectBtn')) {
-    var waLink = document.createElement('a');
-    waLink.id = 'waDirectBtn';
-    waLink.href = WA_URL;
-    waLink.target = '_blank';
-    waLink.rel = 'noopener noreferrer';
-    waLink.className = calBtn.className;
-    waLink.style.marginTop = '0.75rem';
-    waLink.style.display = 'inline-flex';
-    waLink.style.alignItems = 'center';
-    waLink.style.justifyContent = 'center';
-    waLink.textContent = 'Contactar por WhatsApp';
-    calBtn.parentNode.appendChild(waLink);
-  }
 
   /* Marquee: clone the track once so the loop is seamless (after EN capture, so clones translate too). */
   var strip = $('#stripInner');

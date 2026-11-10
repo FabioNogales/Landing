@@ -271,13 +271,13 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 .proc__photo { position: relative; order: -1; align-self: center; rotate: -2.5deg; border-radius: var(--r-card); overflow: hidden; background: var(--bone); box-shadow: 0 18px 44px rgba(0, 0, 0, .18), 0 3px 10px rgba(0, 0, 0, .1); }
 .proc__photo[data-reveal] { transition: opacity .8s var(--ease), transform .8s var(--ease), rotate .5s var(--ease); }
 .proc__photo img { width: 100%; height: auto; }
+.proc__photo--alt { rotate: 2deg; }
 .proc__photo:hover { rotate: 0deg; }
-.proc__cluster { position: relative; order: -1; grid-column: 2 / span 2; aspect-ratio: 788 / 500; }
-.proc__shot--a { --r: -1.5deg; width: 66%; left: 0; top: 3%; aspect-ratio: 1500 / 697; z-index: 2; }
-.proc__shot--b { --r: 4deg; width: 27%; right: 3%; top: 0; aspect-ratio: 4 / 5; z-index: 3; }
-.proc__shot--c { --r: 2deg; width: 40%; left: 4%; top: 50%; aspect-ratio: 3 / 2; z-index: 3; }
-.proc__shot--d { --r: -3deg; width: 33%; left: 40%; top: 60%; aspect-ratio: 3 / 2; z-index: 4; }
-.proc__shot--e { --r: 2.5deg; width: 34%; right: 0; top: 56%; aspect-ratio: 3 / 2; z-index: 3; }
+/* Production: 3-card cluster in the middle column (same footprint as the 4:5 stage photos) */
+.proc__cluster { position: relative; order: -1; align-self: center; aspect-ratio: 4 / 5; }
+.proc__shot--a { --r: -2deg; width: 62%; left: 0; top: 0; aspect-ratio: 3 / 4; z-index: 2; }
+.proc__shot--b { --r: 3.5deg; width: 50%; right: 0; top: 14%; aspect-ratio: 4 / 5; z-index: 3; }
+.proc__shot--c { --r: -1.5deg; width: 74%; right: 6%; top: 58%; aspect-ratio: 3 / 2; z-index: 4; }
 .proc__tag { position: absolute; left: 16px; bottom: 16px; padding: 4px 11px; border-radius: var(--r-pill); background: rgba(0, 0, 0, .62); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .step { position: relative; }
 .step__head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
@@ -465,9 +465,10 @@ a.wcard { display: block; }
   .step__head { grid-row: span 4; flex-direction: column; margin: 0; align-self: stretch; }
   .step__rule { width: 1px; height: 100%; min-height: 40px; }
   .step .time { justify-self: start; }
-  .proc__photo, .proc__cluster { order: 0; grid-column: auto; margin-left: 58px; }
+  .proc__photo, .proc__cluster { order: 0; margin-left: 58px; }
   .proc__photo { max-width: 400px; rotate: -1.5deg; }
-  .proc__cluster { max-width: 620px; width: calc(100% - 58px); }
+  .proc__photo--alt { rotate: 1.5deg; }
+  .proc__cluster { max-width: 400px; width: calc(100% - 58px); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .sticky { display: block; }
   .about__photo { max-width: 380px; }
@@ -499,12 +500,7 @@ a.wcard { display: block; }
   .bts__card--b { width: 44%; left: auto; right: 0; top: 38%; }
   .bts__card--c { width: 66%; left: 0; right: auto; top: 54%; }
   .proc__photo, .proc__cluster { margin-left: 0; }
-  .proc__cluster { width: 100%; aspect-ratio: 335 / 430; }
-  .proc__shot--a { width: 92%; left: 0; top: 0; }
-  .proc__shot--b { width: 40%; right: 0; top: 26%; }
-  .proc__shot--c { width: 56%; left: 0; top: 34%; }
-  .proc__shot--d { width: 50%; left: 6%; top: 65%; }
-  .proc__shot--e { width: 50%; right: 0; top: 69%; }
+  .proc__cluster { width: 100%; }
   .alt.vp { padding: 26px 24px; }
   .bar__label { flex-direction: column; gap: 2px; }
   .faq__a { padding-right: 0; }
