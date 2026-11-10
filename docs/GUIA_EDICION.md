@@ -51,11 +51,9 @@ Reglas rápidas:
 
 Tu diseño trae bloques de ejemplo. Hoy siguen **visibles**, tal como los diseñaste:
 
-- Trabajo: 5 tarjetas `[Client 02…06]` ("Video pendiente", clase `is-pending`) — la 1ª ya es un reel real ("Reel destacado").
+Hoy no queda contenido de plantilla visible: el portafolio ya tiene 16 piezas reales, y tampoco quedan FAQ pendientes, caso de estudio, huecos de foto ni ciudad del footer. No existe sección de testimonios (a propósito, hasta tener citas reales).
 
-Ya no quedan FAQ pendientes, caso de estudio, huecos de foto ni ciudad del footer.
-
-Para cada uno: rellena el texto (español en el HTML + inglés en `EN` de `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
+Si añades nuevos bloques de plantilla: rellena el texto (español en el HTML + inglés en `EN` de `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
 
 **Interruptor para ocultarlos todos de una vez** (sin borrar nada): en `index.html`, cambia `<html lang="es">` por `<html lang="es" class="hide-pending">`. Para volver a mostrarlos, quita la clase.
 
@@ -67,9 +65,15 @@ Para cada uno: rellena el texto (español en el HTML + inglés en `EN` de `main.
 
 **Fotos de proceso / detrás de cámaras** — hay 14 imágenes en `assets/img/process/`: el collage inclinado de la sección de pilares (`bts-01…03`, 3 tarjetas `.bts__card`, con parallax), las fotos de las 3 etapas del proceso (`pre-01` Preproducción, `prod-01…03` Producción, `post-01` Postproducción; etiquetas `proc.tag1…3`) y la tira continua `.film` entre "En cifras" y la banda naranja (`strip-01…06`; 75 s por vuelta, se pausa al pasar el cursor; se clona y arranca solo al acercarse, para no cargar fotos por adelantado; la velocidad está en `.film.is-on .film__track` de `styles.css`). Para añadir o cambiar una foto: optimízala a ≈ 1400–1600 px en el lado largo, < 250 KB, sin EXIF/GPS; guarda la copia en `assets/img/process/` y apunta el `src` de la etiqueta `<img>` correspondiente en `index.html` (con su `alt` en español). Los originales van en `assets/img/bts/` (no se publican ni se suben a git). O pásame la foto y la agrego.
 
+**Etapa de producción** — la viñeta `proc.2c` indica rodaje en 4K con iluminación profesional y asistente de cámara cuando el proyecto lo requiere (español en el HTML, inglés en `EN`).
+
+**Página de privacidad** — `privacidad.html` (español nativo) + `assets/js/privacidad.js` (inglés en su objeto `EN`, claves `pv.*`; usa la misma clave `fabioai-lang` de localStorage, así que respeta el idioma elegido en la landing). Se edita igual que el resto: español en el HTML, inglés en `privacidad.js`. Está enlazada desde el footer (`ft.privacy`) y en `sitemap.xml`. Declara que el sitio no usa cookies publicitarias ni de analítica: si añades analítica o píxeles, actualízala.
+
+**Redirección del dominio de Firebase** — al inicio del `<head>` de `index.html` hay un script en línea que manda `fabioai-landing.web.app` y `fabioai-landing.firebaseapp.com` a `fabionogales.com` (conserva ruta, query y hash). Hay que mantenerlo: ese dominio por defecto no se puede eliminar.
+
 **Separador `.band--seam`** — línea fina entre dos bandas claras consecutivas (añádela a la segunda `<section class="band …">`).
 
-**Agregar una pieza de portafolio** — copia la tarjeta 1 (`<a class="wcard" …>`), cambia `data-tag` (Brand film / Social / Product / Testimonial), el enlace (Vimeo / YouTube / Instagram), la etiqueta y los dos textos. Para una tarjeta con enlace, usa la etiqueta `<a>`; las de plantilla son `<article>`.
+**Portafolio (Trabajo seleccionado)** — 16 tarjetas `<a class="wcard">` de Instagram en 4 categorías (`data-tag` = `data-filter` del botón): `ugc` 5, `eventos` 4, `producto` 2, `agencia` 5. Son tarjetas compactas de referencia (sin miniatura) y se muestran todas; no hay botón "Ver más". Para **agregar**: copia una tarjeta `a.wcard`, pon su `data-tag` (`ugc`, `eventos`, `producto` o `agencia`), cambia el `href` por el enlace del reel **sin parámetros** (`https://www.instagram.com/reel/XXXX/`, sin `?igsh=…`) y ajusta el número tras el `·`. El título de la tarjeta es la categoría (`wrk.f1…f4`, ya traducida en `EN`); si creas una categoría nueva, añade su botón `data-filter`, su clave `wrk.fN` en el HTML y en `EN`. Para **quitar**: borra la tarjeta y renumera las de esa categoría. El texto común "Ver en Instagram" es `wrk.ig`.
 
 **Agregar un logo de cliente** — el carrusel usa los PNG optimizados de `assets/img/clients/` (fondo transparente, ~2× el tamaño visible, < 40 KB). Copia una línea `<img class="logo logo--nombre" …>` con su `<i></i>` dentro de **cada uno de los 3 bloques** de la franja en `index.html`, y define su alto en `assets/css/styles.css` (`.logo--nombre { height: 36px; }`). Tus originales viven en `assets/img/logos/` y **no se publican**. Lo más simple: pásame el logo y yo lo optimizo y lo agrego.
 
@@ -79,7 +83,7 @@ Para cada uno: rellena el texto (español en el HTML + inglés en `EN` de `main.
 
 **Cambiar el calendario** — el botón lo dibuja `main.js` dentro de `<div id="calBtn" data-url="…">` (en `.calslot`); cambia la URL en `data-url`. Hoy usa la agenda de `fabioaioficial@gmail.com`. La etiqueta sigue el idioma (`cal.btn` en `STR`). Debajo hay un botón de WhatsApp (+591 62165130) con el mismo criterio: texto en `STR` (`wa.btn`) y enlace en `WA_URL`.
 
-**Formulario** — envía a Formspree (`data-endpoint` en `<form id="contactForm">`). Revisa en formspree.io que las notificaciones lleguen a `fabioaioficial@gmail.com`. Con `data-endpoint=""` el formulario abre el correo del visitante.
+**Formulario** — envía a Formspree (`data-endpoint` en `<form id="contactForm">`). Destino confirmado: `fabioaioficial@gmail.com`. Con `data-endpoint=""` el formulario abre el correo del visitante.
 
 ## 4. Probar y publicar
 
@@ -90,7 +94,7 @@ python -m http.server 4321      # probar en http://localhost:4321
 firebase.cmd deploy --only hosting                    # publicar (Git Bash: firebase deploy --only hosting)
 firebase.cmd hosting:channel:deploy vista-previa      # URL temporal para revisar sin tocar el sitio en vivo
 ```
-Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20261110c` y `main.js?v=20261110c`) para evitar la caché.
+Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20261111b` y `main.js?v=20261111b`) para evitar la caché.
 Después guarda en GitHub: `git add -A`, `git commit -m "descripción"`, `git push`.
 
 > Atajo: dime "cambia X por Y y publícalo" y lo hago en los dos idiomas, lo pruebo y lo publico.

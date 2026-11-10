@@ -36,12 +36,12 @@ Resolve-DnsName fabionogales.com -Type TXT       # debe incluir hosting-site=fab
 Resolve-DnsName www.fabionogales.com -Type CNAME # debe apuntar a fabioai-landing.web.app
 ```
 
-## Pendiente de decidir: `fabioai-landing.web.app`
+## `fabioai-landing.web.app`
 
-La URL `fabioai-landing.web.app` sigue activa. Opciones (a la espera de tu decisión): añadir otro sitio de Hosting en el mismo proyecto para reutilizarlo con otros proyectos, redirigir `web.app` al dominio, o mover la landing a otro host.
+Decidido: el dominio por defecto de Firebase no se puede eliminar y el sitio corre sobre Firebase Hosting, así que el proyecto debe seguir existiendo. Un script en línea al inicio del `<head>` de `index.html` redirige `fabioai-landing.web.app` y `fabioai-landing.firebaseapp.com` a `https://fabionogales.com` (conserva ruta, query y hash).
 
-## Con el dominio ya conectado
+## Search Console y correo
 
+- **Search Console:** propiedad de dominio verificada. El sitemap es válido (responde 200 con `application/xml`); envíalo como URL completa `https://fabionogales.com/sitemap.xml`. Al principio puede decir "No se pudo obtener": es normal y se resuelve solo.
+- **Correo:** `contacto@fabionogales.com` funciona con Cloudflare Email Routing y reenvía a `fabioaioficial@gmail.com`. Para responder desde esa dirección falta configurar en Gmail "Enviar como" con `smtp.gmail.com`, puerto 587 y una contraseña de aplicación (pendiente del dueño).
 - Probar la vista previa al compartir el enlace (WhatsApp / LinkedIn / X): debe salir la tarjeta con tu foto y el titular.
-- Dar de alta el sitio en **Google Search Console** (propiedad de dominio, verificación por DNS en Cloudflare) y enviar `https://fabionogales.com/sitemap.xml`.
-- Opcional: correo con el dominio (`contacto@fabionogales.com`) requiere un servicio de correo aparte (Google Workspace, Zoho…) y registros MX en Cloudflare.

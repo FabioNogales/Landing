@@ -2,16 +2,17 @@
 
 Landing page de una sola página (bilingüe ES/EN) para el portafolio de Fabio Nogales: producción audiovisual end-to-end para marcas y agencias, potenciada con IA. Sitio estático, sin build step.
 
-- **Sitio en vivo:** https://fabioai-landing.web.app
-- **Dominio propio (activo):** https://fabionogales.com (ver `docs/DEPLOY_FIREBASE.md`)
+- **Sitio en vivo:** https://fabionogales.com (ver `docs/DEPLOY_FIREBASE.md`; `fabioai-landing.web.app` redirige aquí)
 - **Diseño original:** carpeta `fabioai-landing` (referencia intacta); este repo es el sitio publicado.
 
 ## Estructura
 
 ```
 index.html                Toda la página (textos en español + marcado)
+privacidad.html           Política de privacidad (ES nativo; EN en assets/js/privacidad.js)
 assets/css/styles.css     Estilos (paleta y tipografías al inicio del archivo)
 assets/js/main.js         Interacciones, cambio ES/EN y diccionario en inglés (objeto EN)
+assets/js/privacidad.js   Cambio ES/EN de la página de privacidad
 assets/img/               fabio.jpg, fabio-about.jpg, og.jpg (vista previa al compartir)
 assets/img/bts/           Originales de fotos de rodaje (NO se publican ni se suben a git)
 assets/img/process/       14 fotos de proceso optimizadas (se publican)

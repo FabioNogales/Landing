@@ -2,28 +2,16 @@
 
 Copia cada bloque como un issue en GitHub (plantilla en `.github/ISSUE_TEMPLATE/pendiente.md`) o dime y los creo con `gh` cuando lo tengas instalado.
 
-## Infra y formulario
+## Pendiente
 
-### 1. Comprobar el destino del formulario
-El formulario usa Formspree (`mqpklabq`). Sigue **sin verificar**: confirmar en formspree.io que las notificaciones llegan a `fabioaioficial@gmail.com` y enviar una consulta de prueba desde `fabionogales.com`. `Labels: feature, P1`
+### 1. Correo con dominio: "Enviar como" (dueño)
+`contacto@fabionogales.com` ya recibe (Cloudflare Email Routing → `fabioaioficial@gmail.com`). Falta configurar en Gmail "Enviar como" con `smtp.gmail.com`, puerto 587 y contraseña de aplicación. Opcional: mostrar `contacto@` en el sitio en lugar del Gmail. `Labels: infra, P2`
 
-### 2. Decidir qué hacer con `fabioai-landing.web.app` y el proyecto Firebase
-Opciones: añadir otro sitio de Hosting en el mismo proyecto (para otros proyectos), redirigir `web.app` al dominio, o mover la landing a otro host. A la espera de la decisión del dueño. `Labels: infra, P2`
+### 2. Portadas para las tarjetas del portafolio (opcional)
+Las 16 tarjetas son referenciales, sin miniatura. Si se quiere, añadir capturas de portada. `Labels: contenido, media, P3`
 
-## Por confirmar (datos que me diste con reservas)
-
-### 3. Requerimientos de la etapa de producción (4K)
-Publiqué "cámara 4K; los requerimientos se confirman contigo antes del rodaje" y "asistencia de cámara e iluminación según la magnitud del evento". Si ya tienes definido el equipo (cámara, iluminación, asistente), conviene concretarlo. `Labels: contenido, P2`
-
-## Contenido de plantilla (visible mientras no se rellene)
-
-### 4. Trabajo seleccionado
-Solo la 1ª tarjeta es real (reel de Instagram, "Reel destacado"). Quedan 5 tarjetas `[Client 02…06]`; tú elegirás qué piezas van. Recomendado subirlas a Vimeo o YouTube (no listado) y enlazarlas. `Labels: contenido, media, P1`
-
-### 5. Testimonios
+### 3. Testimonios
 El diseño no incluye la sección (a propósito, hasta tener citas reales). `Labels: contenido, P3`
-
-> Todo lo pendiente se puede ocultar de una vez con `class="hide-pending"` en `<html>` (ver `docs/GUIA_EDICION.md`).
 
 ## Textos que redacté yo (confirmar)
 
@@ -34,15 +22,20 @@ El diseño no incluye la sección (a propósito, hasta tener citas reales). `Lab
 
 ## Mejoras opcionales
 
-- Política de privacidad (el diseño tiene un enlace "Privacy" que apunta a `#`).
-- Correo con dominio (`contacto@fabionogales.com`).
-- Search Console + sitemap: el dominio está activo; crear la propiedad de dominio (verificación por DNS en Cloudflare) y enviar `https://fabionogales.com/sitemap.xml`.
 - Traducir al español los `aria-label` y `alt` que siguen en inglés (p. ej. `aria-label="Sections"`, `"Social"`).
 - Página `/en/` con `hreflang` si se quiere tráfico de búsqueda en inglés (hoy el inglés solo existe vía JavaScript y Google indexa el español).
 - Limpieza opcional de clases CSS sin uso: `.ticks` y `.pull`.
 
 ## Hecho
 
+- Destino del formulario confirmado: Formspree notifica a `fabioaioficial@gmail.com`.
+- Portafolio real: 16 reels de Instagram en 4 categorías (UGC con IA 5, Eventos y marcas 4, Producto e IA 2, Agencia 5), tarjetas compactas sin "Ver más".
+- Producción: viñeta `proc.2c` (4K, iluminación profesional y asistente de cámara cuando se requiere); cierra el pendiente de requerimientos.
+- `fabioai-landing.web.app` / `firebaseapp.com` redirigen a `fabionogales.com` (no se pueden eliminar y el sitio corre en Firebase: el proyecto se mantiene).
+- Página de privacidad `privacidad.html` (ES/EN), enlazada en el footer y en el sitemap.
+- Search Console: propiedad de dominio verificada y sitemap enviado como URL completa.
+- Correo `contacto@fabionogales.com` recibiendo vía Cloudflare Email Routing.
+- Sección de testimonios: decidido no incluirla hasta tener citas reales.
 - Diseño de `fabioai-landing` publicado respetando su estructura con el contenido real.
 - Carrusel de logos de 7 clientes (Bransign, Itacamba, Yango, Grazia, Kinia, Wallbit, Clarita) con la misma velocidad lenta del diseño.
 - Cifras reales: 6 piezas por jornada de 5 h, 7–8 piezas con 6 h (creadores) y +30 % de rendimiento por video (ej. Bransign). La métrica de −30 % en costos se retiró (ya no hace falta su base de comparación).
@@ -51,7 +44,7 @@ El diseño no incluye la sección (a propósito, hasta tener citas reales). `Lab
 - "El problema": recuadro de propuesta de valor. Pilares condensados (título + una línea), pilar 02 reformulado ("IA y automatización para producir y escalar más rápido"; coherencia del mensaje de IA resuelta) y galería "Detrás de cámaras" preparada.
 - Fotos reales de proceso (14 en `assets/img/process/`; originales en `assets/img/bts/`, sin publicar): collage en pilares, una foto por etapa (incluida postproducción) y tira continua.
 - FAQ completas: inversión 20–500 USD por proyecto estratégico de marketing digital, white label, necesidades del cliente y rondas de revisión.
-- Ayuda de CSS `.band--seam` y versionado de assets (hoy `?v=20261110c`).
+- Ayuda de CSS `.band--seam` y versionado de assets (hoy `?v=20261111b`).
 - Calendario de `fabioaioficial@gmail.com`, formulario (Formspree), cambio ES/EN (español nativo en el HTML, inglés en `EN` de `main.js`), redes reales, imagen para compartir, `robots.txt` y `sitemap.xml`.
 - Dominio `fabionogales.com` y `www` **activos** en Firebase Hosting (HTTPS; `www` y `http` redirigen). Los 3 registros DNS de Cloudflare están puestos y no deben borrarse (renovación del certificado).
 - Botón de WhatsApp (+591 62165130) bajo el calendario, con mensaje prellenado por idioma; el botón del calendario cambia de idioma.
