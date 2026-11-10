@@ -16,14 +16,14 @@
 
   /* ───────── Spanish copy ───────── */
   var ES = {
-    'meta.title': 'Fabio Nogales — Producción Audiovisual & Estrategia de Contenido con IA',
-    'meta.desc': 'Dirección audiovisual y flujos de trabajo con IA para marcas, agencias y creadores. Contenido realista, eficiente y diseñado para retener y convertir.',
+    'meta.title': 'Fabio Nogales | Producción Audiovisual y Creación de Contenido con IA',
+    'meta.desc': 'Productor audiovisual y estratega de video corto (Reels, TikTok y Ads) potenciado con IA. Rodaje 4K, B-roll hiperrealista y postproducción en 3 a 6 días.',
     'nav.work': 'Portafolio', 'nav.process': 'Proceso', 'nav.services': 'Servicios', 'nav.about': 'Sobre mí', 'nav.contact': 'Contacto',
     'nav.cta': 'Agenda un diagnóstico', 'nav.ctaShort': 'Agendar',
-    'hero.chip': 'Dirección audiovisual + <b>Flujos de trabajo con IA</b>',
-    'hero.title': 'Calidad cinematográfica. Tiempos de <span class="accent">startup.</span>',
-    'hero.sub': 'Producción de video estratégica para marcas y agencias que buscan contenido realista y de alto impacto sin los plazos ni costos de una productora tradicional. Uno el criterio de rodaje profesional con inteligencia artificial generativa.',
-    'hero.cta': 'Agenda una sesión de diagnóstico', 'hero.reel': 'Ver el reel',
+    'hero.chip': 'Producción Audiovisual & <b>Flujos de Contenido con IA</b>',
+    'hero.title': 'Producción Audiovisual & <span class="accent">Contenido con IA</span> para Marcas',
+    'hero.sub': 'Dirección audiovisual, rodaje y postproducción con IA para marcas y agencias. Escala tu contenido vertical y campañas publicitarias con resultados realistas, sin los costos ni demoras de una productora tradicional.',
+    'hero.cta': 'Hablemos de tu proyecto', 'hero.reel': 'Ver el reel (1 min)',
     'hero.role': 'AI Video Producer & Short-Form Content Strategist',
     'hero.note': '+250 piezas entregadas para marcas y agencias como Bransign, Itacamba y Grazia.ai.',
     'hero.stat': 'días de preproducción a entrega final',
@@ -80,9 +80,7 @@
     'wrk.empty': 'Próximamente nuevas piezas en esta categoría.', 'wrk.reel': 'Ver el reel completo',
     'num.eyebrow': 'Resultados',
     'num.title': 'El rendimiento de una <span class="accent">producción bien dirigida</span>',
-    'num.1': 'piezas verticales de alta retención obtenidas en una sola jornada de rodaje',
-    'num.2': 'piezas de storytelling o UGC listas para pauta y crecimiento orgánico',
-    'num.3': 'de mejora en retención y entrega frente a flujos tradicionales en proyectos para agencias',
+    'num.3': 'de mejora en rendimiento por video: más retención y mejor entrega',
     'fit.title': 'Para quién es <span class="accent">este servicio</span>',
     'fit.1': 'Agencias de marketing que necesitan un socio audiovisual puntual, resolutivo y con criterio de marca.',
     'fit.2': 'Marcas y empresas que buscan profesionalizar su presencia en video corto y anuncios sin contratar un equipo interno.',
@@ -135,7 +133,7 @@
   /* ───────── i18n ───────── */
   var lang = 'es';
   var metaDesc = $('meta[name="description"]');
-  var EN_META = { title: 'Fabio Nogales — AI Video Producer & Short-Form Content Strategist', desc: 'Audiovisual direction and AI workflows for brands and agencies. Realistic, high-retention video production at startup speed.' };
+  var EN_META = { title: 'Fabio Nogales | Video Production & AI Content Creation', desc: 'Video producer and short-form strategist (Reels, TikTok & Ads) powered by AI. 4K shooting, hyperrealistic B-roll and post-production in 3 to 6 days.' };
 
   $$('[data-i18n]').forEach(function (n) { n.dataset.en = n.innerHTML; });
   $$('[data-i18n-ph]').forEach(function (n) { n.dataset.enPh = n.getAttribute('placeholder'); });
