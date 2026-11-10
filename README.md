@@ -9,12 +9,12 @@ Landing page de una sola página (bilingüe ES/EN) para el portafolio de Fabio N
 ## Estructura
 
 ```
-index.html                Toda la página (textos en inglés + marcado)
+index.html                Toda la página (textos en español + marcado)
 assets/css/styles.css     Estilos (paleta y tipografías al inicio del archivo)
-assets/js/main.js         Interacciones, cambio ES/EN y diccionario en español (objeto ES)
+assets/js/main.js         Interacciones, cambio ES/EN y diccionario en inglés (objeto EN)
 assets/img/               fabio.jpg, fabio-about.jpg, og.jpg (vista previa al compartir)
 assets/img/bts/           Originales de fotos de rodaje (NO se publican ni se suben a git)
-assets/img/process/       Fotos de rodaje optimizadas (se publican)
+assets/img/process/       14 fotos de proceso optimizadas (se publican)
 assets/img/clients/       Logos optimizados del carrusel (se publican)
 assets/img/logos/         Logos originales (fuente; NO se publican)
 robots.txt, sitemap.xml   SEO

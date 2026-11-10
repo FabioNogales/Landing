@@ -11,59 +11,61 @@ Si vuelves a cambiar el diseño en `fabioai-landing`, avísame y traigo esos cam
 
 ## 1. Cómo funcionan los textos (el sitio es bilingüe)
 
-Cada texto vive en **dos sitios** unidos por una clave:
+El **español es el idioma nativo**: vive directamente en `index.html` (es lo que leen Google y quien no tiene JavaScript). El **inglés** vive en `assets/js/main.js`, en el objeto `EN = { ... }`, unido al elemento por una clave `data-i18n`.
 
 | Idioma | Dónde está | Cómo encontrarlo |
 |---|---|---|
-| Inglés | `index.html` | el elemento con `data-i18n="clave"` |
-| Español (idioma por defecto) | `assets/js/main.js`, objeto `ES = { ... }` | la misma `'clave'` |
+| Español (por defecto) | `index.html` | el texto dentro del elemento con `data-i18n="clave"` |
+| Inglés | `assets/js/main.js`, objeto `EN` | la misma `"clave"` |
 
-**Ejemplo — cambiar el subtítulo del hero:** en `index.html` busca `data-i18n="hero.sub"` y cambia el inglés; en `assets/js/main.js` busca `'hero.sub'` y cambia el español.
+**Ejemplo — cambiar el subtítulo del hero:** en `index.html` busca `data-i18n="hero.sub"` y cambia el español; en `assets/js/main.js` busca `"hero.sub"` dentro de `EN` y cambia el inglés.
 
 Reglas rápidas:
 - Cambia cada texto **en los dos sitios**, o un idioma queda desactualizado.
 - Palabra en naranja: `<span class="accent">palabra</span>` (en ambos idiomas).
+- Placeholders de campos: `data-i18n-ph="clave"`, con su entrada en `EN`.
 - Textos **sin** `data-i18n` (nombres de redes y marcas, el email) solo están en `index.html`.
-- Texto nuevo: pon `data-i18n="mi.clave"` en el elemento y añade `'mi.clave': 'texto en español',` dentro de `ES`.
+- Texto nuevo: pon `data-i18n="mi.clave"` en el elemento (con el español dentro) y añade `"mi.clave": "text in English",` dentro de `EN`.
+- Textos sin elemento en el HTML (mensajes del formulario `js.*`, botón de WhatsApp `wa.btn`, etiqueta del calendario `cal.btn`, título y descripción en inglés) están en `STR = { es, en }`, en `main.js`.
+- Enlaces de WhatsApp (número +591 62165130, con mensaje prellenado por idioma): `WA_URL = { es, en }`, en `main.js`.
+- `setLang('en')` aplica `EN`; `setLang('es')` restaura el español que lee del DOM la primera vez.
 
 | Prefijo de clave | Sección |
 |---|---|
 | `nav.` | menú superior |
-| `hero.` `ph.` | portada (título, subtítulo, botones, nombre y rol bajo la foto `hero.role`, nota "+250 piezas…", "3–6 días", tarjeta del reel) |
+| `hero.` `ph.` | portada (título "Producción Audiovisual & Contenido con IA para Marcas", subtítulo, botones, nombre y rol bajo la foto `hero.role`, nota "+250 piezas…", "3–6 días", tarjeta del reel) |
 | `cmp.` | "El problema" (barras, 3 columnas y recuadro de propuesta de valor `vpT` / `vpB`) |
 | `pil.` | "Por qué esto funciona distinto" (cada pilar: título + una línea) y collage "Detrás de cámaras" (`pil.bts`) |
-| `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) y etiquetas de las fotos (`proc.tag1` "Preproducción", `proc.tag2` "Rodaje") |
-| `num.` | banda "En cifras" (`1`, `2`, `3` = etiquetas de cada cifra) |
+| `proc.` | proceso: 3 etapas (`1`, `2`, `3`: `t` título, `d` resumen, `a b c` viñetas, `x` chip de tiempo) + producciones con IA (`altT`, `altB`) y etiquetas de las fotos (`proc.tag1` "Preproducción", `proc.tag2` "Producción", `proc.tag3` "Postproducción") |
+| `num.` | banda "En cifras" (hoy una sola cifra, `num.3`) |
 | `cta.text` | banda naranja |
 | `srv.` | servicios |
 | `wrk.` `todo.` | trabajo y chips "Pending" (`todo.video`) |
 | `fit.` | "Con quién trabajo mejor" |
 | `ab.` | sobre mí |
 | `faq.` | preguntas frecuentes (`1q` pregunta, `1a` respuesta) |
-| `bk.` | agendar y formulario |
+| `bk.` | agendar y formulario (incluye el texto de WhatsApp `bk.alt`) |
 | `ft.` `js.` | footer y mensajes del formulario |
 
 ## 2. Contenido que aún es de plantilla (marcado con chips "Pending")
 
 Tu diseño trae bloques de ejemplo. Hoy siguen **visibles**, tal como los diseñaste:
 
-- Trabajo: 5 tarjetas `[Client 02…06]` ("Video pending") — la 1ª ya es un reel real ("Reel destacado").
-- Detrás de cámaras: 3 huecos de foto (ver "Fotos de Detrás de cámaras" abajo).
-- Footer: la ciudad.
+- Trabajo: 5 tarjetas `[Client 02…06]` ("Video pendiente", clase `is-pending`) — la 1ª ya es un reel real ("Reel destacado").
 
-Ya no quedan FAQ pendientes ni caso de estudio (esa sección se eliminó).
+Ya no quedan FAQ pendientes, caso de estudio, huecos de foto ni ciudad del footer.
 
-Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
+Para cada uno: rellena el texto (español en el HTML + inglés en `EN` de `main.js`), y borra el chip `<span class="todo">…</span>` y la clase `is-pending`.
 
 **Interruptor para ocultarlos todos de una vez** (sin borrar nada): en `index.html`, cambia `<html lang="es">` por `<html lang="es" class="hide-pending">`. Para volver a mostrarlos, quita la clase.
 
 ## 3. Tareas frecuentes
 
-**Cambiar una cifra** — la banda "En cifras" (`id="numbers"`) tiene 3 cifras. Cada una es `<p class="metric__value" data-count="6" data-count2="7">6–7</p>`: `data-count` es el número (o el primero de un rango) y `data-count2` el segundo del rango; `data-prefix` / `data-suffix` añaden símbolos (`−`, `%`). Si es un número único, borra `data-count2`. Cambia también el texto entre las etiquetas, que es lo que ven quienes no tienen JavaScript. La etiqueta de debajo (`num.1`…`num.3`) va en inglés en el HTML y en español en `main.js`. Hoy: **6** (piezas por jornada de 5 h), **7–8** (creadores, 6 h) y **+30 %** (rendimiento por video, ej. Bransign). Los tiempos aparecen en la portada ("3–6"), en la barra del "problema" ("≈ 3 a 6 días · multiformato") y en el FAQ de tiempos; mantenlos coherentes.
+**Cambiar una cifra** — la banda "En cifras" (`id="numbers"`) usa `.metrics--single` y hoy tiene **una sola cifra**: `<p class="metric__value" data-count="30" data-prefix="+" data-suffix="%">+30%</p>`. `data-count` es el número (o el primero de un rango), `data-count2` el segundo del rango (si es único, no lo pongas); `data-prefix` / `data-suffix` añaden símbolos (`+`, `%`). Cambia también el texto entre las etiquetas, que es lo que ven quienes no tienen JavaScript. La etiqueta (`num.3`) va en español en el HTML y en inglés en `EN`. Hoy: **+30 %** de mejora en rendimiento por video (ej. Bransign). Para volver a varias cifras, quita `metrics--single` y añade más bloques. Los tiempos aparecen en la portada ("3–6"), en la barra del "problema" ("≈ 3 a 6 días · multiformato") y en el FAQ de tiempos; mantenlos coherentes.
 
 **Cambiar el proceso** — las 3 etapas están en `id="process"`. Cada etapa tiene título (`proc.1t`), resumen (`proc.1d`), viñetas (`proc.1a`, `1b`, `1c`) y un chip de tiempo (`proc.1x`); para quitar o añadir una viñeta, borra o copia un `<li>` y su clave. El estándar es ≈ 6 días (preproducción hasta 3, producción 1 día de 5–7 h, postproducción ≈ 2) con 2 rondas de revisión. El bloque "Producciones sistematizadas y con IA · 3 días" es `proc.altT` / `proc.altB`.
 
-**Fotos de proceso / detrás de cámaras** — hay tres tramos: el collage inclinado de la sección de pilares (3 tarjetas `.bts__card`, con parallax), las fotos de la sección de proceso (Preproducción con una foto de montaje y Producción con un grupo de 5 tarjetas; Postproducción no lleva imagen a propósito) y la tira continua `.film` entre "En cifras" y la banda naranja (75 s por vuelta, se pausa al pasar el cursor; se clona y arranca solo al acercarse, para no cargar fotos por adelantado; la velocidad está en `.film.is-on .film__track` de `styles.css`). Para añadir o cambiar una foto: optimízala a ≈ 1400–1600 px en el lado largo, < 250 KB, sin EXIF/GPS; guarda la copia en `assets/img/process/` (las publicadas son `shoot-01…07`, `set-01`, `crew-01`, `film-01…06`) y apunta el `src` de la etiqueta `<img>` correspondiente en `index.html`. Los originales van en `assets/img/bts/` (no se publican ni se suben a git). O pásame la foto y la agrego.
+**Fotos de proceso / detrás de cámaras** — hay 14 imágenes en `assets/img/process/`: el collage inclinado de la sección de pilares (`bts-01…03`, 3 tarjetas `.bts__card`, con parallax), las fotos de las 3 etapas del proceso (`pre-01` Preproducción, `prod-01…03` Producción, `post-01` Postproducción; etiquetas `proc.tag1…3`) y la tira continua `.film` entre "En cifras" y la banda naranja (`strip-01…06`; 75 s por vuelta, se pausa al pasar el cursor; se clona y arranca solo al acercarse, para no cargar fotos por adelantado; la velocidad está en `.film.is-on .film__track` de `styles.css`). Para añadir o cambiar una foto: optimízala a ≈ 1400–1600 px en el lado largo, < 250 KB, sin EXIF/GPS; guarda la copia en `assets/img/process/` y apunta el `src` de la etiqueta `<img>` correspondiente en `index.html` (con su `alt` en español). Los originales van en `assets/img/bts/` (no se publican ni se suben a git). O pásame la foto y la agrego.
 
 **Separador `.band--seam`** — línea fina entre dos bandas claras consecutivas (añádela a la segunda `<section class="band …">`).
 
@@ -75,7 +77,7 @@ Para cada uno: rellena el texto (inglés en el HTML + español en `main.js`), y 
 
 **Cambiar fotos** — reemplaza `assets/img/fabio.jpg` (portada, mejor 4:5) y `assets/img/fabio-about.jpg` (sobre mí) conservando el nombre.
 
-**Cambiar el calendario** — en `index.html`, dentro de `.calslot`, la constante `url:` del script de Google Calendar. Hoy usa la agenda de `fabioaioficial@gmail.com`.
+**Cambiar el calendario** — el botón lo dibuja `main.js` dentro de `<div id="calBtn" data-url="…">` (en `.calslot`); cambia la URL en `data-url`. Hoy usa la agenda de `fabioaioficial@gmail.com`. La etiqueta sigue el idioma (`cal.btn` en `STR`). Debajo hay un botón de WhatsApp (+591 62165130) con el mismo criterio: texto en `STR` (`wa.btn`) y enlace en `WA_URL`.
 
 **Formulario** — envía a Formspree (`data-endpoint` en `<form id="contactForm">`). Revisa en formspree.io que las notificaciones lleguen a `fabioaioficial@gmail.com`. Con `data-endpoint=""` el formulario abre el correo del visitante.
 
@@ -88,7 +90,9 @@ python -m http.server 4321      # probar en http://localhost:4321
 firebase.cmd deploy --only hosting                    # publicar (Git Bash: firebase deploy --only hosting)
 firebase.cmd hosting:channel:deploy vista-previa      # URL temporal para revisar sin tocar el sitio en vivo
 ```
-Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20261109` y `main.js?v=20261109`) para evitar la caché.
+Al cambiar CSS o JS, sube el número de versión en las URLs de `index.html` (hoy `styles.css?v=20261110c` y `main.js?v=20261110c`) para evitar la caché.
 Después guarda en GitHub: `git add -A`, `git commit -m "descripción"`, `git push`.
 
 > Atajo: dime "cambia X por Y y publícalo" y lo hago en los dos idiomas, lo pruebo y lo publico.
+
+`firebase.json` no publica `CLAUDE.md` ni `assets/img/Logo FabioAI/**` (además de los originales de `bts/` y `logos/`).
