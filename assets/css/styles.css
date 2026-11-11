@@ -118,6 +118,9 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 .nav-wrap.is-scrolled .nav { background: rgba(10, 10, 10, .92); }
 .brand { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -.04em; }
 .brand b { color: var(--orange); font-weight: 800; margin-left: 2px; }
+.brand, .footer__brand { display: inline-flex; align-items: center; gap: 8px; }
+.brand__mark { width: 28px; height: 28px; flex: none; display: block; }
+.footer__brand .brand__mark { width: 36px; height: 36px; }
 .nav__links { display: flex; gap: 4px; }
 .nav__links a { padding: 8px 14px; border-radius: 10px; font-size: 14px; font-weight: 500; color: var(--gray-300); transition: color .2s; }
 .nav__links a:hover { color: var(--white); }
@@ -421,7 +424,7 @@ a.wcard { display: flex; }
 /* ---------- Footer ---------- */
 .footer { background: var(--black); border-top: 1px solid var(--gray-900); padding: 72px 0 40px; }
 .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; }
-.footer__brand { font-family: var(--font-display); font-weight: 800; font-size: 30px; letter-spacing: -.04em; margin-bottom: 12px; }
+.footer__brand { display: flex; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 30px; letter-spacing: -.04em; margin-bottom: 12px; }
 .footer__brand b { color: var(--orange); }
 .footer__tag { color: var(--gray-300); max-width: 300px; font-size: 15px; }
 .footer__col { display: grid; gap: 10px; align-content: start; font-size: 15px; color: var(--gray-300); }
@@ -474,7 +477,8 @@ a.wcard { display: flex; }
   .show-sm { display: inline; }
   /* compact nav so logo + EN/ES + CTA + burger fit inside the pill down to 360px (they overflowed by 13px at 375px) */
   .nav { padding: 8px 8px 8px 16px; gap: 8px; }
-  .brand { font-size: 20px; }
+  .brand { font-size: 20px; gap: 6px; }
+  .brand__mark { width: 24px; height: 24px; }
   .nav__right { gap: 6px; }
   .lang__btn { padding: 6px 8px; }
   .btn--sm { padding: 10px 14px; }
