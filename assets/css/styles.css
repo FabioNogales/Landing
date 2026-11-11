@@ -471,6 +471,11 @@ a.wcard { display: flex; }
   .sticky { display: block; }
   .about__photo { max-width: 380px; }
 }
+@media (max-width: 400px) {
+  /* narrow phones: nav shows only the symbol (link keeps aria-label "Fabio AI") so CTA + EN/ES + burger never clip */
+  .nav .brand > span { display: none; }
+  .nav .brand__mark { width: 28px; height: 28px; }
+}
 @media (max-width: 620px) {
   :root { --gutter: 20px; }
   .hide-sm { display: none; }
