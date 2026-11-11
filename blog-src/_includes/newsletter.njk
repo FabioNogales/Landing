@@ -1,0 +1,35 @@
+{#- Fabio AI Lab signup. Driven by site.newsletter (blog-src/_data/site.json).
+    While newsletter.formAction is empty, renders a disabled "Muy pronto" state (no submissions). -#}
+{%- set nl = site.newsletter %}
+{%- set nlId = nlId or "nl" %}
+<section class="nl{% if not nl.formAction %} nl--soon{% endif %}" aria-labelledby="{{ nlId }}-title">
+  <div class="nl__copy">
+    <p class="nl__kicker">Newsletter</p>
+    <h2 class="nl__title display" id="{{ nlId }}-title">Suscríbete a <span class="accent">{{ nl.name }}</span></h2>
+    <p class="nl__promise">{{ nl.promise }}</p>
+  </div>
+  {%- if nl.formAction %}
+  <form class="nl__form" action="{{ nl.formAction }}" method="post" data-nl-form target="_blank">
+    <label class="nl__label" for="{{ nlId }}-email">Tu correo electrónico</label>
+    <div class="nl__row">
+      <input class="nl__input" id="{{ nlId }}-email" type="email" name="{{ nl.emailFieldName }}" autocomplete="email" placeholder="tu@correo.com" required>
+      {%- for k, v in nl.hiddenFields %}
+      <input type="hidden" name="{{ k }}" value="{{ v }}">
+      {%- endfor %}
+      <button class="btn btn--primary nl__btn" type="submit">Suscribirme</button>
+    </div>
+    <p class="nl__status" role="status" aria-live="polite" data-ok="{{ nl.successMessage }}" data-err="{{ nl.errorMessage }}"></p>
+    <p class="nl__note">Sin spam. Puedes darte de baja cuando quieras. Lee la <a href="/privacidad.html">política de privacidad</a>.</p>
+  </form>
+  {%- else %}
+  <div class="nl__form" aria-disabled="true">
+    <label class="nl__label" for="{{ nlId }}-email">Tu correo electrónico</label>
+    <div class="nl__row">
+      <input class="nl__input" id="{{ nlId }}-email" type="email" placeholder="tu@correo.com" disabled>
+      <button class="btn btn--primary nl__btn" type="button" disabled>Suscribirme</button>
+    </div>
+    <p class="nl__soon"><span class="nl__dot" aria-hidden="true"></span>Muy pronto: la suscripción se abrirá con el primer envío.</p>
+    <p class="nl__note">Sin spam. Puedes darte de baja cuando quieras. Lee la <a href="/privacidad.html">política de privacidad</a>.</p>
+  </div>
+  {%- endif %}
+</section>

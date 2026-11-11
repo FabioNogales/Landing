@@ -1,0 +1,35 @@
+{
+  "url": "https://fabionogales.com",
+  "lang": "es",
+  "locale": "es_LA",
+  "siteName": "Fabio AI",
+  "author": {
+    "name": "Fabio Nogales",
+    "url": "https://fabionogales.com/"
+  },
+  "publisher": {
+    "name": "Fabio AI",
+    "logo": "https://fabionogales.com/assets/img/icons/icon-512.png"
+  },
+  "defaultImage": "/assets/img/og.jpg",
+  "blog": {
+    "title": "Blog",
+    "metaTitle": "Blog | Fabio Nogales",
+    "intro": "Herramientas y flujos de trabajo para producir video con IA, explicados desde la práctica.",
+    "description": "Blog de Fabio Nogales: herramientas y flujos de trabajo para producir video y contenido con IA, explicados desde la práctica.",
+    "launchDate": "2026-11-11"
+  },
+  "pages": [
+    { "loc": "/", "lastmod": "2026-11-11" },
+    { "loc": "/privacidad.html", "lastmod": "2026-11-11" }
+  ],
+  "newsletter": {
+    "name": "Fabio AI Lab",
+    "promise": "Herramientas y flujos de video con IA, cada 2 semanas.",
+    "formAction": "",
+    "emailFieldName": "fields[email]",
+    "hiddenFields": { "ml-submit": "1", "anticsrf": "true" },
+    "successMessage": "¡Listo! Revisa tu correo para confirmar la suscripción.",
+    "errorMessage": "No se pudo completar la suscripción. Inténtalo de nuevo en unos minutos."
+  }
+}

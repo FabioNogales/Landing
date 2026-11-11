@@ -1,0 +1,31 @@
+{#- Shared by /blog/ and /blog/categoria/<slug>/ : expects heading, intro, posts, activeCat -#}
+<section class="bhero">
+  <div class="container">
+    <p class="eyebrow">{% if activeCat %}Blog · Categoría{% else %}Fabio AI · Blog{% endif %}</p>
+    <h1 class="display bhero__title">{{ heading }}</h1>
+    <p class="bhero__intro">{{ intro }}</p>
+    <nav class="cats" aria-label="Categorías">
+      <a class="chip chip--filter{% if not activeCat %} is-active{% endif %}" href="/blog/"{% if not activeCat %} aria-current="page"{% endif %}>Todos</a>
+      {%- for c in categories %}
+      <a class="chip chip--filter{% if activeCat == c.slug %} is-active{% endif %}" href="/blog/categoria/{{ c.slug }}/"{% if activeCat == c.slug %} aria-current="page"{% endif %}>{{ c.name }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+</section>
+<section class="blist" aria-label="Artículos">
+  <div class="container">
+    {%- if posts.length %}
+    <div class="pgrid">
+      {%- for post in posts %}
+      {% include "post-card.njk" %}
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <div class="empty">
+      <p class="empty__title display">Primeros artículos muy pronto</p>
+      <p class="empty__text">Estoy preparando las primeras guías sobre herramientas y flujos de video con IA. Suscríbete para recibirlas en tu correo apenas salgan.</p>
+    </div>
+    {%- endif %}
+    <div class="blist__nl">{% set nlId = "nl-list" %}{% include "newsletter.njk" %}</div>
+  </div>
+</section>

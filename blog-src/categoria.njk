@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: categories
+  size: 1
+  alias: cat
+permalink: "/blog/categoria/{{ cat.slug }}/index.html"
+eleventyComputed:
+  title: "{{ cat.name }}"
+  metaTitle: "{{ cat.name }} | Blog de Fabio Nogales"
+  description: "{{ cat.description }}"
+  noindex: "{{ 'si' if not (collections.posts | inCategory(cat.slug)).length else '' }}"
+---
+{% set heading = cat.name %}{% set intro = cat.description %}{% set posts = collections.posts | inCategory(cat.slug) %}{% set activeCat = cat.slug %}
+{% include "listing.njk" %}

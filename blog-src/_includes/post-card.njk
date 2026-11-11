@@ -1,0 +1,12 @@
+{%- set cat = post.data.category | category %}
+<article class="pcard">
+  {%- if post.data.cover %}
+  <a class="pcard__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true"><img src="{{ post.data.cover }}" alt="" loading="lazy" decoding="async"></a>
+  {%- endif %}
+  <div class="pcard__body">
+    <p class="pcard__meta"><a class="chip" href="/blog/categoria/{{ cat.slug }}/">{{ cat.name }}</a><span><time datetime="{{ post.date | isoDate }}">{{ post.date | fechaEs }}</time> · {{ post.templateContent | readingTime }}</span></p>
+    <h2 class="pcard__title"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    <p class="pcard__desc">{{ post.data.description }}</p>
+    {%- if post.data.draft %}<p class="pcard__draft">Borrador (solo vista local)</p>{% endif %}
+  </div>
+</article>

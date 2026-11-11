@@ -1,0 +1,37 @@
+---
+permalink: /blog/feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>{{ site.newsletter.name }} · Blog de Fabio Nogales</title>
+    <link>{{ '/blog/' | absUrl }}</link>
+    <atom:link href="{{ '/blog/feed.xml' | absUrl }}" rel="self" type="application/rss+xml"/>
+    <description>{{ site.blog.description }}</description>
+    <language>es</language>
+    <lastBuildDate>{{ collections.posts | latestDate(site.blog.launchDate) | rfc822 }}</lastBuildDate>
+    <image>
+      <url>{{ site.publisher.logo }}</url>
+      <title>{{ site.newsletter.name }} · Blog de Fabio Nogales</title>
+      <link>{{ '/blog/' | absUrl }}</link>
+    </image>
+    {%- for post in collections.posts %}
+    {%- set postUrl = post.url | absUrl %}
+    {%- set cat = post.data.category | category %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ postUrl }}</link>
+      <guid isPermaLink="true">{{ postUrl }}</guid>
+      <pubDate>{{ post.date | rfc822 }}</pubDate>
+      <dc:creator>{{ site.author.name }}</dc:creator>
+      <category>{{ cat.name }}</category>
+      <description>{{ post.data.description }}</description>
+      {%- if post.data.cover %}
+      <media:content url="{{ post.data.cover | absUrl }}" medium="image"/>
+      {%- endif %}
+      <content:encoded><![CDATA[{% if post.data.cover %}<p><img src="{{ post.data.cover | absUrl }}" alt="{{ post.data.coverAlt }}" style="max-width:100%;height:auto"></p>{% endif %}{{ post.templateContent | absUrls | cdata | safe }}<p><a href="{{ postUrl }}">Leer en fabionogales.com</a></p>]]></content:encoded>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

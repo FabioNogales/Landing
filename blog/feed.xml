@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Fabio AI Lab · Blog de Fabio Nogales</title>
+    <link>https://fabionogales.com/blog/</link>
+    <atom:link href="https://fabionogales.com/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Blog de Fabio Nogales: herramientas y flujos de trabajo para producir video y contenido con IA, explicados desde la práctica.</description>
+    <language>es</language>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 GMT</lastBuildDate>
+    <image>
+      <url>https://fabionogales.com/assets/img/icons/icon-512.png</url>
+      <title>Fabio AI Lab · Blog de Fabio Nogales</title>
+      <link>https://fabionogales.com/blog/</link>
+    </image>
+  </channel>
+</rss>

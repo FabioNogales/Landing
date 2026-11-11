@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+ogType: article
+eleventyComputed:
+  jsonld:
+    "@context": "https://schema.org"
+    "@type": "BlogPosting"
+    headline: "{{ title }}"
+    description: "{{ description }}"
+    inLanguage: "es"
+    url: "{{ page.url | absUrl }}"
+    mainEntityOfPage: "{{ page.url | absUrl }}"
+    image: "{{ (cover or site.defaultImage) | absUrl }}"
+    datePublished: "{{ page.date | isoDateTime }}"
+    dateModified: "{{ (updated or page.date) | isoDateTime }}"
+    articleSection: "{{ (category | category).name }}"
+    keywords: "{{ tags | join(', ') if tags else '' }}"
+    author:
+      "@type": "Person"
+      name: "{{ site.author.name }}"
+      url: "{{ site.author.url }}"
+    publisher:
+      "@type": "Organization"
+      name: "{{ site.publisher.name }}"
+      logo:
+        "@type": "ImageObject"
+        url: "{{ site.publisher.logo }}"
+---
+{%- set cat = category | category %}
+{%- set nb = collections.posts | neighbors(page.url) %}
+<article class="post">
+  <header class="post__head container-narrow">
+    <nav class="crumbs" aria-label="Ruta"><a href="/blog/">Blog</a><span aria-hidden="true">/</span><a href="/blog/categoria/{{ cat.slug }}/">{{ cat.name }}</a></nav>
+    {%- if draft %}<p class="post__draft">Borrador · no se publica</p>{% endif %}
+    <h1 class="post__title display">{{ title }}</h1>
+    <p class="post__desc">{{ description }}</p>
+    <p class="post__meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | fechaEs }}</time><span aria-hidden="true">·</span><a href="/blog/categoria/{{ cat.slug }}/">{{ cat.name }}</a><span aria-hidden="true">·</span><span>{{ content | readingTime }}</span></p>
+  </header>
+  {%- if cover %}
+  <figure class="post__cover">
+    <img src="{{ cover }}" alt="{{ coverAlt }}" fetchpriority="high" decoding="async">
+  </figure>
+  {%- endif %}
+  <div class="prose container-narrow">
+{{ content | safe }}
+  </div>
+  {%- if tags and tags.length %}
+  <ul class="post__tags container-narrow" aria-label="Etiquetas">
+    {%- for t in tags %}<li>#{{ t }}</li>{% endfor %}
+  </ul>
+  {%- endif %}
+  <div class="container-narrow post__end">
+    {% set nlId = "nl-post" %}{% include "newsletter.njk" %}
+    <aside class="post__cta" aria-label="Contacto">
+      <p class="post__cta-title display">¿Tienes un proyecto de video en mente?</p>
+      <p>Producción audiovisual y flujos de contenido con IA para marcas y agencias.</p>
+      <a class="btn btn--primary" href="/#book">Hablemos de tu proyecto</a>
+    </aside>
+    {%- if nb.newer or nb.older %}
+    <nav class="pager" aria-label="Más artículos">
+      {%- if nb.older %}<a class="pager__link" href="{{ nb.older.url }}" rel="prev"><span>← Anterior</span><b>{{ nb.older.data.title }}</b></a>{% else %}<span></span>{% endif %}
+      {%- if nb.newer %}<a class="pager__link pager__link--next" href="{{ nb.newer.url }}" rel="next"><span>Siguiente →</span><b>{{ nb.newer.data.title }}</b></a>{% endif %}
+    </nav>
+    {%- endif %}
+    <p class="post__back"><a href="/blog/">← Todos los artículos</a></p>
+  </div>
+</article>

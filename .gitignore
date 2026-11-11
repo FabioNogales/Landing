@@ -10,6 +10,8 @@ desktop.ini
 # Node (por si se agrega tooling más adelante)
 node_modules/
 npm-debug.log*
+# Vista previa local del blog con borradores (npm run dev:blog:drafts)
+.blog-preview/
 
 # Entornos / secretos
 .env

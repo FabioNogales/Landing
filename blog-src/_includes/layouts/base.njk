@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script>(function(){var h=location.hostname;if(h==='fabioai-landing.web.app'||h==='fabioai-landing.firebaseapp.com')location.replace('https://fabionogales.com'+location.pathname+location.search+location.hash);})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set pageUrl = page.url | absUrl %}
+{%- set pageImage = (cover or site.defaultImage) | absUrl %}
+{%- set pageImageAlt = (coverAlt if cover else site.blog.metaTitle) %}
+<title>{{ metaTitle or (title + " | Fabio Nogales") }}</title>
+<meta name="description" content="{{ description }}">
+{%- if noindex %}
+<meta name="robots" content="noindex, follow">
+{%- endif %}
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="{{ pageUrl }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.newsletter.name }} · Blog de Fabio Nogales" href="{{ '/blog/feed.xml' | absUrl }}">
+<link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:site_name" content="{{ site.siteName }}">
+<meta property="og:url" content="{{ pageUrl }}">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:title" content="{{ metaTitle or (title + ' | Fabio Nogales') }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="{{ pageImage }}">
+<meta property="og:image:alt" content="{{ pageImageAlt }}">
+{%- if ogType == "article" %}
+<meta property="article:published_time" content="{{ page.date | isoDateTime }}">
+{%- if updated %}<meta property="article:modified_time" content="{{ updated | isoDateTime }}">{% endif %}
+<meta property="article:author" content="{{ site.author.name }}">
+<meta property="article:section" content="{{ (category | category).name }}">
+{%- for t in tags %}
+<meta property="article:tag" content="{{ t }}">
+{%- endfor %}
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ metaTitle or (title + ' | Fabio Nogales') }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ pageImage }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="/assets/css/styles.css?v={{ assetVersion.styles }}">
+<link rel="stylesheet" href="/assets/css/blog.css?v={{ assetVersion.blog }}">
+{%- if jsonld %}
+<script type="application/ld+json">{{ jsonld | jsonLd | safe }}</script>
+{%- endif %}
+</head>
+<body class="blog-body">
+
+{% include "nav.njk" %}
+
+<main id="main" class="blog-main">
+{{ content | safe }}
+</main>
+
+{% include "footer.njk" %}
+
+{%- if site.newsletter.formAction %}
+<script src="/assets/js/blog.js?v={{ assetVersion.blogJs }}" defer></script>
+{%- endif %}
+</body>
+</html>

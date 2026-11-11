@@ -15,10 +15,12 @@
       "assets/img/bts/**",
       "assets/img/LOGO-ITACAMBA-8cm.png",
       "assets/img/Logo FabioAI/**",
-      "CLAUDE.md"
+      "CLAUDE.md",
+      "blog-src/**",
+      "package.json",
+      "package-lock.json"
     ],
     "cleanUrls": false,
-    "trailingSlash": false,
     "headers": [
       {
         "source": "**/*.@(html|css|js|xml|txt)",

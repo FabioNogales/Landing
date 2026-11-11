@@ -1,0 +1,32 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- for p in site.pages %}
+  <url>
+    <loc>{{ p.loc | absUrl }}</loc>
+    <lastmod>{{ p.lastmod }}</lastmod>
+  </url>
+  {%- endfor %}
+  <url>
+    <loc>{{ '/blog/' | absUrl }}</loc>
+    <lastmod>{{ collections.posts | latestDate(site.blog.launchDate) | isoDate }}</lastmod>
+  </url>
+  {%- for c in categories %}
+  {%- set cposts = collections.posts | inCategory(c.slug) %}
+  {%- if cposts.length %}
+  <url>
+    <loc>{{ ('/blog/categoria/' + c.slug + '/') | absUrl }}</loc>
+    <lastmod>{{ cposts | latestDate(site.blog.launchDate) | isoDate }}</lastmod>
+  </url>
+  {%- endif %}
+  {%- endfor %}
+  {%- for post in collections.posts %}
+  <url>
+    <loc>{{ post.url | absUrl }}</loc>
+    <lastmod>{{ (post.data.updated or post.date) | isoDate }}</lastmod>
+  </url>
+  {%- endfor %}
+</urlset>

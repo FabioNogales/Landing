@@ -1,0 +1,28 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "Sitio estático de Fabio Nogales. La landing (index.html) no tiene build; el blog (/blog/) se genera con Eleventy desde blog-src/.",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:blog": "node blog-src/_scripts/clean.mjs && eleventy --config=blog-src/eleventy.config.mjs",
+    "dev:blog": "eleventy --config=blog-src/eleventy.config.mjs --serve",
+    "dev:blog:drafts": "node blog-src/_scripts/serve-drafts.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FabioNogales/Landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FabioNogales/Landing/issues"
+  },
+  "homepage": "https://github.com/FabioNogales/Landing#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7"
+  },
+  "private": true
+}
