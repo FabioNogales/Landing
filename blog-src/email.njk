@@ -1,0 +1,105 @@
+---
+# Email version of every post, ready to paste into MailerLite (Campaign → Custom HTML editor).
+# Output: blog-src/email-out/<slug>.html (moved there by eleventy.after; never published).
+# Drafts only with INCLUDE_DRAFTS=1 (npm run email:drafts).
+pagination:
+  data: collections.posts
+  size: 1
+  alias: post
+  addAllPagesToCollections: false
+permalink: "/_email-out/{{ post.url | replace('/blog/', '') | replace('/', '') }}.html"
+eleventyExcludeFromCollections: true
+---
+{%- set postUrl = post.url | absUrl %}
+{%- set cat = post.data.category | category %}
+{%- set bookUrl = '/#book' | absUrl %}
+{%- set F_BODY = "font-family:'Geist',Helvetica,Arial,sans-serif;" %}
+{%- set F_DISPLAY = "font-family:'Bricolage Grotesque','Arial Black',Helvetica,Arial,sans-serif;" %}
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{{ post.data.title }} · {{ site.newsletter.name }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#EEE6DE;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#EEE6DE;">{{ post.data.description }}&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#EEE6DE;">
+<tr><td align="center" style="padding:24px 12px;">
+  <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:20px;overflow:hidden;">
+
+    <!-- Header: symbol + wordmark -->
+    <tr><td style="background:#000000;padding:20px 24px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td style="vertical-align:middle;">
+          <a href="{{ site.url }}/" style="text-decoration:none;color:#F9F9F9;">
+            <img src="{{ site.url }}/assets/img/icons/icon-192.png" width="36" height="36" alt="" style="display:inline-block;vertical-align:middle;border:0;border-radius:8px;">
+            <span style="display:inline-block;vertical-align:middle;margin-left:8px;{{ F_DISPLAY | safe }}font-size:20px;font-weight:800;letter-spacing:-.5px;color:#F9F9F9;">Fabio<span style="color:#E85002;">AI</span></span>
+          </a>
+        </td>
+        <td align="right" style="vertical-align:middle;{{ F_BODY | safe }}font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#A7A7A7;">{{ site.newsletter.name }}</td>
+      </tr></table>
+    </td></tr>
+
+    {%- if post.data.cover %}
+    <!-- Cover -->
+    <tr><td style="padding:0;">
+      <a href="{{ postUrl }}"><img src="{{ post.data.cover | absUrl }}" width="600" alt="{{ post.data.coverAlt }}" style="display:block;width:100%;max-width:600px;height:auto;border:0;"></a>
+    </td></tr>
+    {%- endif %}
+
+    <!-- Title -->
+    <tr><td style="padding:32px 24px 8px;">
+      <p style="margin:0 0 12px;{{ F_BODY | safe }}font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#646464;">{{ cat.name }} · {{ post.date | fechaEs }}</p>
+      <h1 style="margin:0 0 14px;{{ F_DISPLAY | safe }}font-size:34px;line-height:1.05;font-weight:800;letter-spacing:-1px;color:#000000;">{{ post.data.title }}</h1>
+      <p style="margin:0 0 8px;{{ F_BODY | safe }}font-size:18px;line-height:1.5;color:#646464;">{{ post.data.description }}</p>
+    </td></tr>
+
+    <!-- Body -->
+    <tr><td style="padding:16px 24px 8px;{{ F_BODY | safe }}font-size:17px;line-height:1.6;color:#1A1A1A;">
+{{ post.templateContent | emailHtml | safe }}
+    </td></tr>
+
+    <!-- CTA: read on the blog -->
+    <tr><td align="center" style="padding:8px 24px 28px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td align="center" bgcolor="#E85002" style="border-radius:999px;background:#E85002;">
+          <a href="{{ postUrl }}" style="display:inline-block;padding:15px 30px;{{ F_BODY | safe }}font-size:16px;font-weight:700;color:#000000;text-decoration:none;border-radius:999px;">Leer el artículo en el blog</a>
+        </td>
+      </tr></table>
+    </td></tr>
+
+    <!-- CTA: project -->
+    <tr><td style="padding:0 24px 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#000000;border-radius:16px;"><tr>
+        <td style="padding:24px;">
+          <p style="margin:0 0 8px;{{ F_DISPLAY | safe }}font-size:22px;line-height:1.15;font-weight:800;color:#F9F9F9;">¿Tienes un proyecto de video en mente?</p>
+          <p style="margin:0 0 18px;{{ F_BODY | safe }}font-size:15px;line-height:1.5;color:#A7A7A7;">Producción audiovisual y flujos de contenido con IA para marcas y agencias.</p>
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td align="center" bgcolor="#E85002" style="border-radius:999px;background:#E85002;">
+              <a href="{{ bookUrl }}" style="display:inline-block;padding:13px 26px;{{ F_BODY | safe }}font-size:15px;font-weight:700;color:#000000;text-decoration:none;border-radius:999px;">Hablemos de tu proyecto</a>
+            </td>
+          </tr></table>
+        </td>
+      </tr></table>
+    </td></tr>
+
+    <!-- Footer -->
+    <tr><td style="background:#000000;padding:24px;{{ F_BODY | safe }}font-size:13px;line-height:1.6;color:#A7A7A7;">
+      <p style="margin:0 0 8px;color:#F9F9F9;font-weight:600;">{{ site.author.name }} · {{ site.siteName }}</p>
+      <p style="margin:0 0 8px;">Recibes este correo porque te suscribiste a {{ site.newsletter.name }} en <a href="{{ site.url }}/blog/" style="color:#F9F9F9;text-decoration:underline;">fabionogales.com</a>. Santa Cruz de la Sierra, Bolivia.</p>
+      <p style="margin:0;"><a href="{$unsubscribe}" style="color:#E85002;text-decoration:underline;">Darme de baja</a> · <a href="{{ site.url }}/privacidad.html" style="color:#A7A7A7;text-decoration:underline;">Privacidad</a></p>
+    </td></tr>
+
+  </table>
+  <!--[if mso]></td></tr></table><![endif]-->
+</td></tr>
+</table>
+</body>
+</html>

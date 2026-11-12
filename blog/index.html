@@ -30,8 +30,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="/assets/css/styles.css?v=9dc34b79">
-<link rel="stylesheet" href="/assets/css/blog.css?v=27926c9d">
+<link rel="stylesheet" href="/assets/css/styles.css?v=ad677bfa">
+<link rel="stylesheet" href="/assets/css/blog.css?v=4e2afafa">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Blog de Fabio Nogales","url":"https://fabionogales.com/blog/","inLanguage":"es","description":"Blog de Fabio Nogales: herramientas y flujos de trabajo para producir video y contenido con IA, explicados desde la práctica.","author":{"@type":"Person","name":"Fabio Nogales","url":"https://fabionogales.com/"},"publisher":{"@type":"Organization","name":"Fabio AI","logo":{"@type":"ImageObject","url":"https://fabionogales.com/assets/img/icons/icon-512.png"}}}</script>
 </head>
 <body class="blog-body">
@@ -71,21 +71,25 @@
       <p class="empty__text">Estoy preparando las primeras guías sobre herramientas y flujos de video con IA. Suscríbete para recibirlas en tu correo apenas salgan.</p>
     </div>
     <div class="blist__nl">
-<section class="nl nl--soon" aria-labelledby="nl-list-title">
+<section class="nl" aria-labelledby="nl-list-title">
   <div class="nl__copy">
     <p class="nl__kicker">Newsletter</p>
     <h2 class="nl__title display" id="nl-list-title">Suscríbete a <span class="accent">Fabio AI Lab</span></h2>
     <p class="nl__promise">Herramientas y flujos de video con IA, cada 2 semanas.</p>
   </div>
-  <div class="nl__form" aria-disabled="true">
+  <form class="nl__form" action="https://assets.mailerlite.com/jsonp/2787665/forms/203962865767417853/subscribe" method="post" target="_blank" novalidate data-nl-form data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD">
     <label class="nl__label" for="nl-list-email">Tu correo electrónico</label>
     <div class="nl__row">
-      <input class="nl__input" id="nl-list-email" type="email" placeholder="tu@correo.com" disabled>
-      <button class="btn btn--primary nl__btn" type="button" disabled>Suscribirme</button>
+      <input class="nl__input" id="nl-list-email" type="email" name="fields[email]" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required aria-describedby="nl-list-status">
+      <button class="btn btn--primary nl__btn" type="submit">Suscribirme</button>
     </div>
-    <p class="nl__soon"><span class="nl__dot" aria-hidden="true"></span>Muy pronto: la suscripción se abrirá con el primer envío.</p>
+    <input type="hidden" name="ml-submit" value="1">
+    <input type="hidden" name="anticsrf" value="true">
+    <div class="nl__hp" aria-hidden="true"><label for="nl-list-web">No rellenes este campo</label><input id="nl-list-web" type="text" name="nl_website" tabindex="-1" autocomplete="off"></div>
+    <div class="nl__captcha" data-nl-captcha hidden></div>
+    <p class="nl__status" id="nl-list-status" role="status" aria-live="polite" data-ok="¡Listo! Revisa tu correo para confirmar tu suscripción." data-err="No se pudo completar la suscripción. Inténtalo de nuevo en unos minutos."></p>
     <p class="nl__note">Sin spam. Puedes darte de baja cuando quieras. Lee la <a href="/privacidad.html">política de privacidad</a>.</p>
-  </div>
+  </form>
 </section>
 </div>
   </div>
@@ -126,5 +130,6 @@
   </div>
 </footer>
 
+<script src="/assets/js/blog.js?v=be30e91a" defer></script>
 </body>
 </html>

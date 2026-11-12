@@ -25,6 +25,7 @@
     "nav.process": "Process",
     "nav.services": "Services",
     "nav.about": "About",
+    "nav.blog": "Blog",
     "nav.contact": "Contact",
     "nav.cta": "Book a diagnostic",
     "nav.ctaShort": "Book",

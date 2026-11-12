@@ -16,6 +16,44 @@ function escapeHtml(s) {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+// ---- Email version of a post (inline CSS only; email clients ignore <style>/classes) ----
+const EM = {
+  text: "#1A1A1A", muted: "#646464", orange: "#E85002",
+  body: "font-family:'Geist',Helvetica,Arial,sans-serif;",
+  display: "font-family:'Bricolage Grotesque','Arial Black',Helvetica,Arial,sans-serif;",
+  mono: "font-family:Consolas,'Courier New',monospace;",
+};
+function emailHtml(html) {
+  const T = EM;
+  return html
+    // Quotes: serif, no paragraph spacing
+    .replace(/<blockquote>([\s\S]*?)<\/blockquote>/g, (m, inner) =>
+      "<blockquote>" + inner.replace(/<p>/g, `<p style="margin:0;font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-size:22px;line-height:1.35;color:${T.text};">`) + "</blockquote>")
+    // Reel cards (shortcode) -> simple linked box
+    .replace(/<figure class="reel-card"><a href="([^"]+)"[^>]*>[\s\S]*?<span class="reel-card__title">([\s\S]*?)<\/span>(?:<span class="reel-card__text">([\s\S]*?)<\/span>)?[\s\S]*?<\/a><\/figure>/g,
+      (m, href, title, text) =>
+        `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px;border-collapse:separate;"><tr><td style="padding:16px 20px;background:#000000;border-radius:16px;${T.body}">` +
+        `<p style="margin:0 0 6px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#A7A7A7;">Reel · Instagram</p>` +
+        `<p style="margin:0 0 6px;font-size:17px;font-weight:700;line-height:1.3;color:#F9F9F9;">${title}</p>` +
+        (text ? `<p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#A7A7A7;">${text}</p>` : "") +
+        `<a href="${href}" style="font-size:14px;font-weight:600;color:${T.orange};text-decoration:none;">Ver en Instagram &#8599;</a></td></tr></table>`)
+    .replace(/<figure[^>]*>/g, `<div style="margin:0 0 22px;">`).replace(/<\/figure>/g, "</div>")
+    .replace(/<figcaption[^>]*>/g, `<p style="margin:8px 0 0;${T.body}font-size:13px;line-height:1.5;color:${T.muted};">`).replace(/<\/figcaption>/g, "</p>")
+    .replace(/<img\s([^>]*?)\s*\/?>/g, (m, attrs) =>
+      `<img ${attrs.replace(/\s*(loading|decoding|fetchpriority|class|style|width|height)="[^"]*"/g, "")} width="552" style="display:block;width:100%;max-width:552px;height:auto;border:0;border-radius:12px;">`)
+    .replace(/<blockquote[^>]*>/g, `<blockquote style="margin:0 0 22px;padding:4px 0 4px 18px;border-left:3px solid ${T.orange};font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-size:22px;line-height:1.35;color:${T.text};">`)
+    .replace(/<h2[^>]*>/g, `<h2 style="margin:32px 0 12px;${T.display}font-size:26px;line-height:1.15;font-weight:800;color:${T.text};">`)
+    .replace(/<h3[^>]*>/g, `<h3 style="margin:26px 0 10px;${T.display}font-size:20px;line-height:1.2;font-weight:700;color:${T.text};">`)
+    .replace(/<p>/g, `<p style="margin:0 0 18px;${T.body}font-size:17px;line-height:1.6;color:${T.text};">`)
+    .replace(/<(ul|ol)[^>]*>/g, `<$1 style="margin:0 0 18px;padding:0 0 0 22px;${T.body}font-size:17px;line-height:1.6;color:${T.text};">`)
+    .replace(/<li[^>]*>/g, `<li style="margin:0 0 6px;">`)
+    .replace(/<pre[^>]*>/g, `<pre style="margin:0 0 22px;padding:16px 18px;background:#F3F0EC;border-radius:12px;white-space:pre-wrap;word-break:break-word;${T.mono}font-size:14px;line-height:1.5;color:${T.text};">`)
+    .replace(/<code[^>]*>/g, `<code style="${T.mono}font-size:.9em;background:#F3F0EC;padding:1px 5px;border-radius:4px;">`)
+    .replace(/<hr\s*\/?>/g, `<hr style="border:0;border-top:1px solid #E2DCD5;margin:28px 0;">`)
+    .replace(/<a href="([^"]+)"(?![^>]*style=)([^>]*)>/g, `<a href="$1"$2 style="color:${T.orange};text-decoration:underline;">`)
+    .replace(/\sclass="[^"]*"/g, "");
+}
+
 export default function (cfg) {
   const site = JSON.parse(fs.readFileSync("blog-src/_data/site.json", "utf8"));
   const categories = JSON.parse(fs.readFileSync("blog-src/_data/categories.json", "utf8"));
@@ -51,7 +89,9 @@ export default function (cfg) {
   cfg.addFilter("absUrls", (html) =>
     String(html || "").replace(/(\s(?:src|href|poster)=")\/(?!\/)/g, `$1${site.url}/`)
   );
-  cfg.addFilter("cdata", (html) => String(html || "").replace(/]]>/g, "]]]]><![CDATA[>"));
+  // Post HTML -> email-safe HTML with inline styles (blog-src/email.njk, pasted into MailerLite's custom HTML editor)
+  cfg.addFilter("emailHtml", (html) => emailHtml(String(html || "").replace(/(\s(?:src|href|poster)=")\/(?!\/)/g, `$1${site.url}/`)));
+  cfg.addFilter("cdata",(html) => String(html || "").replace(/]]>/g, "]]]]><![CDATA[>"));
   cfg.addFilter("readingTime", (html) => {
     const words = String(html || "").replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
     return `${Math.max(1, Math.ceil(words / 220))} min de lectura`;
@@ -97,7 +137,27 @@ export default function (cfg) {
     );
   }
 
+  // Email versions (blog-src/email.njk) are rendered to <output>/_email-out/ and then moved to
+  // blog-src/email-out/<slug>.html: never inside blog/, never deployed (blog-src/** is ignored by Firebase).
+  cfg.on("eleventy.after", ({ results }) => {
+    const outDir = "blog-src/email-out";
+    const emails = (results || []).filter((r) => /[\\/]_email-out[\\/][^\\/]+\.html$/.test(r.outputPath || ""));
+    if (!emails.length) return;
+    fs.mkdirSync(outDir, { recursive: true });
+    for (const r of emails) {
+      const name = r.outputPath.split(/[\\/]/).pop();
+      fs.writeFileSync(`${outDir}/${name}`, r.content);
+      fs.rmSync(r.outputPath, { force: true });
+    }
+    const tmp = emails[0].outputPath.replace(/[\\/][^\\/]+$/, "");
+    fs.rmSync(tmp, { recursive: true, force: true });
+    console.log(`[email] ${emails.length} versión(es) para MailerLite en ${outDir}/`);
+  });
+
   cfg.ignores.add("blog-src/_scripts/**");
+  cfg.ignores.add("blog-src/email-out/**");
+  cfg.watchIgnores.add("blog-src/email-out/**");
+  cfg.watchIgnores.add("_email-out/**");
   cfg.setServerOptions({ port: 8089, showVersion: false });
 
   return {

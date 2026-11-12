@@ -8,7 +8,8 @@
   "scripts": {
     "build:blog": "node blog-src/_scripts/clean.mjs && eleventy --config=blog-src/eleventy.config.mjs",
     "dev:blog": "eleventy --config=blog-src/eleventy.config.mjs --serve",
-    "dev:blog:drafts": "node blog-src/_scripts/serve-drafts.mjs"
+    "dev:blog:drafts": "node blog-src/_scripts/serve-drafts.mjs",
+    "email:drafts": "node blog-src/_scripts/email-drafts.mjs"
   },
   "repository": {
     "type": "git",

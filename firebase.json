@@ -17,6 +17,7 @@
       "assets/img/Logo FabioAI/**",
       "CLAUDE.md",
       "blog-src/**",
+      "_email-out/**",
       "package.json",
       "package-lock.json"
     ],

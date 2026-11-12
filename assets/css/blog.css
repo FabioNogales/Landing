@@ -59,7 +59,7 @@
 
 /* ---------- Newsletter block (Fabio AI Lab) ---------- */
 .nl {
-  position: relative; overflow: hidden; isolation: isolate; border-radius: var(--r-card);
+  position: relative; overflow: hidden; overflow: clip; isolation: isolate; border-radius: var(--r-card);
   background: var(--black); color: var(--white); padding: clamp(28px, 5vw, 48px);
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; align-items: end;
 }
@@ -81,9 +81,14 @@
 .nl__btn { flex: none; height: 48px; }
 .nl__btn:disabled, .nl__input:disabled { cursor: not-allowed; opacity: .55; }
 .nl__btn:disabled:hover { background: var(--orange); }
-.nl__soon { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--white); }
-.nl__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex: none; }
-.nl__status { margin-top: 10px; font-size: 14px; min-height: 0; }
+.nl__input[aria-invalid="true"] { border-color: var(--orange-hot); }
+.nl__hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.nl__captcha { margin-top: 12px; overflow: hidden; min-height: 0; }
+.nl__captcha[hidden] { display: none; }
+.nl__status { margin-top: 10px; font-size: 14px; min-height: 0; color: var(--gray-300); }
+.nl__status.is-ok { color: var(--white); font-weight: 600; padding-left: 16px; position: relative; }
+.nl__status.is-ok::before { content: ""; position: absolute; left: 0; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.nl__status.is-err { color: var(--orange-hot); }
 .nl__status:empty { display: none; }
 .nl__note { margin-top: 10px; font-size: 13px; color: var(--gray-300); }
 .nl__note a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
@@ -158,7 +163,7 @@
 .post__tags li { font-size: 13px; color: var(--gray-600); padding: 5px 12px; border-radius: var(--r-pill); background: var(--bone); }
 
 .post__end { margin-top: clamp(48px, 7vw, 72px); display: grid; gap: 24px; }
-.post__end .nl { grid-template-columns: 1fr; }
+.post__end .nl { grid-template-columns: minmax(0, 1fr); }
 .post__cta { padding: clamp(24px, 4vw, 36px); border-radius: var(--r-card); background: var(--bone); display: grid; gap: 10px; justify-items: start; }
 .post__cta-title { font-size: clamp(24px, 3vw, 32px); line-height: 1.05; }
 .post__cta p:not(.post__cta-title) { color: var(--gray-600); }
@@ -179,7 +184,7 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .burger { display: none; } /* blog nav has no burger menu */
-  .nl { grid-template-columns: 1fr; align-items: start; }
+  .nl { grid-template-columns: minmax(0, 1fr); align-items: start; }
 }
 @media (max-width: 620px) {
   .bhero { padding: 132px 0 48px; }

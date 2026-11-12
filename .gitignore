@@ -12,6 +12,9 @@ node_modules/
 npm-debug.log*
 # Vista previa local del blog con borradores (npm run dev:blog:drafts)
 .blog-preview/
+# Versiones email de los posts (generadas por el build; se pegan en MailerLite)
+blog-src/email-out/
+_email-out/
 
 # Entornos / secretos
 .env

@@ -1,35 +1,29 @@
-{#- Fabio AI Lab signup. Driven by site.newsletter (blog-src/_data/site.json).
-    While newsletter.formAction is empty, renders a disabled "Muy pronto" state (no submissions). -#}
+{#- Fabio AI Lab signup (MailerLite). Driven by site.newsletter (blog-src/_data/site.json).
+    Rendered only when newsletter.formAction is set. assets/js/blog.js validates the email, lazy-loads
+    Google reCAPTCHA v2 on first interaction with the field and sends the form to MailerLite in the background.
+    Without JS the form posts normally in a new tab (MailerLite rejects it without the reCAPTCHA token). -#}
 {%- set nl = site.newsletter %}
 {%- set nlId = nlId or "nl" %}
-<section class="nl{% if not nl.formAction %} nl--soon{% endif %}" aria-labelledby="{{ nlId }}-title">
+{%- if nl.formAction %}
+<section class="nl" aria-labelledby="{{ nlId }}-title">
   <div class="nl__copy">
     <p class="nl__kicker">Newsletter</p>
     <h2 class="nl__title display" id="{{ nlId }}-title">Suscríbete a <span class="accent">{{ nl.name }}</span></h2>
     <p class="nl__promise">{{ nl.promise }}</p>
   </div>
-  {%- if nl.formAction %}
-  <form class="nl__form" action="{{ nl.formAction }}" method="post" data-nl-form target="_blank">
+  <form class="nl__form" action="{{ nl.formAction }}" method="post" target="_blank" novalidate data-nl-form data-sitekey="{{ nl.recaptchaSiteKey }}">
     <label class="nl__label" for="{{ nlId }}-email">Tu correo electrónico</label>
     <div class="nl__row">
-      <input class="nl__input" id="{{ nlId }}-email" type="email" name="{{ nl.emailFieldName }}" autocomplete="email" placeholder="tu@correo.com" required>
-      {%- for k, v in nl.hiddenFields %}
-      <input type="hidden" name="{{ k }}" value="{{ v }}">
-      {%- endfor %}
+      <input class="nl__input" id="{{ nlId }}-email" type="email" name="{{ nl.emailFieldName }}" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required aria-describedby="{{ nlId }}-status">
       <button class="btn btn--primary nl__btn" type="submit">Suscribirme</button>
     </div>
-    <p class="nl__status" role="status" aria-live="polite" data-ok="{{ nl.successMessage }}" data-err="{{ nl.errorMessage }}"></p>
+    {%- for k, v in nl.hiddenFields %}
+    <input type="hidden" name="{{ k }}" value="{{ v }}">
+    {%- endfor %}
+    <div class="nl__hp" aria-hidden="true"><label for="{{ nlId }}-web">No rellenes este campo</label><input id="{{ nlId }}-web" type="text" name="nl_website" tabindex="-1" autocomplete="off"></div>
+    <div class="nl__captcha" data-nl-captcha hidden></div>
+    <p class="nl__status" id="{{ nlId }}-status" role="status" aria-live="polite" data-ok="{{ nl.successMessage }}" data-err="{{ nl.errorMessage }}"></p>
     <p class="nl__note">Sin spam. Puedes darte de baja cuando quieras. Lee la <a href="/privacidad.html">política de privacidad</a>.</p>
   </form>
-  {%- else %}
-  <div class="nl__form" aria-disabled="true">
-    <label class="nl__label" for="{{ nlId }}-email">Tu correo electrónico</label>
-    <div class="nl__row">
-      <input class="nl__input" id="{{ nlId }}-email" type="email" placeholder="tu@correo.com" disabled>
-      <button class="btn btn--primary nl__btn" type="button" disabled>Suscribirme</button>
-    </div>
-    <p class="nl__soon"><span class="nl__dot" aria-hidden="true"></span>Muy pronto: la suscripción se abrirá con el primer envío.</p>
-    <p class="nl__note">Sin spam. Puedes darte de baja cuando quieras. Lee la <a href="/privacidad.html">política de privacidad</a>.</p>
-  </div>
-  {%- endif %}
 </section>
+{%- endif %}

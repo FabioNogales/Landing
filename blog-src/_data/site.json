@@ -20,16 +20,26 @@
     "launchDate": "2026-11-11"
   },
   "pages": [
-    { "loc": "/", "lastmod": "2026-11-11" },
-    { "loc": "/privacidad.html", "lastmod": "2026-11-11" }
+    {
+      "loc": "/",
+      "lastmod": "2026-11-12"
+    },
+    {
+      "loc": "/privacidad.html",
+      "lastmod": "2026-11-12"
+    }
   ],
   "newsletter": {
     "name": "Fabio AI Lab",
     "promise": "Herramientas y flujos de video con IA, cada 2 semanas.",
-    "formAction": "",
+    "formAction": "https://assets.mailerlite.com/jsonp/2787665/forms/203962865767417853/subscribe",
     "emailFieldName": "fields[email]",
-    "hiddenFields": { "ml-submit": "1", "anticsrf": "true" },
-    "successMessage": "¡Listo! Revisa tu correo para confirmar la suscripción.",
-    "errorMessage": "No se pudo completar la suscripción. Inténtalo de nuevo en unos minutos."
+    "hiddenFields": {
+      "ml-submit": "1",
+      "anticsrf": "true"
+    },
+    "successMessage": "¡Listo! Revisa tu correo para confirmar tu suscripción.",
+    "errorMessage": "No se pudo completar la suscripción. Inténtalo de nuevo en unos minutos.",
+    "recaptchaSiteKey": "6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"
   }
 }
